@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import styles from "@/styles/QuizSection.module.css";
+import Button from "@mui/material/Button";
+import { useTransition, animated } from "react-spring";
+import Typography from "@mui/material/Typography";
 
 export default function QuizSection(props) {
   const { question, options } = props;
@@ -15,11 +18,16 @@ export default function QuizSection(props) {
   };
 
   return (
-    <Box>
-      <div className={styles.question}>
+    <Box className={styles.quizSection}>
+      <Typography
+        className={styles.question}
+        variant="h5"
+        component="div"
+        align="center"
+      >
         We can update the state in React.js by calling to setState() method.
-        These calls are:
-      </div>
+        These calls are:{" "}
+      </Typography>
 
       <Grid
         container
@@ -79,6 +87,12 @@ export default function QuizSection(props) {
           </div>
         </Grid>
       </Grid>
+
+      <Box sx={{ display: "flex", justifyContent: "center", mt: 8 }}>
+        <Button variant="contained" color="primary">
+          Submit
+        </Button>
+      </Box>
     </Box>
   );
 }
