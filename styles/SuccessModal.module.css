@@ -1,0 +1,38 @@
+.successModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 24px;
+  padding: 60px 140px 28px;
+  border-radius: 16px;
+}
+
+.successModal:focus-visible {
+  outline: none;
+}
+
+.scores {
+  display: flex;
+  padding-bottom: 28px;
+}
+
+.rank {
+  display: flex;
+  padding-right: 8px;
+  border-right: 1px solid #e4e3e3;
+}
+
+.points {
+  display: flex;
+  padding-left: 8px;
+}
+
+.confettiIcon {
+  position: absolute;
+  top: 0;
+}
