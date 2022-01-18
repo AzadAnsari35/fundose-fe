@@ -1,33 +1,33 @@
 import React from "react";
 import Image from "next/image";
 import Button from "@mui/material/Button";
-import SuccessIcon from "../public/illustration/success.svg";
-import styles from "@/styles/SuccessModal.module.css";
+import FailureIcon from "../public/illustration/failure.svg";
 import Typography from "@mui/material/Typography";
 import RewardIcon from "../public/icons/reward.svg";
 import PointIcon from "../public/icons/point.svg";
 import Box from "@mui/material/Box";
-import { incrementQuestion } from "@/actions/quiz.act";
-import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import { makeStyles } from "@mui/styles";
 
-export default function SuccessModal({ handleClose }) {
-  const dispatch = useDispatch();
+export default function FailureModal({ handleClose }) {
+  const classes = useStyles();
+  const router = useRouter();
 
   const handleNextQuestion = () => {
-    dispatch(incrementQuestion());
-    handleClose();
+    router.push("/");
   };
 
   return (
-    <div className={styles.successModal}>
+    <div className={classes.failureModal}>
       <Image
-        src={SuccessIcon}
+        src={FailureIcon}
         alt="Picture of the author"
         width={264}
         height={160}
       />
       <Typography variant="overline" component="div" color="#666666">
-        Congratulations
+        Bad luck
       </Typography>
       <Typography
         variant="body1"
@@ -35,10 +35,10 @@ export default function SuccessModal({ handleClose }) {
         color="#EC536D"
         sx={{ pb: 3 }}
       >
-        You have completed all the levels
+        Try Another Chance
       </Typography>
-      <div className={styles.scores}>
-        <div className={styles.rank}>
+      <div className={classes.scores}>
+        <div className={classes.rank}>
           <Image src={RewardIcon} alt="Reward Icon" width={30} height={30} />
           <Box sx={{ pl: 1 }}>
             <Typography variant="body2" component="div">
@@ -49,7 +49,7 @@ export default function SuccessModal({ handleClose }) {
             </Typography>
           </Box>
         </div>
-        <div className={styles.points}>
+        <div className={classes.points}>
           <Image src={PointIcon} alt="Reward Icon" width={30} height={30} />
           <Box sx={{ pl: 1 }}>
             <Typography variant="body2" component="div">
@@ -61,9 +61,61 @@ export default function SuccessModal({ handleClose }) {
           </Box>
         </div>
       </div>
+      <div className={classes.playAgain}>
+        <PlayArrowIcon color="#666666" />
+        <Typography variant="subtitle1" component="div" color="#666666">
+          Play Again
+        </Typography>
+      </div>
       <Button variant="contained" onClick={handleNextQuestion}>
-        Next Question
+        Go to Home
       </Button>
     </div>
   );
 }
+
+const useStyles = makeStyles({
+  failureModal: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    background: "linear-gradient(180deg, #FFA5A8 0%, #FFFFFF 60.26%)",
+    boxShadow: 24,
+    padding: "60px 140px 28px",
+    borderRadius: 16,
+    "&:focus-visible ": {
+      outline: "none",
+    },
+  },
+
+  scores: {
+    display: "flex",
+    paddingBottom: 28,
+  },
+
+  rank: {
+    display: "flex",
+    paddingRight: 8,
+    borderRight: "1px solid #e4e3e3",
+  },
+
+  points: {
+    display: "flex",
+    paddingLeft: 8,
+  },
+  playAgain: {
+    display: "flex",
+    alignItems: "center",
+    paddingBottom: 12,
+    cursor: "pointer",
+    "& svg": {
+      color: "#666666",
+      marginRight: 8,
+      fontSize: "1.8rem",
+    },
+  },
+});

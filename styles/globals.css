@@ -28,3 +28,10 @@ ul li::before {
   width: 1em;
   margin-left: -1em;
 }
+
+.container {
+  padding: 0 30px;
+  background-image: url("/images/Background.png");
+  background-position: center;
+  min-height: 100vh;
+}

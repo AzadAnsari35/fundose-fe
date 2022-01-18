@@ -1,19 +1,19 @@
 import React from "react";
 import Image from "next/image";
 import Button from "@mui/material/Button";
+import { makeStyles } from "@mui/styles";
 import SuccessIcon from "../public/illustration/success.svg";
-import styles from "@/styles/SuccessModal.module.css";
 import Typography from "@mui/material/Typography";
 import RewardIcon from "../public/icons/reward.svg";
 import PointIcon from "../public/icons/point.svg";
 import ConfettiIcon from "../public/illustration/confetti.svg";
-
 import Box from "@mui/material/Box";
 import { incrementQuestion } from "@/actions/quiz.act";
 import { useDispatch } from "react-redux";
 
 export default function SuccessModal({ handleClose }) {
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   const handleNextQuestion = () => {
     dispatch(incrementQuestion());
@@ -21,8 +21,8 @@ export default function SuccessModal({ handleClose }) {
   };
 
   return (
-    <div className={styles.successModal}>
-      <span className={styles.confettiIcon}>
+    <div className={classes.successModal}>
+      <span className={classes.confettiIcon}>
         <Image
           src={ConfettiIcon}
           alt="Confetti Illustration"
@@ -47,8 +47,8 @@ export default function SuccessModal({ handleClose }) {
       >
         You have completed all the levels
       </Typography>
-      <div className={styles.scores}>
-        <div className={styles.rank}>
+      <div className={classes.scores}>
+        <div className={classes.rank}>
           <Image src={RewardIcon} alt="Reward Icon" width={30} height={30} />
           <Box sx={{ pl: 1 }}>
             <Typography variant="body2" component="div">
@@ -59,7 +59,7 @@ export default function SuccessModal({ handleClose }) {
             </Typography>
           </Box>
         </div>
-        <div className={styles.points}>
+        <div className={classes.points}>
           <Image src={PointIcon} alt="Reward Icon" width={30} height={30} />
           <Box sx={{ pl: 1 }}>
             <Typography variant="body2" component="div">
@@ -77,3 +77,43 @@ export default function SuccessModal({ handleClose }) {
     </div>
   );
 }
+
+const useStyles = makeStyles({
+  successModal: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "white",
+    boxShadow: 24,
+    padding: "60px 140px 28px",
+    borderRadius: 16,
+    "&:focus-visible ": {
+      outline: "none",
+    },
+  },
+
+  scores: {
+    display: "flex",
+    paddingBottom: 28,
+  },
+
+  rank: {
+    display: "flex",
+    paddingRight: 8,
+    borderRight: "1px solid #e4e3e3",
+  },
+
+  points: {
+    display: "flex",
+    paddingLeft: 8,
+  },
+
+  confettiIcon: {
+    position: "absolute",
+    top: 0,
+  },
+});

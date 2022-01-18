@@ -1,5 +1,4 @@
 import { createTheme } from "@mui/material/styles";
-import Poppins from "../public/font/Poppins-Regular.ttf";
 
 const theme = createTheme({
   palette: {

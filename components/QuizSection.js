@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import FailureModal from "@/components/FailureModal";
+import DialogBox from "@/components/Modal";
+import SuccessModal from "@/components/SuccessModal";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import styles from "@/styles/QuizSection.module.css";
 import Typography from "@mui/material/Typography";
-import { useDispatch, useSelector } from "react-redux";
-import { incrementQuestion, fetchQuestion } from "@/actions/quiz.act";
-import DialogBox from "@/components/Modal";
-import { useRouter } from "next/router";
-import SuccessModal from "@/components/SuccessModal";
-import FailureModal from "@/components/FailureModal";
+import { makeStyles } from "@mui/styles";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const optionLabel = ["a", "b", "c", "d"];
 
 export default function QuizSection() {
+  const classes = useStyles();
   const [selectedOption, setSelectedOption] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const questionObj = useSelector((state) => state.quiz.question);
   const questionNumber = useSelector((state) => state.quiz.questionNumber);
@@ -30,8 +29,8 @@ export default function QuizSection() {
 
   return (
     <>
-      <Box className={styles.quizSection}>
-        <div className={styles.questionNumber}>
+      <Box className={classes.quizSection}>
+        <div className={classes.questionNumber}>
           <div>
             <Typography variant="body1" component="div" color="common.white">
               Question {questionNumber}/12
@@ -65,8 +64,8 @@ export default function QuizSection() {
                   variant="body1"
                   className={
                     +selectedOption === option.id
-                      ? `${styles.option} ${styles.selected}`
-                      : styles.option
+                      ? `${classes.option} ${classes.selected}`
+                      : classes.option
                   }
                   data-option={option.id}
                 >
@@ -86,3 +85,46 @@ export default function QuizSection() {
     </>
   );
 }
+
+const useStyles = makeStyles({
+  quizSection: {
+    padding: "140px 200px",
+  },
+
+  questionNumber: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "12px 32px",
+    backgroundColor: " #7386ff",
+    boxShadow: "8px 8px 16px rgba(0, 0, 0, 0.1)",
+    borderRadius: 8,
+  },
+
+  level: {
+    color: "#a1aeb7",
+    textTransform: "uppercase",
+    paddingTop: 12,
+  },
+
+  option: {
+    padding: 16,
+    color: "#313245",
+    borderRadius: 5,
+    cursor: "pointer",
+    backgroundColor: "#f1f1f1",
+    "&:hover": {
+      transitionDuration: "0.75s",
+      transitionDelay: "0.1s",
+      backgroundColor: "#2fbf0b",
+      color: "#f1f1f1",
+    },
+  },
+
+  selected: {
+    transitionDuration: "0.75s",
+    transitionDelay: "0.1s",
+    backgroundColor: "#2fbf0b",
+    color: "#f1f1f1",
+  },
+});

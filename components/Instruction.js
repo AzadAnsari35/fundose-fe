@@ -7,10 +7,12 @@ import Box from "@mui/material/Box";
 import { fetchQuestion } from "@/actions/quiz.act";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import { makeStyles } from "@mui/styles";
 
 export default function Instruction({ topic }) {
   const router = useRouter();
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   const startQuiz = () => {
     dispatch(fetchQuestion(0));
@@ -18,7 +20,7 @@ export default function Instruction({ topic }) {
   };
 
   return (
-    <>
+    <div className={classes.instructionModal}>
       <Typography variant="h5" align="center" component="div" color="#666666">
         Welcome to
       </Typography>
@@ -37,6 +39,7 @@ export default function Instruction({ topic }) {
         component="ul"
         color="#666666"
         sx={{ pl: 0, pt: 4, pb: 5 }}
+        className={classes.instructions}
       >
         <li>There are total 12 questions</li>
         <li>You have 60 Sec for each question</li>
@@ -56,6 +59,26 @@ export default function Instruction({ topic }) {
           Start Quiz
         </Button>
       </Box>
-    </>
+    </div>
   );
 }
+
+const useStyles = makeStyles({
+  instructionModal: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "white",
+    boxShadow: 24,
+    padding: "60px 140px 28px",
+    borderRadius: 16,
+    "&:focus-visible ": {
+      outline: "none",
+    },
+  },
+  instructions: { lineHeight: "30px" },
+});

@@ -1,19 +1,21 @@
 import Instruction from "@/components/Instruction";
 import Layout from "@/components/Layout";
 import DialogBox from "@/components/Modal";
-import styles from "@/styles/Home.module.css";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { useState } from "react";
-import AuditIcon from "../public/icons/audit.svg";
+import { makeStyles } from "@mui/styles";
+
 //Icons
 import FinanceIcon from "../public/icons/finance.svg";
 import GstIcon from "../public/icons/gst.svg";
 import ItIcon from "../public/icons/it.svg";
+import AuditIcon from "../public/icons/audit.svg";
 
 export default function Home() {
+  const classes = useStyles();
   const [showModal, setShowModal] = useState(false);
   const [topic, setTopic] = useState("");
 
@@ -30,8 +32,8 @@ export default function Home() {
   return (
     <>
       <Layout>
-        <Box className={styles.home}>
-          <div className={styles.leftContainer}>
+        <Box className={classes.home}>
+          <div className={classes.leftContainer}>
             <Typography variant="h4" component="div" sx={{ pb: 1 }}>
               FUN DOSE
             </Typography>
@@ -44,7 +46,7 @@ export default function Home() {
             </Typography>
           </div>
 
-          <div className={styles.rightContainer}>
+          <div className={classes.rightContainer}>
             <Typography variant="subtitle1" component="div">
               Select Topic
             </Typography>
@@ -57,10 +59,10 @@ export default function Home() {
               prize
             </Typography>
 
-            <Grid container spacing={2} className={styles.topics}>
+            <Grid container spacing={2} className={classes.topics}>
               <Grid item xs={6}>
                 <div
-                  className={styles.topic}
+                  className={classes.topic}
                   data-topic="Finance"
                   onClick={handleClick}
                 >
@@ -77,7 +79,7 @@ export default function Home() {
               </Grid>
               <Grid item xs={6}>
                 <div
-                  className={styles.topic}
+                  className={classes.topic}
                   data-topic="Income Tax"
                   onClick={handleClick}
                 >
@@ -94,7 +96,7 @@ export default function Home() {
               </Grid>
               <Grid item xs={6}>
                 <div
-                  className={styles.topic}
+                  className={classes.topic}
                   data-topic="Audit"
                   onClick={handleClick}
                 >
@@ -111,7 +113,7 @@ export default function Home() {
               </Grid>
               <Grid item xs={6}>
                 <div
-                  className={styles.topic}
+                  className={classes.topic}
                   data-topic="GST"
                   onClick={handleClick}
                 >
@@ -140,3 +142,44 @@ export default function Home() {
     </>
   );
 }
+
+const useStyles = makeStyles({
+  home: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "calc(100vh - 60px - 50px)",
+    color: "#f1f1f1",
+  },
+
+  leftContainer: {
+    width: "25%",
+    marginRight: 120,
+  },
+
+  rightContainer: {
+    width: "22%",
+  },
+
+  topics: {
+    marginTop: 20,
+  },
+
+  topic: {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: 16,
+    backgroundColor: "#7386ff",
+    boxShadow: "8px 8px 16px rgba(0, 0, 0, 0.1)",
+    borderRadius: 8,
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "#7386ff",
+    },
+    "& div": {
+      paddingTop: 8,
+    },
+  },
+});

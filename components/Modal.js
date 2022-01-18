@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Modal from "@mui/material/Modal";
 import ReactDOM from "react-dom";
-import styles from "@/styles/Modal.module.css";
+import { makeStyles } from "@mui/styles";
 
 export default function DialogBox({ open, handleClose, children }) {
-  const [isBrowser, setIsBrowser] = useState(false);
+  const classes = useStyles();
 
+  const [isBrowser, setIsBrowser] = useState(false);
   useEffect(() => setIsBrowser(true), []);
 
   const modalContent = (
@@ -28,3 +29,22 @@ export default function DialogBox({ open, handleClose, children }) {
     return null;
   }
 }
+
+const useStyles = makeStyles({
+  modalBody: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "white",
+    boxShadow: 24,
+    padding: "60px 140px 28px",
+    borderRadius: 16,
+    "&:focus-visible ": {
+      outline: "none",
+    },
+  },
+});
