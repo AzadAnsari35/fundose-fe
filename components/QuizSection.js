@@ -7,6 +7,9 @@ import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import Image from "next/image";
+import SwapIcon from "../public/icons/swap.svg";
+import FiftyIcon from "../public/icons/fifty_fifty.svg";
 
 const optionLabel = ["a", "b", "c", "d"];
 
@@ -23,6 +26,14 @@ export default function QuizSection() {
     const selected = e.target.getAttribute("data-option");
     console.log("selectedOption", selected);
     setShowModal(true);
+  };
+
+  const handleSwap = () => {
+    console.log("Swap Question");
+  };
+
+  const handleFifty = () => {
+    console.log("Fifty - fifty");
   };
 
   const { question, options } = questionObj || {};
@@ -74,6 +85,25 @@ export default function QuizSection() {
               </Grid>
             ))}
         </Grid>
+
+        <Box display="flex" justifyContent="center">
+          <Image
+            src={SwapIcon}
+            alt="SwapIcon Icon"
+            width={70}
+            height={70}
+            className=""
+            onClick={handleSwap}
+          />
+          <Image
+            src={FiftyIcon}
+            alt="SwapIcon Icon"
+            width={70}
+            height={70}
+            className=""
+            onClick={handleFifty}
+          />
+        </Box>
       </Box>
       <DialogBox open={showModal} handleClose={() => setShowModal(false)}>
         {isSuccess ? (

@@ -3,14 +3,15 @@ import * as types from "./types";
 const allQuestion = [
   {
     question:
-      "We can update the state in React.js by calling to setState() method. These calls are:",
+      "Broker Limited charge commission on every sales of Maal Limited. Broker limited raise invoice after on 15th of each month. How should the broker limited account for revenue from 16th March 2021 to 31st March 2021. Considering the 31st March is cut off date",
     question_id: 10,
     level: 12,
     subject: "subject",
     subject_id: "hello",
     options: [
       {
-        choice: "Synchronous in nature.",
+        choice:
+          "Recognise the amount as advance from client till the time company complete the services",
         id: 1,
       },
       {

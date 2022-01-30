@@ -6,13 +6,16 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { useState } from "react";
-import { makeStyles } from "@mui/styles";
+import { makeStyles, createStyles } from "@mui/styles";
+import { createTheme } from "@mui/material/styles";
 
 //Icons
 import FinanceIcon from "../public/icons/finance.svg";
 import GstIcon from "../public/icons/gst.svg";
 import ItIcon from "../public/icons/it.svg";
 import AuditIcon from "../public/icons/audit.svg";
+
+const defaultTheme = createTheme();
 
 export default function Home() {
   const classes = useStyles();
@@ -143,43 +146,60 @@ export default function Home() {
   );
 }
 
-const useStyles = makeStyles({
-  home: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    minHeight: "calc(100vh - 60px - 50px)",
-    color: "#f1f1f1",
-  },
+const useStyles = makeStyles(() => {
+  const onMobile = defaultTheme.breakpoints.only("xs");
 
-  leftContainer: {
-    width: "25%",
-    marginRight: 120,
-  },
+  return createStyles({
+    home: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      minHeight: "calc(100vh - 60px - 50px)",
+      color: "#f1f1f1",
+      [onMobile]: {
+        display: "block",
+      },
+    },
 
-  rightContainer: {
-    width: "22%",
-  },
+    leftContainer: {
+      width: "25%",
+      marginRight: 120,
+      [onMobile]: {
+        width: "100%",
+        textAlign: "center",
+        "& > :last-child": {
+          display: "none",
+        },
+      },
+    },
 
-  topics: {
-    marginTop: 20,
-  },
+    rightContainer: {
+      width: "22%",
+      [onMobile]: {
+        width: "100%",
+      },
+    },
 
-  topic: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: 16,
-    backgroundColor: "#7386ff",
-    boxShadow: "8px 8px 16px rgba(0, 0, 0, 0.1)",
-    borderRadius: 8,
-    cursor: "pointer",
-    "&:hover": {
+    topics: {
+      marginTop: 20,
+    },
+
+    topic: {
+      display: "flex",
+      justifyContent: "center",
+      flexDirection: "column",
+      alignItems: "center",
+      padding: 16,
       backgroundColor: "#7386ff",
+      boxShadow: "8px 8px 16px rgba(0, 0, 0, 0.1)",
+      borderRadius: 8,
+      cursor: "pointer",
+      "&:hover": {
+        backgroundColor: "#7386ff",
+      },
+      "& div": {
+        paddingTop: 8,
+      },
     },
-    "& div": {
-      paddingTop: 8,
-    },
-  },
+  });
 });
