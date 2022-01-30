@@ -38,6 +38,11 @@ ul li::before {
 
 @media only screen and (max-width: 600px) {
   .container {
+    padding: 0 20px;
     padding-top: 120px;
+    background-size: contain;
+  }
+  html {
+    font-size: 14px;
   }
 }

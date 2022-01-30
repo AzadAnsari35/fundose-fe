@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@mui/styles";
+import { makeStyles, createStyles } from "@mui/styles";
 import Layout from "@/components/Layout";
 import Typography from "@mui/material/Typography";
 import RewardIcon from "../public/icons/reward.svg";
@@ -7,6 +7,7 @@ import PointIcon from "../public/icons/point.svg";
 import ProfileImg from "../public/images/profile.png";
 import Box from "@mui/material/Box";
 import Image from "next/image";
+import { createTheme } from "@mui/material/styles";
 
 const rankingArray = [
   {
@@ -36,6 +37,8 @@ const rankingArray = [
     isActive: true,
   },
 ];
+
+const defaultTheme = createTheme();
 
 export default function Profile() {
   const classes = useStyles();
@@ -115,7 +118,7 @@ export default function Profile() {
                   <Typography
                     variant="body2"
                     component="div"
-                    sx={{ pr: 7, fontWeight: 800 }}
+                    sx={{ pr: { sm: 7, xs: 1 }, fontWeight: 800 }}
                   >
                     {rank}
                   </Typography>
@@ -129,7 +132,7 @@ export default function Profile() {
                   <Typography
                     variant="body2"
                     component="div"
-                    sx={{ pl: 5, fontWeight: 800 }}
+                    sx={{ pl: { sm: 5, xs: 1 }, fontWeight: 800 }}
                   >
                     {name}
                   </Typography>
@@ -157,57 +160,76 @@ export default function Profile() {
   );
 }
 
-const useStyles = makeStyles({
-  container: {
-    paddingTop: 100,
-    width: "60%",
-    margin: "0 auto",
-  },
-  card: {
-    padding: "28px 36px",
-    background: "#FFFFFF",
-    borderRadius: 25,
-    marginTop: 24,
-  },
+const useStyles = makeStyles(() => {
+  const onMobile = defaultTheme.breakpoints.only("xs");
 
-  info: {
-    display: "flex",
-    alignItems: "center",
-  },
+  return createStyles({
+    container: {
+      paddingTop: 100,
+      width: "60%",
+      margin: "0 auto",
+      [onMobile]: {
+        width: "100%",
+        paddingTop: 0,
+      },
+    },
+    card: {
+      padding: "28px 36px",
+      background: "#FFFFFF",
+      borderRadius: 25,
+      marginTop: 24,
+      [onMobile]: {
+        display: "block",
+        padding: "12px 20px 24px",
+      },
+    },
 
-  avatar: {
-    borderRadius: "50%",
-    border: "1px solid #7386FF",
-  },
+    info: {
+      display: "flex",
+      alignItems: "center",
+      [onMobile]: {
+        paddingBottom: 20,
+      },
+    },
 
-  stats: {
-    display: "flex",
-  },
+    avatar: {
+      borderRadius: "50%",
+      border: "1px solid #7386FF",
+    },
 
-  rank: {
-    display: "flex",
-    paddingRight: 8,
-    borderRight: "1px solid #e4e3e3",
-  },
+    stats: {
+      display: "flex",
+      justifyContent: "center",
+    },
 
-  points: {
-    display: "flex",
-    paddingLeft: 8,
-  },
+    rank: {
+      display: "flex",
+      paddingRight: 8,
+      borderRight: "1px solid #e4e3e3",
+    },
 
-  rankingCard: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "#F1F1F1",
-    borderRadius: 8,
-    padding: "8px 36px",
-    marginBottom: 8,
-    color: "#333333",
-  },
+    points: {
+      display: "flex",
+      paddingLeft: 8,
+    },
 
-  active: {
-    backgroundColor: "#2E45D5",
-    color: "#F1F1F1",
-  },
+    rankingCard: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      backgroundColor: "#F1F1F1",
+      borderRadius: 8,
+      padding: "8px 36px",
+      marginBottom: 8,
+      color: "#333333",
+      [onMobile]: {
+        padding: "8px 12px",
+      },
+    },
+
+    active: {
+      backgroundColor: "#2E45D5",
+      color: "#F1F1F1",
+    },
+  });
 });

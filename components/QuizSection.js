@@ -4,14 +4,17 @@ import SuccessModal from "@/components/SuccessModal";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { makeStyles } from "@mui/styles";
+import { makeStyles, createStyles } from "@mui/styles";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import SwapIcon from "../public/icons/swap.svg";
 import FiftyIcon from "../public/icons/fifty_fifty.svg";
+import { createTheme } from "@mui/material/styles";
 
 const optionLabel = ["a", "b", "c", "d"];
+
+const defaultTheme = createTheme();
 
 export default function QuizSection() {
   const classes = useStyles();
@@ -40,7 +43,7 @@ export default function QuizSection() {
 
   return (
     <>
-      <Box className={classes.quizSection}>
+      <div className={classes.quizSection}>
         <div className={classes.questionNumber}>
           <div>
             <Typography variant="body1" component="div" color="common.white">
@@ -70,7 +73,7 @@ export default function QuizSection() {
         >
           {options &&
             options.map((option, index) => (
-              <Grid item md={6} key={option.id}>
+              <Grid item md={6} xs={12} key={option.id}>
                 <Typography
                   variant="body1"
                   className={
@@ -104,7 +107,7 @@ export default function QuizSection() {
             onClick={handleFifty}
           />
         </Box>
-      </Box>
+      </div>
       <DialogBox open={showModal} handleClose={() => setShowModal(false)}>
         {isSuccess ? (
           <SuccessModal handleClose={() => setShowModal(false)} />
@@ -116,45 +119,52 @@ export default function QuizSection() {
   );
 }
 
-const useStyles = makeStyles({
-  quizSection: {
-    padding: "140px 200px",
-  },
+const useStyles = makeStyles(() => {
+  const onMobile = defaultTheme.breakpoints.only("xs");
 
-  questionNumber: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "12px 32px",
-    backgroundColor: " #7386ff",
-    boxShadow: "8px 8px 16px rgba(0, 0, 0, 0.1)",
-    borderRadius: 8,
-  },
+  return createStyles({
+    quizSection: {
+      padding: "140px 200px",
+      [onMobile]: {
+        padding: 0,
+      },
+    },
 
-  level: {
-    color: "#a1aeb7",
-    textTransform: "uppercase",
-    paddingTop: 12,
-  },
+    questionNumber: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      padding: "12px 32px",
+      backgroundColor: " #7386ff",
+      boxShadow: "8px 8px 16px rgba(0, 0, 0, 0.1)",
+      borderRadius: 8,
+    },
 
-  option: {
-    padding: 16,
-    color: "#313245",
-    borderRadius: 5,
-    cursor: "pointer",
-    backgroundColor: "#f1f1f1",
-    "&:hover": {
+    level: {
+      color: "#a1aeb7",
+      textTransform: "uppercase",
+      paddingTop: 12,
+    },
+
+    option: {
+      padding: 16,
+      color: "#313245",
+      borderRadius: 5,
+      cursor: "pointer",
+      backgroundColor: "#f1f1f1",
+      "&:hover": {
+        transitionDuration: "0.75s",
+        transitionDelay: "0.1s",
+        backgroundColor: "#2fbf0b",
+        color: "#f1f1f1",
+      },
+    },
+
+    selected: {
       transitionDuration: "0.75s",
       transitionDelay: "0.1s",
       backgroundColor: "#2fbf0b",
       color: "#f1f1f1",
     },
-  },
-
-  selected: {
-    transitionDuration: "0.75s",
-    transitionDelay: "0.1s",
-    backgroundColor: "#2fbf0b",
-    color: "#f1f1f1",
-  },
+  });
 });

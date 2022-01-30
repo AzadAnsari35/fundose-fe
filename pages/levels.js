@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Layout from "@/components/Layout";
 import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography";
+import { createTheme } from "@mui/material/styles";
 
 const levelArray = [
   {
@@ -46,6 +47,9 @@ const levelArray = [
   },
 ];
 
+const defaultTheme = createTheme();
+const onMobile = defaultTheme.breakpoints.only("xs");
+
 export default function Levels() {
   const classes = useStyles();
 
@@ -80,6 +84,10 @@ const useStyles = makeStyles({
     paddingTop: 120,
     width: "60%",
     margin: "0 auto",
+    [onMobile]: {
+      width: "100%",
+      paddingTop: 0,
+    },
   },
 
   level: {

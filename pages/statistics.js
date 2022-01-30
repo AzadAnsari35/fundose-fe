@@ -11,6 +11,10 @@ import CorrectIcon from "../public/icons/correct.svg";
 import PlayedIcon from "../public/icons/played.svg";
 import Box from "@mui/material/Box";
 import Image from "next/image";
+import { createTheme } from "@mui/material/styles";
+
+const defaultTheme = createTheme();
+const onMobile = defaultTheme.breakpoints.only("xs");
 
 export default function Statistics() {
   const classes = useStyles();
@@ -45,7 +49,7 @@ export default function Statistics() {
 
   return (
     <Layout>
-      <Box sx={{ pt: 15 }}>
+      <Box sx={{ pt: { sm: 15, xs: 0 } }}>
         <div className={classes.card}>
           <Typography variant="h5" component="div" color="#2E45D5">
             Statistics
@@ -134,6 +138,9 @@ const useStyles = makeStyles({
     borderRadius: 25,
     width: "60%",
     margin: "0 auto",
+    [onMobile]: {
+      width: "100%",
+    },
   },
   rank: {
     display: "flex",
