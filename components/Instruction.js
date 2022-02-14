@@ -1,13 +1,14 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import InstructionIcon from "../public/illustration/instruction.svg";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 import { fetchQuestion } from "@/actions/quiz.act";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { makeStyles } from "@mui/styles";
+// import { makeStyles } from "@mui/styles";
+import {makeStyles,Box,Button,Typography} from '@material-ui/core'
 
 export default function Instruction({ topic }) {
   const router = useRouter();

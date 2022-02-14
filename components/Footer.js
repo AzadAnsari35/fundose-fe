@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import { Box } from "@material-ui/core";
 
 export default function Footer() {
   return (

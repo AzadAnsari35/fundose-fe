@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import theme from "../theme";
-import { ThemeProvider } from "@mui/material/styles";
+import { MuiThemeProvider } from "@material-ui/core";
 import { Provider } from "react-redux";
 import { useStore } from "../store";
 
@@ -9,9 +9,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
+      <MuiThemeProvider theme={theme}>
         <Component {...pageProps} />
-      </ThemeProvider>
+      </MuiThemeProvider>
     </Provider>
   );
 }

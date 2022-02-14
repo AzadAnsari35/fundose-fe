@@ -1,10 +1,12 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+// import Typography from "@mui/material/Typography";
+// import Box from "@mui/material/Box";
 import LogoIcon from "../public/icons/logo.svg";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { makeStyles } from "@mui/styles";
+// import { makeStyles } from "@mui/styles";
+import Link from "next/link";
+import {makeStyles,Box,Typography} from '@material-ui/core'
 
 export default function Header() {
   const router = useRouter();
@@ -20,14 +22,16 @@ export default function Header() {
         onClick={() => router.push("/")}
       />
       <Box display="flex" alignItems="center" className={classes.navlink}>
-        <Typography
-          variant="body1"
-          component="div"
-          align="center"
-          color="primary"
-        >
-          Login
-        </Typography>
+        <Link href="/login">
+          <Typography
+            variant="body1"
+            component="div"
+            align="center"
+            color="primary"
+          >
+            Login
+          </Typography>
+        </Link>
         <Typography
           variant="body1"
           component="div"
@@ -58,6 +62,7 @@ const useStyles = makeStyles({
   navlink: {
     "& div": {
       padding: "0px 20px",
+      cursor:"pointer"
     },
   },
 });

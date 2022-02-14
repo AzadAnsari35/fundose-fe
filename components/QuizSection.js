@@ -1,16 +1,17 @@
 import FailureModal from "@/components/FailureModal";
 import DialogBox from "@/components/Modal";
 import SuccessModal from "@/components/SuccessModal";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import { makeStyles, createStyles } from "@mui/styles";
+// import Box from "@mui/material/Box";
+// import Grid from "@mui/material/Grid";
+// import Typography from "@mui/material/Typography";
+// import { makeStyles, createStyles } from "@mui/styles";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import SwapIcon from "../public/icons/swap.svg";
 import FiftyIcon from "../public/icons/fifty_fifty.svg";
 import { createTheme } from "@mui/material/styles";
+import {createTheme,makeStyles, createStyles,Grid,Box,Typography, } from '@material-ui/core'
 
 const optionLabel = ["a", "b", "c", "d"];
 
