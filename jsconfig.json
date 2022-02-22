@@ -7,7 +7,7 @@
         "@/reducers/*": ["reducers/*"],
         "@/actions/*": ["actions/*"],
         "@/utils/*": ["utils/*"],
-
+        "@/api/*": ["api/*"],
       }
     }
   }
