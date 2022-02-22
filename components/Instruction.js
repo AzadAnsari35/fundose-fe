@@ -4,19 +4,23 @@ import Image from "next/image";
 import Button from "@mui/material/Button";
 import InstructionIcon from "../public/illustration/instruction.svg";
 import Box from "@mui/material/Box";
-import { fetchQuestion } from "@/actions/quiz.act";
+import { startQuiz } from "@/actions/quiz.act";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
+import { isEmpty } from "lodash";
 
 export default function Instruction({ topic }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const classes = useStyles();
+  const question = useSelector((state) => state.question);
 
-  const startQuiz = () => {
-    dispatch(fetchQuestion(0));
-    router.push("/quiz");
+  const handleStartQuiz = () => {
+    dispatch(startQuiz());
+    if (!isEmpty(question)) {
+      router.push("/quiz");
+    }
   };
 
   return (
@@ -55,7 +59,7 @@ export default function Instruction({ topic }) {
         />
       </Box>
       <Box display="flex" justifyContent="center">
-        <Button variant="contained" sx={{ mt: 3 }} onClick={startQuiz}>
+        <Button variant="contained" sx={{ mt: 3 }} onClick={handleStartQuiz}>
           Start Quiz
         </Button>
       </Box>
