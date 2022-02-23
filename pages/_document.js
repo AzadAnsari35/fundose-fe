@@ -1,6 +1,6 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { ServerStyleSheets } from "@material-ui/core/styles";
+import { ServerStyleSheets } from "@mui/styles";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link
           href="https://fonts.googleapis.com/css2?family=Assistant:wght@200&family=Poppins:wght@100;200;300;400;500&family=Roboto:wght@500&family=Rock+3D&display=swap"
           rel="stylesheet"

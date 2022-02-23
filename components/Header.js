@@ -6,7 +6,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 // import { makeStyles } from "@mui/styles";
 import Link from "next/link";
-import {makeStyles,Box,Typography} from '@material-ui/core'
+import { Box, Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 export default function Header() {
   const router = useRouter();
@@ -62,7 +63,7 @@ const useStyles = makeStyles({
   navlink: {
     "& div": {
       padding: "0px 20px",
-      cursor:"pointer"
+      cursor: "pointer",
     },
   },
 });

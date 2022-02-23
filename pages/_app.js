@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import theme from "../theme";
-import { MuiThemeProvider } from "@material-ui/core";
+import { ThemeProvider } from "@mui/material/styles";
 import { Provider } from "react-redux";
 import { useStore } from "../store";
 import { ToastContainer } from "react-toastify";
@@ -11,10 +11,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-      <MuiThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <Component {...pageProps} />
         <ToastContainer />
-      </MuiThemeProvider>
+      </ThemeProvider>
     </Provider>
   );
 }

@@ -12,7 +12,7 @@ import {
   FormControl,
   InputLabel,
   Hidden,
-} from "@material-ui/core";
+} from "@mui/material";
 import Link from "next/link";
 const frontImg = "/images/g12.svg";
 const backgroundimg = "/images/Background.png";

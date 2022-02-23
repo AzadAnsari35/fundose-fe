@@ -11,7 +11,14 @@ import Image from "next/image";
 import SwapIcon from "../public/icons/swap.svg";
 import FiftyIcon from "../public/icons/fifty_fifty.svg";
 import { createTheme } from "@mui/material/styles";
-import {createTheme,makeStyles, createStyles,Grid,Box,Typography, } from '@material-ui/core'
+import {
+  createTheme,
+  makeStyles,
+  createStyles,
+  Grid,
+  Box,
+  Typography,
+} from "@mui/material";
 
 const optionLabel = ["a", "b", "c", "d"];
 

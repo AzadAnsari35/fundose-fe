@@ -1,11 +1,17 @@
 import Instruction from "@/components/Instruction";
 import Layout from "@/components/Layout";
 import DialogBox from "@/components/Modal";
-import {Button,Box,Grid,Typography,makeStyles, createStyles,createTheme  } from '@material-ui/core'
+import {
+  Box,
+  Grid,
+  Typography,
+  createStyles,
+  createTheme,
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 import Image from "next/image";
 import { useState } from "react";
-
 
 //Icons
 import FinanceIcon from "../public/icons/finance.svg";

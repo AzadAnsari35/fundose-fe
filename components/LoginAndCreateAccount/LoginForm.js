@@ -7,7 +7,7 @@ import {
   Button,
   Grid,
   Hidden,
-} from "@material-ui/core";
+} from "@mui/material";
 import Link from "next/link";
 
 const frontImg = "/images/g12.svg";
@@ -45,7 +45,7 @@ const LoginPage = () => {
                 <Button className={classes.create_btn}>
                   Create new account
                 </Button>
-              </Link>
+              </Link>                                                                                                                                                   
             </Box>
           </Box>
         </Grid>
@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) =>
       color: "#F1F1F1",
       marginTop: "6%",
       fontFamily: "Poppins",
-      "&:hover": {
+      "&:hover": {  
         // background: "#2E45D5",
         background: "#1877f2",
         color: "#F1F1F1",

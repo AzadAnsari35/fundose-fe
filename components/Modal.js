@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 // import Modal from "@mui/material/Modal";
 import ReactDOM from "react-dom";
 // import { makeStyles } from "@mui/styles";
-import {makeStyles,Modal} from '@material-ui/core'
+import { Modal } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 export default function DialogBox({ open, handleClose, children }) {
   const classes = useStyles();
