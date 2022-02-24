@@ -10,13 +10,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
 import { isEmpty } from "lodash";
 
-export default function Instruction({ topic }) {
+export default function Instruction({ topic, handleClose }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const classes = useStyles();
   const question = useSelector((state) => state.question);
 
   const handleStartQuiz = () => {
+    handleClose();
     dispatch(startQuiz());
     if (!isEmpty(question)) {
       router.push("/quiz");
