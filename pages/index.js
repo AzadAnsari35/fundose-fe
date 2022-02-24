@@ -143,7 +143,7 @@ export default function Home() {
             alignItems: "center",
           }}
         >
-          <Instruction topic={topic} />
+          <Instruction topic={topic} handleClose={() => setShowModal(false)} />
         </Box>
       </DialogBox>
     </>
