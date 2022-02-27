@@ -2,12 +2,14 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://fundose.in",
+  headers: { "Access-Control-Allow-Origin": "*" },
 });
 
 api.interceptors.request.use(
   (request) => {
     // Get token and add it to header "Authorization"
     request.headers.Token = "bearer " + localStorage.getItem("token");
+
     return request;
   },
   (error) => Promise.reject(error)

@@ -17,7 +17,8 @@ export const startQuiz = () => async (dispatch) => {
       payload: response,
     });
   } catch (error) {
-    toast.error("Wow so easy!");
+    console.log(error);
+    toast.error("error");
   } finally {
     dispatch({
       type: types.STOP_LOADER,
