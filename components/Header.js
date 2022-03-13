@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import Typography from "@mui/material/Typography";
 // import Box from "@mui/material/Box";
 import LogoIcon from "../public/icons/logo.svg";
@@ -8,10 +8,15 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { Box, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import LoginForm from "@/components/LoginAndCreateAccount/LoginForm";
+import SignUpForm from "@/components/LoginAndCreateAccount/SignUpForm";
+import DialogBox from "./Modal";
 
 export default function Header() {
   const router = useRouter();
   const classes = useStyles();
+  const [loginModal, setLoginModal] = useState(false);
+  const [SignModal, setSignModal] = useState(false);
 
   return (
     <Box component="header" className={classes.header}>
@@ -23,25 +28,35 @@ export default function Header() {
         onClick={() => router.push("/")}
       />
       <Box display="flex" alignItems="center" className={classes.navlink}>
-        <Link href="/login">
-          <Typography
-            variant="body1"
-            component="div"
-            align="center"
-            color="primary"
-          >
-            Login
-          </Typography>
-        </Link>
         <Typography
           variant="body1"
           component="div"
           align="center"
           color="primary"
+          onClick={() => setLoginModal(true)}
+        >
+          Login
+        </Typography>
+
+        <Typography
+          variant="body1"
+          component="div"
+          align="center"
+          color="primary"
+          onClick={() => setSignModal(true)}
         >
           Register
         </Typography>
       </Box>
+      <DialogBox
+        open={loginModal || SignModal}
+        handleClose={() => setLoginModal(false)}
+      >
+        <>
+          {loginModal && <LoginForm />}
+          {SignModal && <SignUpForm />}
+        </>
+      </DialogBox>
     </Box>
   );
 }

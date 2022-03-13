@@ -1,9 +1,6 @@
-import "date-fns";
 import {
   Box,
   Typography,
-  createStyles,
-  makeStyles,
   TextField,
   Button,
   Grid,
@@ -13,6 +10,7 @@ import {
   InputLabel,
   Hidden,
 } from "@mui/material";
+import { makeStyles, createStyles } from "@mui/styles";
 import Link from "next/link";
 const frontImg = "/images/g12.svg";
 const backgroundimg = "/images/Background.png";
@@ -20,7 +18,7 @@ const backgroundimg = "/images/Background.png";
 const CreateAnAccount = () => {
   const classes = useStyles();
   return (
-    <Box width="100%" height="100vh">
+    <Box width="100%" height="100%">
       <Grid container>
         <Grid item sm={6} xs={12}>
           <Box className={classes.grid_box}>
@@ -94,7 +92,7 @@ const CreateAnAccount = () => {
             </Box>
           </Box>
         </Grid>
-        <Hidden smDown >
+        <Hidden smDown>
           <Grid item sm={6}>
             <Box className={classes.rightcontainer}>
               <Box className={classes.headingbox}>

@@ -1,13 +1,12 @@
 import {
   Box,
   Typography,
-  createStyles,
-  makeStyles,
   TextField,
   Button,
   Grid,
   Hidden,
 } from "@mui/material";
+import { makeStyles, createStyles } from "@mui/styles";
 import Link from "next/link";
 
 const frontImg = "/images/g12.svg";
@@ -16,7 +15,7 @@ const backgroundimg = "/images/Background.png";
 const LoginPage = () => {
   const classes = useStyles();
   return (
-    <Box width="100%" height="100vh">
+    <Box width="100%" height="100%">
       <Grid container className={classes.gird_container}>
         <Grid item lg={6} sm={6} xs={12}>
           <Box className={classes.grid_box}>
@@ -45,7 +44,7 @@ const LoginPage = () => {
                 <Button className={classes.create_btn}>
                   Create new account
                 </Button>
-              </Link>                                                                                                                                                   
+              </Link>
             </Box>
           </Box>
         </Grid>
@@ -113,7 +112,7 @@ const useStyles = makeStyles((theme) =>
       color: "#F1F1F1",
       marginTop: "6%",
       fontFamily: "Poppins",
-      "&:hover": {  
+      "&:hover": {
         // background: "#2E45D5",
         background: "#1877f2",
         color: "#F1F1F1",
