@@ -12,6 +12,12 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Assistant:wght@200&family=Poppins:wght@100;200;300;400;500&family=Roboto:wght@500&family=Rock+3D&display=swap"
+          rel="stylesheet"
+        />
         <body>
           <Main />
           <NextScript />

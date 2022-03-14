@@ -1,9 +1,9 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import InstructionIcon from "../public/illustration/instruction.svg";
-import Box from "@mui/material/Box";
+import { Typography, Button, Box } from "@mui/material";
 import { startQuiz } from "@/actions/quiz.act";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";

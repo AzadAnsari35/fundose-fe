@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Modal from "@mui/material/Modal";
 import ReactDOM from "react-dom";
+import { Modal } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 export default function DialogBox({ open, handleClose, children }) {
@@ -13,6 +13,8 @@ export default function DialogBox({ open, handleClose, children }) {
     <Modal
       open={open}
       onClose={handleClose}
+      className={classes.modalBody}
+      // BackdropProps={{ style: { backgroundColor: "white" } }}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
@@ -36,12 +38,14 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     position: "absolute",
+    width: "80%",
+    height: "80%",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "white",
     boxShadow: 24,
-    padding: "60px 140px 28px",
+    // padding: "60px 140px 28px",
     borderRadius: 16,
     "&:focus-visible ": {
       outline: "none",
