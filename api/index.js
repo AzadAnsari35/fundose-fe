@@ -1,29 +1,25 @@
 import axios from "axios";
+import { stopLoader } from "@/actions/common.act";
+import { finder } from "../pages/_app";
 
 const api = axios.create({
   baseURL: "https://fundose.in",
-  headers: { "Access-Control-Allow-Origin": "*" },
 });
 
 api.interceptors.request.use(
   (request) => {
     // Get token and add it to header "Authorization"
-    request.headers.Token = "bearer " + localStorage.getItem("token");
+    request.headers.Authorization = "Bearer " + localStorage.getItem("token");
 
     return request;
   },
   (error) => Promise.reject(error)
 );
 
-let isRefreshing = false;
 let subscribers = [];
 
 function subscribeTokenRefresh(cb) {
   subscribers.push(cb);
-}
-
-function onRefreshed(token) {
-  subscribers.map((cb) => cb(token));
 }
 
 const responseHandler = (response) => {
@@ -38,39 +34,24 @@ api.interceptors.response.use(
       response: { status },
     } = err;
     const originalRequest = config;
-
     if (status === 401 && localStorage.getItem("refreshToken") !== null) {
-      if (!isRefreshing) {
-        isRefreshing = true;
-        axios
-          .post(
-            "https://fundose.in/",
-            {
-              refreshToken: localStorage.getItem("refreshToken"),
-            },
-            {
-              headers: { Token: "bearer " + localStorage.getItem("token") },
-            }
-          )
-          .then((res) => {
-            if (res.status === 200) {
-              // 1) put token to LocalStorage
-              localStorage.setItem("token", res.data.data.accessToken);
-              localStorage.setItem("refreshToken", res.data.data.refreshToken);
-              isRefreshing = false;
-              // onRefreshed(res.data.data.accessToken);
-              subscribers = [];
-            } else {
-              // store.dispatch(actions.logoutOnRefreshExpire());
-            }
-          })
-          .catch((err) => {
-            // store.dispatch(actions.logoutOnRefreshExpire());
-          })
-          .finally(() => {
-            isRefreshing = false;
-          });
-      }
+      axios
+        .post("https://fundose.in/auth/refresh-token/", {
+          refresh: localStorage.getItem("refreshToken"),
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            localStorage.setItem("token", res.data.access);
+            return api(originalRequest);
+          } else {
+          }
+        })
+        .catch((err) => {
+          console.log("err", err);
+        })
+        .finally(() => {
+          store.dispatch(stopLoader);
+        });
 
       return new Promise((resolve) => {
         subscribeTokenRefresh((token) => {

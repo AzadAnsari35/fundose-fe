@@ -6,8 +6,10 @@ import { useStore } from "../store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+let store;
+
 function MyApp({ Component, pageProps }) {
-  const store = useStore(pageProps.initialReduxState);
+  store = useStore(pageProps.initialReduxState);
 
   return (
     <Provider store={store}>
@@ -18,5 +20,7 @@ function MyApp({ Component, pageProps }) {
     </Provider>
   );
 }
+
+export { store };
 
 export default MyApp;

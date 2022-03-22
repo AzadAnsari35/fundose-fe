@@ -36,6 +36,15 @@ export default function Header() {
         >
           Register
         </Typography>
+        <Typography
+          variant="body1"
+          component="div"
+          align="center"
+          color="primary"
+          onClick={() => router.push("/quiz")}
+        >
+          Quiz
+        </Typography>
       </Box>
     </Box>
   );

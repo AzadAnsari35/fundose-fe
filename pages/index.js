@@ -23,8 +23,6 @@ export default function Home() {
   const [topic, setTopic] = useState("");
 
   const handleClick = (e) => {
-    // dispatch(fetchQuestion(0));
-    // router.push("/quiz");
     const selectedTopic = e.currentTarget.getAttribute("data-topic");
     if (selectedTopic) {
       setShowModal(true);

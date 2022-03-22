@@ -9,7 +9,9 @@ import * as types from "./types";
 
 // Load User
 export const startLoader = () => (dispatch) => {
-  console.log("start loader");
+  dispatch({
+    type: types.START_LOADER,
+  });
 };
 
 export const stopLoader = () => (dispatch) => {

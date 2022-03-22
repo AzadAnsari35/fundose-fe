@@ -11,6 +11,11 @@ import Image from "next/image";
 import SwapIcon from "../public/icons/swap.svg";
 import FiftyIcon from "../public/icons/fifty_fifty.svg";
 import { createTheme } from "@mui/material/styles";
+import api from "@/api/index";
+import * as types from "../actions/types";
+import { fetchQuestion } from "@/actions/quiz.act";
+import { useDispatch } from "react-redux";
+import has from "lodash/has";
 
 const optionLabel = ["a", "b", "c", "d"];
 
@@ -18,17 +23,36 @@ const defaultTheme = createTheme();
 
 export default function QuizSection() {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [currentScore, setCurrentScore] = useState(false);
 
   const questionObj = useSelector((state) => state.quiz.question);
   const questionNumber = useSelector((state) => state.quiz.questionNumber);
 
-  const handleSelect = (e) => {
-    const selected = e.target.getAttribute("data-option");
-    console.log("selectedOption", selected);
-    setShowModal(true);
+  const handleSelect = async (e) => {
+    const choiceId = e.target.getAttribute("data-option");
+    try {
+      dispatch({
+        type: types.START_LOADER,
+      });
+      const response = await api.post("/quiz/submit-choice/", {
+        question_choice_id: choiceId,
+        enc_ts: enc_ts,
+      });
+      setShowModal(true);
+      setIsSuccess(!has(response, "game_status"));
+      setCurrentScore(response.current_game_score);
+      dispatch(fetchQuestion(response));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch({
+        type: types.STOP_LOADER,
+      });
+    }
   };
 
   const handleSwap = () => {
@@ -39,7 +63,8 @@ export default function QuizSection() {
     console.log("Fifty - fifty");
   };
 
-  const { question, options } = questionObj || {};
+  const { ques, choices, enc_ts } = questionObj || {};
+  console.log("quest", ques, choices);
 
   return (
     <>
@@ -50,7 +75,7 @@ export default function QuizSection() {
               Question {questionNumber}/12
             </Typography>
             <Typography variant="body1" component="div" color="#F0EE51">
-              Score: <b>1234</b>
+              Score: <b>{currentScore}</b>
             </Typography>
           </div>
 
@@ -62,7 +87,7 @@ export default function QuizSection() {
           color="common.white"
           sx={{ my: 5 }}
         >
-          {question}
+          {ques?.title}
         </Typography>
 
         <Grid
@@ -71,19 +96,19 @@ export default function QuizSection() {
           sx={{ display: "flex", justifyContent: "center" }}
           onClick={handleSelect}
         >
-          {options &&
-            options.map((option, index) => (
-              <Grid item md={6} xs={12} key={option.id}>
+          {choices &&
+            choices.map((choice, index) => (
+              <Grid item md={6} xs={12} key={choice.id}>
                 <Typography
                   variant="body1"
                   className={
-                    +selectedOption === option.id
+                    +selectedOption === choice.id
                       ? `${classes.option} ${classes.selected}`
                       : classes.option
                   }
-                  data-option={option.id}
+                  data-option={choice.id}
                 >
-                  {optionLabel[index]}){`  `} {option.choice}
+                  {optionLabel[index]}){`  `} {choice.label}
                 </Typography>
               </Grid>
             ))}
