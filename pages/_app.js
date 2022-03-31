@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { useStore } from "../store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GlobalModalProvider from "../components/GlobalModalProvider";
 
 let store;
 
@@ -16,6 +17,7 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
         <ToastContainer />
+        <GlobalModalProvider />
       </ThemeProvider>
     </Provider>
   );

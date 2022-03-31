@@ -3,3 +3,5 @@ export const FETCH_QUESTION = "FETCH_QUESTION";
 export const NEXT_QUESTION = "NEXT_QUESTION";
 export const START_LOADER = "START_LOADER";
 export const STOP_LOADER = "STOP_LOADER";
+export const SHOW_MODAL = "SHOW_MODAL";
+export const HIDE_MODAL = "HIDE_MODAL";

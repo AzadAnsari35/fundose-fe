@@ -21,3 +21,16 @@ export const stopLoader = () => (dispatch) => {
     type: types.STOP_LOADER,
   });
 };
+
+export const showModal = (modalType) => (dispatch) => {
+  return dispatch({
+    type: types.SHOW_MODAL,
+    payload: modalType,
+  });
+};
+
+export const hideModal = () => (dispatch) => {
+  return dispatch({
+    type: types.HIDE_MODAL,
+  });
+};

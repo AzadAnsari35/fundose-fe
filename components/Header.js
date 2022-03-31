@@ -5,10 +5,13 @@ import LogoIcon from "../public/icons/logo.svg";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { makeStyles } from "@mui/styles";
+import { showModal } from "@/actions/common.act";
+import { useDispatch } from "react-redux";
 
 export default function Header() {
   const router = useRouter();
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return (
     <Box component="header" className={classes.header}>
@@ -25,6 +28,7 @@ export default function Header() {
           component="div"
           align="center"
           color="primary"
+          onClick={() => dispatch(showModal("LOGIN_FORM"))}
         >
           Login
         </Typography>
@@ -33,6 +37,7 @@ export default function Header() {
           component="div"
           align="center"
           color="primary"
+          onClick={() => dispatch(showModal("SIGNUP_FORM"))}
         >
           Register
         </Typography>
@@ -67,6 +72,7 @@ const useStyles = makeStyles({
   navlink: {
     "& div": {
       padding: "0px 20px",
+      cursor: "pointer",
     },
   },
 });
