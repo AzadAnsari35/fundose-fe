@@ -16,6 +16,7 @@ import * as types from "../actions/types";
 import { fetchQuestion } from "@/actions/quiz.act";
 import { useDispatch } from "react-redux";
 import has from "lodash/has";
+import Timer from "./Timer";
 
 const optionLabel = ["a", "b", "c", "d"];
 
@@ -55,6 +56,11 @@ export default function QuizSection() {
     }
   };
 
+  const handleModalClose = (event, reason) => {
+    if (reason && reason == "backdropClick") return;
+    setShowModal(false);
+  };
+
   const handleSwap = () => {
     console.log("Swap Question");
   };
@@ -64,7 +70,6 @@ export default function QuizSection() {
   };
 
   const { ques, choices, enc_ts } = questionObj || {};
-  console.log("quest", ques, choices);
 
   return (
     <>
@@ -75,11 +80,20 @@ export default function QuizSection() {
               Question {questionNumber}/12
             </Typography>
             <Typography variant="body1" component="div" color="#F0EE51">
-              Score: <b>{currentScore}</b>
+              Score: <b>{currentScore ?? 0}</b>
             </Typography>
           </div>
 
-          <div>Timer</div>
+          <div>
+            <Timer
+              seconds={5}
+              size={80}
+              strokeBgColor="black"
+              strokeColor="lavender"
+              strokeWidth={8}
+              showFailureModal={setShowModal}
+            />
+          </div>
         </div>
         <Typography
           variant="h5"
@@ -114,7 +128,7 @@ export default function QuizSection() {
             ))}
         </Grid>
 
-        <Box display="flex" justifyContent="center">
+        <Box display="flex" justifyContent="center" sx={{ pt: 5 }}>
           <Image
             src={SwapIcon}
             alt="SwapIcon Icon"
@@ -133,13 +147,13 @@ export default function QuizSection() {
           />
         </Box>
       </div>
-      <DialogBox open={showModal} handleClose={() => setShowModal(false)}>
-        {isSuccess ? (
-          <SuccessModal handleClose={() => setShowModal(false)} />
-        ) : (
+      {isSuccess ? (
+        <> </>
+      ) : (
+        <DialogBox open={showModal} handleClose={handleModalClose}>
           <FailureModal />
-        )}
-      </DialogBox>
+        </DialogBox>
+      )}
     </>
   );
 }

@@ -12,12 +12,20 @@ import Image from "next/image";
 import FormSvg from "../public/illustration/form.svg";
 import { showModal } from "@/actions/common.act";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { login } from "../actions/auth.act";
 
 const backgroundimg = "/images/Background.png";
 
 const LoginForm = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
+
+  const handleLogin = () => {
+    dispatch(login({ username, password }));
+  };
 
   return (
     <Box className={classes.loginFormModal}>
@@ -29,18 +37,24 @@ const LoginForm = () => {
               variant="outlined"
               type="name"
               className={classes.text_field}
-              label="Entert your email address"
+              value={username}
+              label="Enter your email address"
+              onChange={(e) => setUsername(e.target.value)}
             />
             <TextField
               variant="outlined"
               type="password"
               className={classes.password_field}
+              value={password}
               label="Password"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <Box className={classes.frgt_btn_box}>
               <Button className={classes.frgt_btn}>forgot password</Button>
             </Box>
-            <Button className={classes.loginbtn}>Login</Button>
+            <Button className={classes.loginbtn} onClick={handleLogin}>
+              Login
+            </Button>
             <Box className={classes.footer_box}>
               <Typography className={classes.bottom_text} variant="subtitle2">
                 Don't have an account?
@@ -62,7 +76,7 @@ const LoginForm = () => {
                   Learn with Ease{" "}
                 </Typography>
                 <Typography className={classes.bottomtext}>
-                  Take your learing to Next Level
+                  Take your learning to Next Level
                 </Typography>
               </Box>
               <Image
@@ -77,6 +91,7 @@ const LoginForm = () => {
     </Box>
   );
 };
+
 const useStyles = makeStyles((theme) =>
   createStyles({
     loginFormModal: {

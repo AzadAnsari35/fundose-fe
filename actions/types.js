@@ -5,3 +5,7 @@ export const START_LOADER = "START_LOADER";
 export const STOP_LOADER = "STOP_LOADER";
 export const SHOW_MODAL = "SHOW_MODAL";
 export const HIDE_MODAL = "HIDE_MODAL";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAILURE = "REGISTER_FAILURE";

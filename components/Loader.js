@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     backgroundColor: "rgba(0,0,0,0.3)",
     width: "100%",
     height: "100%",
-    zIndex: 2,
+    zIndex: 1301,
   },
   loaderRoot: {
     position: "fixed",

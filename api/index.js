@@ -1,6 +1,8 @@
 import axios from "axios";
 import { stopLoader } from "@/actions/common.act";
-import { finder } from "../pages/_app";
+import { store } from "../pages/_app";
+
+const LOGGED_IN_API_URL = "/auth/login/";
 
 const api = axios.create({
   baseURL: "https://fundose.in",
@@ -8,8 +10,10 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (request) => {
-    // Get token and add it to header "Authorization"
-    request.headers.Authorization = "Bearer " + localStorage.getItem("token");
+    if (request.url !== LOGGED_IN_API_URL) {
+      // Get token and add it to header "Authorization"
+      request.headers.Authorization = "Bearer " + localStorage.getItem("token");
+    }
 
     return request;
   },
@@ -34,6 +38,7 @@ api.interceptors.response.use(
       response: { status },
     } = err;
     const originalRequest = config;
+    console.log("store", store);
     if (status === 401 && localStorage.getItem("refreshToken") !== null) {
       axios
         .post("https://fundose.in/auth/refresh-token/", {

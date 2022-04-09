@@ -5,18 +5,22 @@ import Button from "@mui/material/Button";
 import InstructionIcon from "../public/illustration/instruction.svg";
 import Box from "@mui/material/Box";
 import { startQuiz } from "@/actions/quiz.act";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
 import { useRouter } from "next/router";
+import { showModal } from "@/actions/common.act";
 
 export default function Instruction({ topic, handleClose }) {
   const dispatch = useDispatch();
   const classes = useStyles();
   const router = useRouter();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const handleStartQuiz = () => {
     handleClose();
-    dispatch(startQuiz(router));
+    isLoggedIn
+      ? dispatch(startQuiz(router))
+      : dispatch(showModal("LOGIN_FORM"));
   };
 
   return (

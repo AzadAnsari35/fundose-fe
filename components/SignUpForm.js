@@ -1,101 +1,225 @@
+import { signup } from "@/actions/auth.act";
+import { showModal } from "@/actions/common.act";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {
   Box,
-  Typography,
-  TextField,
   Button,
   Grid,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
   Hidden,
+  TextField,
+  Typography,
 } from "@mui/material";
-import { makeStyles, createStyles } from "@mui/styles";
-import Link from "next/link";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import { createStyles, makeStyles } from "@mui/styles";
 import Image from "next/image";
-import FormSvg from "../public/illustration/form.svg";
-import { showModal } from "@/actions/common.act";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
+import FormSvg from "../public/illustration/form.svg";
+import { useForm } from "react-hook-form";
+
 const backgroundimg = "/images/Background.png";
 
 const SignUpForm = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm({
+    defaultValues: {
+      firstName: "",
+      username: "",
+      password: "",
+      confirmPassword: "",
+      email: "",
+      first_name: "",
+      last_name: "",
+    },
+  });
+
+  const [state, setState] = useState({
+    showPassword: false,
+    showConfirmPassword: false,
+  });
+
+  const onSubmit = (data) => {
+    dispatch(signup(data));
+  };
+
+  const handleClickShowPassword = (key) => {
+    setState({
+      ...state,
+      [key]: !state[key],
+    });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <Box className={classes.signupFormModal}>
       <Grid container>
         <Grid item sm={6} xs={12}>
           <Box className={classes.grid_box}>
             <Typography className={classes.heading}>Sign up</Typography>
-            <Box className={classes.top_text_field}>
-              <TextField
-                className={classes.name_field}
-                variant="outlined"
-                label="Enter your full name"
-              />
-              <TextField variant="outlined" label="Enter your email address" />
-            </Box>
-            <Box className={classes.center_text}>
-              <FormControl variant="outlined" className={classes.form_Control}>
-                <InputLabel id="demo-simple-select-outlined-label">
-                  Gender
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
-                  // value={age}
-                  // onChange={handleChange}
-                  label="Gender"
-                  className={classes.list}
+
+            <Grid container spacing={2}>
+              <Grid item sm={12} xs={12}>
+                <TextField
+                  variant="outlined"
+                  label="First Name"
+                  name="firstName"
+                  fullWidth
+                  {...register("firstName", { required: "Required" })}
+                  error={errors.firstName ? true : false}
+                  helperText={errors.firstName?.message}
+                />
+              </Grid>
+
+              <Grid item sm={12} xs={12}>
+                <TextField
+                  variant="outlined"
+                  label="Last Name"
+                  name="lastName"
+                  fullWidth
+                  {...register("lastName", { required: "Required" })}
+                  error={errors.lastName ? true : false}
+                  helperText={errors.lastName?.message}
+                />
+              </Grid>
+
+              <Grid item sm={12} xs={12}>
+                <TextField
+                  variant="outlined"
+                  label="Username"
+                  name="username"
+                  fullWidth
+                  {...register("username", { required: "Required" })}
+                  error={errors.username ? true : false}
+                  helperText={errors.username?.message}
+                />
+              </Grid>
+
+              <Grid item sm={12} xs={12}>
+                <TextField
+                  variant="outlined"
+                  label="Email"
+                  name="email"
+                  fullWidth
+                  {...register("email", {
+                    required: "Required",
+                    pattern: {
+                      value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                      message: "Please enter valid email",
+                    },
+                  })}
+                  error={errors.email ? true : false}
+                  helperText={errors.email?.message}
+                />
+              </Grid>
+
+              <Grid item sm={12} xs={12}>
+                <TextField
+                  type={state.showPassword ? "text" : "password"}
+                  label="Password"
+                  name="password"
+                  fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={() =>
+                            handleClickShowPassword("showPassword")
+                          }
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {state.showPassword ? (
+                            <VisibilityOff />
+                          ) : (
+                            <Visibility />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                  {...register("password", {
+                    required: "Required",
+                    minLength: {
+                      value: 6,
+                      message: "Password should be of minimum 6 letters",
+                    },
+                  })}
+                  error={errors.password ? true : false}
+                  helperText={errors.password?.message}
+                />
+              </Grid>
+
+              <Grid item sm={12} xs={12}>
+                <TextField
+                  type={state.showConfirmPassword ? "text" : "password"}
+                  label="Confirm Password"
+                  name="confirmPassword"
+                  fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={() =>
+                            handleClickShowPassword("showConfirmPassword")
+                          }
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {state.showConfirmPassword ? (
+                            <VisibilityOff />
+                          ) : (
+                            <Visibility />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                  {...register("confirmPassword", {
+                    required: "Required",
+                    validate: (value) =>
+                      value === watch("password") ||
+                      "The passwords do not match",
+                  })}
+                  error={errors.confirmPassword ? true : false}
+                  helperText={errors.confirmPassword?.message}
+                />
+              </Grid>
+
+              <Grid item sm={12} xs={12}>
+                <Button
+                  className={classes.sign_btn}
+                  onClick={handleSubmit(onSubmit)}
                 >
-                  <MenuItem value="">
-                    <Typography>
-                      <em>None</em>
-                    </Typography>
-                  </MenuItem>
-                  <MenuItem className={classes.list} value={10}>
-                    <Typography> Male</Typography>
-                  </MenuItem>
-                  <MenuItem className={classes.list} value={20}>
-                    <Typography>Female </Typography>
-                  </MenuItem>
-                  <MenuItem className={classes.list} value={30}>
-                    <Typography>Other </Typography>
-                  </MenuItem>
-                </Select>
-              </FormControl>
-              <TextField
-                id="date"
-                variant="outlined"
-                type="date"
-                // placeholder='DOB'
-                label="DOB"
-                className={classes.dob_field}
-                InputLabelProps={{ shrink: true }}
-                InputProps={{
-                  root: classes.textInput,
-                  input: classes.textInput,
-                }}
-              />
-            </Box>
-            <TextField
-              label="Password"
-              className={classes.passw_text}
-              variant="outlined"
-              type="password"
-            />
-            <Button className={classes.sign_btn}>Sign up</Button>
+                  Sign up
+                </Button>
+              </Grid>
+            </Grid>
 
             <Box className={classes.footer_box}>
-              <Typography className={classes.bottom_text}>
-                Have an account?
-              </Typography>
-              <Button
-                className={classes.login_btn}
-                onClick={() => dispatch(showModal("LOGIN_FORM"))}
-              >
-                Log in
-              </Button>
+              <Box display="flex">
+                <Typography className={classes.bottom_text}>
+                  Have an account?
+                </Typography>
+                <Button
+                  className={classes.login_btn}
+                  onClick={() => dispatch(showModal("LOGIN_FORM"))}
+                >
+                  Log in
+                </Button>
+              </Box>
             </Box>
           </Box>
         </Grid>
@@ -122,6 +246,7 @@ const SignUpForm = () => {
     </Box>
   );
 };
+
 const useStyles = makeStyles((theme) =>
   createStyles({
     signupFormModal: {
@@ -152,44 +277,22 @@ const useStyles = makeStyles((theme) =>
       textTransform: "initial",
       fontSize: "small",
       fontFamily: "Poppins",
+      padding: 0,
     },
     grid_box: {
       display: "flex",
       flexDirection: "column",
       padding: "20%",
     },
-    top_text_field: {
-      display: "flex",
-      flexDirection: "column",
-      marginTop: "4%",
-      fontFamily: "Poppins",
-    },
-    name_field: {
-      paddingBottom: "4%",
-    },
-    dob_field: {
-      marginLeft: "10%",
-      width: "212px",
-    },
-    center_text: {
-      marginTop: "4%",
-      display: "flex",
-      justifyContent: "space-between",
-    },
-    // formControl:{
-    //   width:"44%",
-    // },
-    passw_text: {
-      marginTop: "4%",
-    },
 
     sign_btn: {
       background: "#2E45D5",
       color: "#F1F1F1",
       fontFamily: "Poppins",
-      marginTop: "6%",
+      marginTop: 20,
+      padding: 14,
+      width: "100%",
       "&:hover": {
-        // background: "#2E45D5",
         background: "#1877f2",
         color: "#F1F1F1",
       },
