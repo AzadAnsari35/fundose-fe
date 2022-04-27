@@ -1,8 +1,9 @@
 import axios from "axios";
-import { stopLoader } from "@/actions/common.act";
+import * as types from "@/actions/types";
 import { store } from "../pages/_app";
 
 const LOGGED_IN_API_URL = "/auth/login/";
+const REGISTER_API_URL = "/auth/register/";
 
 const api = axios.create({
   baseURL: "https://fundose.in",
@@ -10,7 +11,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (request) => {
-    if (request.url !== LOGGED_IN_API_URL) {
+    if (request.url !== LOGGED_IN_API_URL && request.url !== REGISTER_API_URL) {
       // Get token and add it to header "Authorization"
       request.headers.Authorization = "Bearer " + localStorage.getItem("token");
     }
@@ -38,7 +39,7 @@ api.interceptors.response.use(
       response: { status },
     } = err;
     const originalRequest = config;
-    console.log("store", store);
+
     if (status === 401 && localStorage.getItem("refreshToken") !== null) {
       axios
         .post("https://fundose.in/auth/refresh-token/", {
@@ -55,7 +56,7 @@ api.interceptors.response.use(
           console.log("err", err);
         })
         .finally(() => {
-          store.dispatch(stopLoader);
+          store.dispatch({ type: types.STOP_LOADER });
         });
 
       return new Promise((resolve) => {

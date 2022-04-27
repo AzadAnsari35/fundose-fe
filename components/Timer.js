@@ -1,22 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 
-export default function CountdownTimer({
-  seconds,
-  size,
-  strokeBgColor,
-  strokeWidth,
-  strokeColor,
-  showFailureModal,
-}) {
-  const milliseconds = seconds * 1000;
+const CountdownTimer = (
+  {
+    seconds,
+    size,
+    strokeBgColor,
+    strokeWidth,
+    strokeColor,
+    showFailureModal,
+    intervalId,
+    setIntervalId,
+  },
+  ref
+) => {
   const radius = size / 2;
   const circumference = size * Math.PI;
+  const milliseconds = seconds * 1000;
 
   const [state, setState] = useState({
     countdown: milliseconds,
     isPlaying: false,
   });
-  const [intervalId, setIntervalId] = useState(null);
 
   useEffect(() => {
     startTimer();
@@ -63,6 +67,16 @@ export default function CountdownTimer({
     fontSize: size * 0.3,
   };
 
+  useImperativeHandle(ref, () => ({
+    resetTimer() {
+      setState({
+        countdown: milliseconds + 2500,
+        isPlaying: false,
+      });
+      startTimer();
+    },
+  }));
+
   const sec = (state.countdown / 1000).toFixed();
 
   return (
@@ -72,14 +86,7 @@ export default function CountdownTimer({
           pointerEvents: state.isPlaying ? "none" : "all",
           opacity: state.isPlaying ? 0.4 : 1,
         }}
-      >
-        {/* <button
-          style={styles.button}
-          onClick={!state.isPlaying ? startTimer : () => {}}
-        >
-          START
-        </button> */}
-      </div>
+      ></div>
       <div
         style={Object.assign(
           {},
@@ -114,7 +121,9 @@ export default function CountdownTimer({
       </div>
     </div>
   );
-}
+};
+
+export const CircularTimer = forwardRef(CountdownTimer);
 
 const styles = {
   countdownContainer: {

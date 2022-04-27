@@ -1,39 +1,45 @@
 import FailureModal from "@/components/FailureModal";
 import DialogBox from "@/components/Modal";
-import SuccessModal from "@/components/SuccessModal";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { makeStyles, createStyles } from "@mui/styles";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import SwapIcon from "../public/icons/swap.svg";
 import FiftyIcon from "../public/icons/fifty_fifty.svg";
 import { createTheme } from "@mui/material/styles";
 import api from "@/api/index";
 import * as types from "../actions/types";
-import { fetchQuestion } from "@/actions/quiz.act";
-import { useDispatch } from "react-redux";
+import { fetchQuestion, resetLevel } from "@/actions/quiz.act";
 import has from "lodash/has";
-import Timer from "./Timer";
+import { CircularTimer } from "./Timer";
+import Level from "@/components/Level";
+import { useEffect, useRef } from "react";
 
 const optionLabel = ["a", "b", "c", "d"];
 
 const defaultTheme = createTheme();
 
+const LEVEL_MODAL_CLOSE_TIME = 2500;
+
 export default function QuizSection() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const timerRef = useRef();
+
   const [selectedOption, setSelectedOption] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [currentScore, setCurrentScore] = useState(false);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [intervalId, setIntervalId] = useState(null);
+  const [questionNumber, setQuestionNumber] = useState(1);
 
   const questionObj = useSelector((state) => state.quiz.question);
-  const questionNumber = useSelector((state) => state.quiz.questionNumber);
 
   const handleSelect = async (e) => {
+    stopTimer();
     const choiceId = e.target.getAttribute("data-option");
     try {
       dispatch({
@@ -43,10 +49,17 @@ export default function QuizSection() {
         question_choice_id: choiceId,
         enc_ts: enc_ts,
       });
+      const correctAnswer = !has(response, "game_status");
       setShowModal(true);
-      setIsSuccess(!has(response, "game_status"));
+      setIsSuccess(correctAnswer);
       setCurrentScore(response.current_game_score);
-      dispatch(fetchQuestion(response));
+      if (correctAnswer) {
+        dispatch(fetchQuestion(response));
+        setQuestionNumber((questionNumber) => questionNumber + 1);
+        timerRef.current.resetTimer();
+      } else {
+        dispatch(resetLevel());
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -55,6 +68,15 @@ export default function QuizSection() {
       });
     }
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      const timer = setTimeout(() => {
+        handleModalClose();
+      }, LEVEL_MODAL_CLOSE_TIME);
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess, showModal]);
 
   const handleModalClose = (event, reason) => {
     if (reason && reason == "backdropClick") return;
@@ -69,6 +91,10 @@ export default function QuizSection() {
     console.log("Fifty - fifty");
   };
 
+  const stopTimer = () => {
+    clearInterval(intervalId);
+  };
+
   const { ques, choices, enc_ts } = questionObj || {};
 
   return (
@@ -80,18 +106,21 @@ export default function QuizSection() {
               Question {questionNumber}/12
             </Typography>
             <Typography variant="body1" component="div" color="#F0EE51">
-              Score: <b>{currentScore ?? 0}</b>
+              Score: <b>{currentScore}</b>
             </Typography>
           </div>
 
           <div>
-            <Timer
-              seconds={5}
+            <CircularTimer
+              ref={timerRef}
+              seconds={45}
               size={80}
               strokeBgColor="black"
               strokeColor="lavender"
               strokeWidth={8}
               showFailureModal={setShowModal}
+              setIntervalId={setIntervalId}
+              intervalId={intervalId}
             />
           </div>
         </div>
@@ -147,13 +176,10 @@ export default function QuizSection() {
           />
         </Box>
       </div>
-      {isSuccess ? (
-        <> </>
-      ) : (
-        <DialogBox open={showModal} handleClose={handleModalClose}>
-          <FailureModal />
-        </DialogBox>
-      )}
+
+      <DialogBox open={showModal} handleClose={handleModalClose}>
+        {isSuccess ? <Level /> : <FailureModal />}
+      </DialogBox>
     </>
   );
 }

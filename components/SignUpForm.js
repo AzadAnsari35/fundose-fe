@@ -64,12 +64,12 @@ const SignUpForm = () => {
   return (
     <Box className={classes.signupFormModal}>
       <Grid container>
-        <Grid item sm={6} xs={12}>
+        <Grid item sm={12} xs={12}>
           <Box className={classes.grid_box}>
             <Typography className={classes.heading}>Sign up</Typography>
 
             <Grid container spacing={2}>
-              <Grid item sm={12} xs={12}>
+              <Grid item sm={6} xs={12}>
                 <TextField
                   variant="outlined"
                   label="First Name"
@@ -81,7 +81,7 @@ const SignUpForm = () => {
                 />
               </Grid>
 
-              <Grid item sm={12} xs={12}>
+              <Grid item sm={6} xs={12}>
                 <TextField
                   variant="outlined"
                   label="Last Name"
@@ -213,35 +213,16 @@ const SignUpForm = () => {
                 <Typography className={classes.bottom_text}>
                   Have an account?
                 </Typography>
-                <Button
+                <div
                   className={classes.login_btn}
                   onClick={() => dispatch(showModal("LOGIN_FORM"))}
                 >
                   Log in
-                </Button>
+                </div>
               </Box>
             </Box>
           </Box>
         </Grid>
-        <Hidden smDown>
-          <Grid item sm={6}>
-            <Box className={classes.rightcontainer}>
-              <Box className={classes.headingbox}>
-                <Typography className={classes.toptext}>
-                  Learn with Ease{" "}
-                </Typography>
-                <Typography className={classes.bottomtext}>
-                  Take your learing to Next Level
-                </Typography>
-              </Box>
-              <Image
-                src={FormSvg}
-                alt="instruction icon"
-                className={classes.img}
-              />
-            </Box>
-          </Grid>
-        </Hidden>
       </Grid>
     </Box>
   );
@@ -254,13 +235,13 @@ const useStyles = makeStyles((theme) =>
       flexDirection: "column",
       alignItems: "center",
       position: "absolute",
-      width: "80%",
+      width: 580,
       top: "50%",
       left: "50%",
       transform: "translate(-50%, -50%)",
       backgroundColor: "white",
       boxShadow: 24,
-      borderRadius: 16,
+      borderRadius: 8,
       "&:focus-visible ": {
         outline: "none",
       },
@@ -271,18 +252,23 @@ const useStyles = makeStyles((theme) =>
       color: "#2E45D5",
       fontSize: "43px",
       fontFamily: "Poppins",
+      marginBottom: 20,
     },
     login_btn: {
       color: "#2E45D5",
       textTransform: "initial",
-      fontSize: "small",
+      fontSize: 14,
       fontFamily: "Poppins",
       padding: 0,
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      paddingLeft: 4,
     },
     grid_box: {
       display: "flex",
       flexDirection: "column",
-      padding: "20%",
+      padding: "60px 60px",
     },
 
     sign_btn: {
@@ -292,6 +278,7 @@ const useStyles = makeStyles((theme) =>
       marginTop: 20,
       padding: 14,
       width: "100%",
+      borderRadius: 4,
       "&:hover": {
         background: "#1877f2",
         color: "#F1F1F1",
@@ -356,12 +343,10 @@ const useStyles = makeStyles((theme) =>
     "@media only screen and (max-width: 750px)": {
       grid_box: {
         display: "flex",
-        padding: "20% 12%",
         flexDirection: "column",
       },
       sign_btn: {
         height: "48px",
-        marginTop: "15%",
       },
       top_text_field: {
         marginTop: "10%",

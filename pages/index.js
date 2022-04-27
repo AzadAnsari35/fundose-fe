@@ -8,7 +8,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { makeStyles, createStyles } from "@mui/styles";
 import { createTheme } from "@mui/material/styles";
-
 //Icons
 import FinanceIcon from "../public/icons/finance.svg";
 import GstIcon from "../public/icons/gst.svg";

@@ -40,7 +40,7 @@ export default function Header() {
               align="center"
               color="primary"
             >
-              {currentUser.first_name} {currentUser.last_name}
+              {currentUser?.first_name} {currentUser?.last_name}
             </Typography>
             <Typography
               variant="body1"

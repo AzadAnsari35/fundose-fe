@@ -28,7 +28,14 @@ export const fetchQuestion = (response) => async (dispatch) => {
   });
 };
 
-export const incrementQuestion = () => (dispatch) =>
+export const incrementLevel = () => async (dispatch) => {
   dispatch({
-    type: types.INCREMENT_QUESTION,
+    type: types.INCREMENT_LEVEL,
   });
+};
+
+export const resetLevel = () => async (dispatch) => {
+  dispatch({
+    type: types.RESET_LEVEL,
+  });
+};

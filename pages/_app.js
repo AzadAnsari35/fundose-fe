@@ -7,12 +7,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GlobalModalProvider from "../components/GlobalModalProvider";
 import { useEffect, useState } from "react";
+import * as types from "../actions/types";
 
 let store;
 
 function MyApp({ Component, pageProps }) {
-  const [currentUser, setCurrentUser] = useState({});
-
   const getLocalStorageItem = (key) => {
     return typeof window !== undefined
       ? window.localStorage.getItem(key)
@@ -20,15 +19,11 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    setCurrentUser(JSON.parse(getLocalStorageItem("currentUser")));
+    const currentUser = JSON.parse(getLocalStorageItem("currentUser"));
+    store.dispatch({ type: types.LOGIN_SUCCESS, payload: currentUser });
   }, []);
 
-  const initialState = {
-    auth: {
-      isLoggedIn: !!currentUser?.access,
-      currentUser: currentUser,
-    },
-  };
+  const initialState = {};
   store = useStore(initialState);
 
   return (

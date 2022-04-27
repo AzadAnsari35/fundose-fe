@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import Layout from "@/components/Layout";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography";
 import { createTheme } from "@mui/material/styles";
+import SuccessModal from "./SuccessModal";
+import { incrementLevel } from "@/actions/quiz.act";
+import { useSelector, useDispatch } from "react-redux";
 
 const levelArray = [
   {
@@ -47,35 +49,49 @@ const levelArray = [
   },
 ];
 
+const levelArr = levelArray.reverse();
+
 const defaultTheme = createTheme();
 const onMobile = defaultTheme.breakpoints.only("xs");
 
 export default function Levels() {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const [currentLevel, setCurrentLevel] = useState(1);
+  // const [currentLevel, setCurrentLevel] = useState(1);
+
+  const currentLevel = useSelector((state) => state.quiz.level);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(incrementLevel());
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (levelArr.length - 1 === currentLevel) {
+    return <SuccessModal />;
+  }
 
   return (
-    <Layout>
-      <div className={classes.container}>
-        {levelArray.reverse().map(({ id, label }) => (
-          <Typography
-            variant="body2"
-            component="div"
-            className={`${classes.level} ${
-              currentLevel > id
-                ? classes.visited
-                : currentLevel === id
-                ? classes.current
-                : ""
-            }`}
-            key={id}
-          >
-            {label}
-          </Typography>
-        ))}
-      </div>
-    </Layout>
+    <div className={classes.container}>
+      {levelArr.map(({ id, label }) => (
+        <Typography
+          variant="body2"
+          component="div"
+          className={`${classes.level} ${
+            currentLevel > id
+              ? classes.visited
+              : currentLevel === id
+              ? classes.current
+              : ""
+          }`}
+          key={id}
+        >
+          {label}
+        </Typography>
+      ))}
+    </div>
   );
 }
 

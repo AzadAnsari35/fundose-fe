@@ -20,7 +20,7 @@ export const signup = (data) => async (dispatch) => {
       type: types.REGISTER_SUCCESS,
       payload: response,
     });
-
+    dispatch(hideModal());
     localStorage.setItem("token", response.access_token);
     localStorage.setItem("refreshToken", response.refresh_token);
     toast.success("Successfully logged in");

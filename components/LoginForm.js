@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import {
   Box,
   Typography,
@@ -7,9 +8,7 @@ import {
   Hidden,
 } from "@mui/material";
 import { makeStyles, createStyles } from "@mui/styles";
-import Link from "next/link";
-import Image from "next/image";
-import FormSvg from "../public/illustration/form.svg";
+
 import { showModal } from "@/actions/common.act";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
@@ -30,7 +29,7 @@ const LoginForm = () => {
   return (
     <Box className={classes.loginFormModal}>
       <Grid container>
-        <Grid item lg={6} sm={6} xs={12}>
+        <Grid item lg={12} sm={12} xs={12}>
           <Box className={classes.grid_box}>
             <Typography className={classes.heading}>Welcome back</Typography>
             <TextField
@@ -50,7 +49,7 @@ const LoginForm = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <Box className={classes.frgt_btn_box}>
-              <Button className={classes.frgt_btn}>forgot password</Button>
+              <div className={classes.frgt_btn}>forgot password</div>
             </Box>
             <Button className={classes.loginbtn} onClick={handleLogin}>
               Login
@@ -59,34 +58,15 @@ const LoginForm = () => {
               <Typography className={classes.bottom_text} variant="subtitle2">
                 Don't have an account?
               </Typography>
-              <Button
+              <div
                 className={classes.create_btn}
                 onClick={() => dispatch(showModal("SIGNUP_FORM"))}
               >
                 Create new account
-              </Button>
+              </div>
             </Box>
           </Box>
         </Grid>
-        <Hidden smDown>
-          <Grid item sm={6}>
-            <Box className={classes.rightcontainer}>
-              <Box className={classes.headingbox}>
-                <Typography className={classes.toptext}>
-                  Learn with Ease{" "}
-                </Typography>
-                <Typography className={classes.bottomtext}>
-                  Take your learning to Next Level
-                </Typography>
-              </Box>
-              <Image
-                src={FormSvg}
-                alt="instruction icon"
-                className={classes.img}
-              />{" "}
-            </Box>
-          </Grid>
-        </Hidden>
       </Grid>
     </Box>
   );
@@ -99,13 +79,13 @@ const useStyles = makeStyles((theme) =>
       flexDirection: "column",
       alignItems: "center",
       position: "absolute",
-      width: "80%",
+      width: 580,
       top: "50%",
       left: "50%",
       transform: "translate(-50%, -50%)",
       backgroundColor: "white",
       boxShadow: 24,
-      borderRadius: 16,
+      borderRadius: 8,
       "&:focus-visible ": {
         outline: "none",
       },
@@ -114,7 +94,7 @@ const useStyles = makeStyles((theme) =>
     grid_box: {
       display: "flex",
       flexDirection: "column",
-      padding: "20%",
+      padding: "80px 60px",
     },
     heading: {
       marginBottom: "10%",
@@ -140,7 +120,8 @@ const useStyles = makeStyles((theme) =>
       color: "#666666",
       textTransform: "capitalize",
       fontFamily: "Poppins",
-      marginTop: "4px",
+      marginTop: "12px",
+      cursor: "pointer",
       "&:hover": {
         // color: "#fff",
       },
@@ -150,6 +131,8 @@ const useStyles = makeStyles((theme) =>
       color: "#F1F1F1",
       marginTop: "6%",
       fontFamily: "Poppins",
+      borderRadius: 4,
+      height: "48px",
       "&:hover": {
         // background: "#2E45D5",
         background: "#1877f2",
@@ -161,6 +144,9 @@ const useStyles = makeStyles((theme) =>
       color: "#2E45D5",
       textTransform: "initial",
       fontFamily: "Poppins",
+      cursor: "pointer",
+      paddingLeft: 4,
+      fontSize: "14px",
     },
 
     footer_box: {
@@ -204,9 +190,7 @@ const useStyles = makeStyles((theme) =>
         lineHeight: "24px",
         letterSpacing: "-0.28px",
       },
-      loginbtn: {
-        height: "48px",
-      },
+
       frgt_btn_box: {
         marginTop: "9%",
       },
