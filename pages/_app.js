@@ -20,7 +20,8 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const currentUser = JSON.parse(getLocalStorageItem("currentUser"));
-    store.dispatch({ type: types.LOGIN_SUCCESS, payload: currentUser });
+    if (currentUser)
+      store.dispatch({ type: types.LOGIN_SUCCESS, payload: currentUser });
   }, []);
 
   const initialState = {};
