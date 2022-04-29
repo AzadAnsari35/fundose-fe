@@ -8,7 +8,6 @@ import RewardIcon from "../public/icons/reward.svg";
 import PointIcon from "../public/icons/point.svg";
 import ConfettiIcon from "../public/illustration/confetti.svg";
 import Box from "@mui/material/Box";
-import { incrementQuestion } from "@/actions/quiz.act";
 import { useDispatch } from "react-redux";
 
 export default function SuccessModal({ handleClose }) {
@@ -16,7 +15,6 @@ export default function SuccessModal({ handleClose }) {
   const classes = useStyles();
 
   const handleNextQuestion = () => {
-    dispatch(incrementQuestion());
     handleClose();
   };
 
