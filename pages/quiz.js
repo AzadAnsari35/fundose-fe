@@ -1,4 +1,4 @@
-import QuizSection from "@/components/quizSection";
+import QuizSection from "@/components/QuizSection";
 import Layout from "@/components/Layout";
 import withPrivateRoute from "@/components/withPrivateRoute";
 
