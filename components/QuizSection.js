@@ -17,6 +17,7 @@ import has from "lodash/has";
 import { CircularTimer } from "./Timer";
 import Level from "@/components/Level";
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 
 const optionLabel = ["a", "b", "c", "d"];
 
@@ -28,6 +29,7 @@ export default function QuizSection() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const timerRef = useRef();
+  const router = useRouter();
 
   const [selectedOption, setSelectedOption] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -39,7 +41,6 @@ export default function QuizSection() {
   const questionObj = useSelector((state) => state.quiz.question);
 
   const handleSelect = async (e) => {
-    stopTimer();
     const choiceId = e.target.getAttribute("data-option");
     try {
       dispatch({
@@ -56,6 +57,7 @@ export default function QuizSection() {
       if (correctAnswer) {
         dispatch(fetchQuestion(response));
         setQuestionNumber((questionNumber) => questionNumber + 1);
+        stopTimer();
         timerRef.current.resetTimer();
       } else {
         dispatch(resetLevel());
@@ -77,6 +79,23 @@ export default function QuizSection() {
       return () => clearTimeout(timer);
     }
   }, [isSuccess, showModal]);
+
+  useEffect(() => {
+    router.beforePopState(({ as }) => {
+      if (as !== router.asPath) {
+        console.log("dialog");
+        // router.push(router.asPath);
+        // return false;
+        // Will run when leaving the current page; on back/forward actions
+        // Add your logic here, like toggling the modal state
+      }
+      return true;
+    });
+
+    return () => {
+      router.beforePopState(() => true);
+    };
+  }, [router]);
 
   const handleModalClose = (event, reason) => {
     if (reason && reason == "backdropClick") return;

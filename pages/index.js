@@ -153,13 +153,14 @@ const useStyles = makeStyles(() => {
       alignItems: "center",
       minHeight: "calc(100vh - 60px - 50px)",
       color: "#f1f1f1",
+      paddingTop: 40,
       [onMobile]: {
         display: "block",
       },
     },
 
     leftContainer: {
-      width: "25%",
+      width: "30%",
       marginRight: 120,
       [onMobile]: {
         width: "100%",

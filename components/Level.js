@@ -5,6 +5,7 @@ import { createTheme } from "@mui/material/styles";
 import SuccessModal from "./SuccessModal";
 import { incrementLevel } from "@/actions/quiz.act";
 import { useSelector, useDispatch } from "react-redux";
+const backgroundimg = "/images/Background.png";
 
 const levelArray = [
   {
@@ -97,9 +98,11 @@ export default function Levels() {
 
 const useStyles = makeStyles({
   container: {
-    paddingTop: 120,
-    width: "60%",
+    width: "100%",
+    height: "100%",
+    padding: "120px 300px 0px",
     margin: "0 auto",
+    backgroundImage: `url(${backgroundimg})`,
     [onMobile]: {
       width: "100%",
       paddingTop: 0,
@@ -109,7 +112,7 @@ const useStyles = makeStyles({
   level: {
     display: "flex",
     justifyContent: "center",
-    background: "#F0EE51",
+    background: "#FFFFFF",
     borderRadius: 8,
     padding: "12px 0px",
     marginBottom: "16px",
