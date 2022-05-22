@@ -11,7 +11,6 @@ export const startQuiz = (router) => async (dispatch) => {
       subject_id: 2,
     });
     dispatch(fetchQuestion(response));
-    router.push("/quiz");
   } catch (error) {
     toast.error("error");
   } finally {
@@ -34,8 +33,8 @@ export const incrementLevel = () => async (dispatch) => {
   });
 };
 
-export const resetLevel = () => async (dispatch) => {
+export const resetGame = () => async (dispatch) => {
   dispatch({
-    type: types.RESET_LEVEL,
+    type: types.RESET_GAME,
   });
 };

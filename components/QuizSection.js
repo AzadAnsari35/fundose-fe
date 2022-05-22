@@ -12,12 +12,13 @@ import FiftyIcon from "../public/icons/fifty_fifty.svg";
 import { createTheme } from "@mui/material/styles";
 import api from "@/api/index";
 import * as types from "../actions/types";
-import { fetchQuestion, resetLevel } from "@/actions/quiz.act";
+import { fetchQuestion } from "@/actions/quiz.act";
 import has from "lodash/has";
-import { CircularTimer } from "./Timer";
 import Level from "@/components/Level";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import { useWarnIfUnsavedChanges } from "@/components/LeaveUserConfirmation";
 
 const optionLabel = ["a", "b", "c", "d"];
 
@@ -37,7 +38,8 @@ export default function QuizSection() {
   const [currentScore, setCurrentScore] = useState(0);
   const [intervalId, setIntervalId] = useState(null);
   const [questionNumber, setQuestionNumber] = useState(1);
-
+  const [countdown, setCountdown] = useState(45);
+  const [timerKey, setTimerKey] = useState(0);
   const questionObj = useSelector((state) => state.quiz.question);
 
   const handleSelect = async (e) => {
@@ -57,10 +59,9 @@ export default function QuizSection() {
       if (correctAnswer) {
         dispatch(fetchQuestion(response));
         setQuestionNumber((questionNumber) => questionNumber + 1);
-        stopTimer();
-        timerRef.current.resetTimer();
-      } else {
-        dispatch(resetLevel());
+        setTimerKey((key) => key + 1);
+        // stopTimer();
+        // timerRef.current.resetTimer();
       }
     } catch (error) {
       console.log(error);
@@ -97,6 +98,13 @@ export default function QuizSection() {
     };
   }, [router]);
 
+  useEffect(() => {
+    if (countdown === 0) {
+      setShowModal(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [countdown]);
+
   const handleModalClose = (event, reason) => {
     if (reason && reason == "backdropClick") return;
     setShowModal(false);
@@ -114,6 +122,17 @@ export default function QuizSection() {
     clearInterval(intervalId);
   };
 
+  const renderTime = ({ remainingTime }) => {
+    setCountdown(remainingTime);
+    return (
+      <Box display="flex" flexDirection="column" alignItems="center">
+        <Typography variant="h5" component="div" color="#Ffffff">
+          {remainingTime}s
+        </Typography>
+      </Box>
+    );
+  };
+
   const { ques, choices, enc_ts } = questionObj || {};
 
   return (
@@ -129,8 +148,8 @@ export default function QuizSection() {
             </Typography>
           </div>
 
-          <div>
-            <CircularTimer
+          <Box display="flex" justifyContent="center">
+            {/* <CircularTimer
               ref={timerRef}
               seconds={45}
               size={80}
@@ -140,8 +159,19 @@ export default function QuizSection() {
               showFailureModal={setShowModal}
               setIntervalId={setIntervalId}
               intervalId={intervalId}
-            />
-          </div>
+            /> */}
+            <CountdownCircleTimer
+              key={timerKey}
+              isPlaying
+              duration={questionNumber === 1 ? 45 : 47}
+              colors="lavender"
+              size={100}
+              strokeWidth={9}
+              trailColor="#000000"
+            >
+              {renderTime}
+            </CountdownCircleTimer>
+          </Box>
         </div>
         <Typography
           variant="h5"

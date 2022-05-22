@@ -31,7 +31,7 @@ function MyApp({ Component, pageProps }) {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
-        <ToastContainer />
+        <ToastContainer theme="colored" />
         <GlobalModalProvider />
       </ThemeProvider>
     </Provider>

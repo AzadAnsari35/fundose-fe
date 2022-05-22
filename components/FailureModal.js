@@ -6,16 +6,17 @@ import Typography from "@mui/material/Typography";
 import RewardIcon from "../public/icons/reward.svg";
 import PointIcon from "../public/icons/point.svg";
 import Box from "@mui/material/Box";
-import { useRouter } from "next/router";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { makeStyles } from "@mui/styles";
+import { resetGame } from "@/actions/quiz.act";
+import { useDispatch } from "react-redux";
 
 export default function FailureModal({ handleClose }) {
   const classes = useStyles();
-  const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleNextQuestion = () => {
-    router.push("/");
+    dispatch(resetGame());
   };
 
   return (

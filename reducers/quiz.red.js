@@ -3,6 +3,7 @@ import * as types from "@/actions/types";
 const initialState = {
   question: {},
   level: 1,
+  isGamePlaying: false,
 };
 
 const quizReducer = (state = initialState, { type, payload }) => {
@@ -11,16 +12,18 @@ const quizReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         question: payload,
+        isGamePlaying: true,
       };
     case types.INCREMENT_LEVEL:
       return {
         ...state,
         level: state.level + 1,
       };
-    case types.RESET_LEVEL:
+    case types.RESET_GAME:
       return {
         ...state,
         level: 1,
+        isGamePlaying: false,
       };
 
     default:

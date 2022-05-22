@@ -18,6 +18,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import FormSvg from "../public/illustration/form.svg";
 import { useForm } from "react-hook-form";
+import { createTheme } from "@mui/material/styles";
+
+const defaultTheme = createTheme();
 
 const backgroundimg = "/images/Background.png";
 
@@ -228,8 +231,10 @@ const SignUpForm = () => {
   );
 };
 
-const useStyles = makeStyles((theme) =>
-  createStyles({
+const useStyles = makeStyles((theme) => {
+  const onMobile = defaultTheme.breakpoints.only("xs");
+
+  return createStyles({
     signupFormModal: {
       display: "flex",
       flexDirection: "column",
@@ -244,6 +249,9 @@ const useStyles = makeStyles((theme) =>
       borderRadius: 8,
       "&:focus-visible ": {
         outline: "none",
+      },
+      [onMobile]: {
+        width: "80%",
       },
     },
     heading: {
@@ -269,6 +277,9 @@ const useStyles = makeStyles((theme) =>
       display: "flex",
       flexDirection: "column",
       padding: "60px 60px",
+      [onMobile]: {
+        padding: 30,
+      },
     },
 
     sign_btn: {
@@ -340,26 +351,7 @@ const useStyles = makeStyles((theme) =>
     form_Control: {
       width: "187px",
     },
-    "@media only screen and (max-width: 750px)": {
-      grid_box: {
-        display: "flex",
-        flexDirection: "column",
-      },
-      sign_btn: {
-        height: "48px",
-      },
-      top_text_field: {
-        marginTop: "10%",
-        paddingBottom: "5%",
-      },
-      name_field: {
-        paddingBottom: "6%",
-      },
-      center_text: {
-        paddingBottom: "4%",
-      },
-    },
-  })
-);
+  });
+});
 
 export default SignUpForm;

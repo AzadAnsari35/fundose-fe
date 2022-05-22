@@ -13,8 +13,11 @@ import { showModal } from "@/actions/common.act";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { login } from "../actions/auth.act";
+import { createTheme } from "@mui/material/styles";
 
 const backgroundimg = "/images/Background.png";
+
+const defaultTheme = createTheme();
 
 const LoginForm = () => {
   const classes = useStyles();
@@ -72,8 +75,10 @@ const LoginForm = () => {
   );
 };
 
-const useStyles = makeStyles((theme) =>
-  createStyles({
+const useStyles = makeStyles((theme) => {
+  const onMobile = defaultTheme.breakpoints.only("xs");
+
+  return createStyles({
     loginFormModal: {
       display: "flex",
       flexDirection: "column",
@@ -89,12 +94,18 @@ const useStyles = makeStyles((theme) =>
       "&:focus-visible ": {
         outline: "none",
       },
+      [onMobile]: {
+        width: "80%",
+      },
     },
 
     grid_box: {
       display: "flex",
       flexDirection: "column",
       padding: "80px 60px",
+      [onMobile]: {
+        padding: 30,
+      },
     },
     heading: {
       marginBottom: "10%",
@@ -107,7 +118,7 @@ const useStyles = makeStyles((theme) =>
     },
 
     text_field: {
-      paddingBottom: "6%",
+      paddingBottom: 20,
     },
     frgt_btn_box: {
       display: "flex",
@@ -122,9 +133,6 @@ const useStyles = makeStyles((theme) =>
       fontFamily: "Poppins",
       marginTop: "12px",
       cursor: "pointer",
-      "&:hover": {
-        // color: "#fff",
-      },
     },
     loginbtn: {
       background: "#2E45D5",
@@ -134,7 +142,6 @@ const useStyles = makeStyles((theme) =>
       borderRadius: 4,
       height: "48px",
       "&:hover": {
-        // background: "#2E45D5",
         background: "#1877f2",
         color: "#F1F1F1",
       },
@@ -163,46 +170,7 @@ const useStyles = makeStyles((theme) =>
       color: "#666666",
       fontFamily: "Poppins",
     },
-    "@media only screen and (max-width: 750px)": {
-      bottom_text: {
-        fontSize: "16px",
-        lineHeight: "24px",
-        letterSpacing: "-0.28px",
-      },
-      grid_box: {
-        display: "flex",
-        padding: "20% 12%",
-        flexDirection: "column",
-      },
-      heading: {
-        marginBottom: "2%",
-        fontSize: "48px",
-        fontWeight: "600",
-        lineHeight: "60px",
-      },
-      footer_box: {
-        display: "flex",
-        flexDirection: "column",
-        marginTop: "13%",
-      },
-      create_btn: {
-        fontSize: "16px",
-        lineHeight: "24px",
-        letterSpacing: "-0.28px",
-      },
 
-      frgt_btn_box: {
-        marginTop: "9%",
-      },
-      password_field: {
-        height: "45px",
-      },
-      text_field: {
-        marginTop: "12%",
-        height: "45px",
-        paddingBottom: "26%",
-      },
-    },
     rightcontainer: {
       backgroundImage: `url(${backgroundimg})`,
       backgroundPosition: "center",
@@ -236,7 +204,7 @@ const useStyles = makeStyles((theme) =>
       marginTop: "8%",
       width: "auto",
     },
-  })
-);
+  });
+});
 
 export default LoginForm;
