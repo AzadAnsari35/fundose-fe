@@ -2,6 +2,7 @@ import * as types from "@/actions/types";
 import { toast } from "react-toastify";
 import api from "@/api/index";
 import { hideModal } from "./common.act";
+import { resetGame } from "./quiz.act";
 
 export const signup = (data) => async (dispatch) => {
   try {
@@ -67,6 +68,7 @@ export const logout = () => async (dispatch) => {
   localStorage.removeItem("currentUser");
   localStorage.removeItem("token");
   localStorage.removeItem("refreshToken");
+  dispatch(resetGame());
   dispatch({
     type: types.LOGIN_FAILURE,
   });

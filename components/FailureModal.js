@@ -62,12 +62,12 @@ export default function FailureModal({ handleClose }) {
           </Box>
         </div>
       </div>
-      <div className={classes.playAgain}>
+      {/* <div className={classes.playAgain}>
         <PlayArrowIcon color="#666666" />
-        <Typography variant="subtitle1" component="div" color="#666666">
+        <Typography variant="subtitle1" component="div" color="#666666" >
           Play Again
         </Typography>
-      </div>
+      </div> */}
       <Button variant="contained" onClick={handleNextQuestion}>
         Go to Home
       </Button>
