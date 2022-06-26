@@ -80,17 +80,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    background: "linear-gradient(180deg, #FFA5A8 0%, #FFFFFF 60.26%)",
-    boxShadow: 24,
     padding: "60px 140px 28px",
-    borderRadius: 16,
-    "&:focus-visible ": {
-      outline: "none",
-    },
   },
 
   scores: {

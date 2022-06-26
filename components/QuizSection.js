@@ -19,12 +19,47 @@ import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { useWarnIfUnsavedChanges } from "@/components/LeaveUserConfirmation";
+import { motion } from "framer-motion";
 
 const optionLabel = ["a", "b", "c", "d"];
 
 const defaultTheme = createTheme();
 
 const LEVEL_MODAL_CLOSE_TIME = 2500;
+
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { duration: 2 },
+  },
+  exit: {
+    x: "-100vh",
+    transition: { ease: "easeInOut" },
+  },
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
 
 export default function QuizSection() {
   const classes = useStyles();
@@ -139,16 +174,27 @@ export default function QuizSection() {
     <>
       <div className={classes.quizSection}>
         <div className={classes.questionNumber}>
-          <div>
+          <motion.div
+            initial={{ y: -250 }}
+            animate={{ y: 0 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
+          >
             <Typography variant="body1" component="div" color="common.white">
               Question {questionNumber}/12
             </Typography>
             <Typography variant="body1" component="div" color="#F0EE51">
               Score: <b>{currentScore}</b>
             </Typography>
-          </div>
+          </motion.div>
 
-          <Box display="flex" justifyContent="center">
+          <Box
+            display="flex"
+            justifyContent="center"
+            component={motion.div}
+            initial={{ y: -250 }}
+            animate={{ y: 0 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
+          >
             {/* <CircularTimer
               ref={timerRef}
               seconds={45}
@@ -175,9 +221,13 @@ export default function QuizSection() {
         </div>
         <Typography
           variant="h5"
-          component="div"
           color="common.white"
           sx={{ my: 5 }}
+          component={motion.div}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
         >
           {ques?.title}
         </Typography>
@@ -185,12 +235,24 @@ export default function QuizSection() {
         <Grid
           container
           spacing={2}
+          component={motion.div}
           sx={{ display: "flex", justifyContent: "center" }}
           onClick={handleSelect}
+          variants={container}
+          initial="hidden"
+          animate="visible"
         >
           {choices &&
             choices.map((choice, index) => (
-              <Grid item md={6} xs={12} key={choice.id}>
+              <Grid
+                item
+                component={motion.div}
+                md={6}
+                xs={12}
+                key={choice.id}
+                variants={item}
+                whileTap={{ scale: 0.9 }}
+              >
                 <Typography
                   variant="body1"
                   className={
@@ -226,9 +288,19 @@ export default function QuizSection() {
         </Box>
       </div>
 
-      <DialogBox open={showModal} handleClose={handleModalClose}>
-        {isSuccess ? <Level /> : <FailureModal />}
-      </DialogBox>
+      {isSuccess ? (
+        <DialogBox
+          open={showModal}
+          handleClose={handleModalClose}
+          fullScreen={true}
+        >
+          <Level />
+        </DialogBox>
+      ) : (
+        <DialogBox open={showModal} handleClose={handleModalClose}>
+          <FailureModal />
+        </DialogBox>
+      )}
     </>
   );
 }

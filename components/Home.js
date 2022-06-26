@@ -1,17 +1,18 @@
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import Image from "next/image";
-import { makeStyles, createStyles } from "@mui/styles";
-import { createTheme } from "@mui/material/styles";
 import Instruction from "@/components/Instruction";
 import DialogBox from "@/components/Modal";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import { createTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import { createStyles, makeStyles } from "@mui/styles";
+import { motion } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
+import AuditIcon from "../public/icons/audit.svg";
 //Icons
 import FinanceIcon from "../public/icons/finance.svg";
 import GstIcon from "../public/icons/gst.svg";
 import ItIcon from "../public/icons/it.svg";
-import AuditIcon from "../public/icons/audit.svg";
 
 const defaultTheme = createTheme();
 
@@ -29,23 +30,54 @@ function Home() {
     }
   };
 
+  const containerVariants = {
+    hidden: { y: -250 },
+    visible: {
+      y: 0,
+      transition: {
+        type: "spring",
+        mass: 0.4,
+        damping: 10,
+        when: "beforeChildren",
+      },
+    },
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
   return (
     <>
       <Box className={classes.home}>
-        <div className={classes.leftContainer}>
-          <Typography variant="h4" component="div" sx={{ pb: 1 }}>
+        <motion.div
+          className={classes.leftContainer}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <Typography variant="h4" sx={{ pb: 1 }} component={motion.div}>
             FUN DOSE
           </Typography>
-          <Typography variant="h2" component="div" sx={{ pb: 3 }}>
+          <Typography variant="h2" sx={{ pb: 3 }} component={motion.div}>
             <b>QUIZ</b>
           </Typography>
-          <Typography variant="body1" component="div">
+          <Typography variant="body1" component={motion.div}>
             This Accounting Test is designed to help you assess your knowledge
             of essential accounting principles and basic concepts
           </Typography>
-        </div>
+        </motion.div>
 
-        <div className={classes.rightContainer}>
+        <motion.div
+          className={classes.rightContainer}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <Typography variant="subtitle1" component="div">
             Select Topic
           </Typography>
@@ -58,7 +90,7 @@ function Home() {
           </Typography>
 
           <Grid container spacing={2} className={classes.topics}>
-            <Grid item xs={6}>
+            <Grid item xs={6} component={motion.div} variants={item}>
               <div
                 className={classes.topic}
                 data-topic="Finance"
@@ -75,7 +107,7 @@ function Home() {
                 </Typography>
               </div>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={6} component={motion.div} variants={item}>
               <div
                 className={classes.topic}
                 data-topic="Income Tax"
@@ -92,7 +124,7 @@ function Home() {
                 </Typography>
               </div>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={6} component={motion.div} variants={item}>
               <div
                 className={classes.topic}
                 data-topic="Audit"
@@ -109,7 +141,7 @@ function Home() {
                 </Typography>
               </div>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={6} component={motion.div} variants={item}>
               <div
                 className={classes.topic}
                 data-topic="GST"
@@ -122,19 +154,10 @@ function Home() {
               </div>
             </Grid>
           </Grid>
-        </div>
+        </motion.div>
       </Box>
       <DialogBox open={showModal} handleClose={() => setShowModal(false)}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Instruction topic={topic} handleClose={() => setShowModal(false)} />
-        </Box>
+        <Instruction topic={topic} handleClose={() => setShowModal(false)} />
       </DialogBox>
     </>
   );

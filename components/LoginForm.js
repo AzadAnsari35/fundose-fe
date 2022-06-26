@@ -80,20 +80,7 @@ const useStyles = makeStyles((theme) => {
 
   return createStyles({
     loginFormModal: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      position: "absolute",
       width: 580,
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      backgroundColor: "white",
-      boxShadow: 24,
-      borderRadius: 8,
-      "&:focus-visible ": {
-        outline: "none",
-      },
       [onMobile]: {
         width: "80%",
       },

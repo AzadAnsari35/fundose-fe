@@ -9,6 +9,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
 import { useRouter } from "next/router";
 import { showModal } from "@/actions/common.act";
+import { motion } from "framer-motion";
+
+const dropIn = {
+  hidden: {
+    y: "-100vh",
+    opacity: 0,
+  },
+  visible: {
+    y: "0vh",
+    opacity: 1,
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      damping: 25,
+      stiffness: 500,
+    },
+  },
+  exit: {
+    y: "100vh",
+    opacity: 0,
+  },
+};
 
 export default function Instruction({ topic, handleClose }) {
   const dispatch = useDispatch();
@@ -24,7 +46,13 @@ export default function Instruction({ topic, handleClose }) {
   };
 
   return (
-    <div className={classes.instructionModal}>
+    <div
+      className={classes.instructionModal}
+      // variants={dropIn}
+      // initial="hidden"
+      // animate="visible"
+      // exit="exit"
+    >
       <Typography variant="h5" align="center" component="div" color="#666666">
         Welcome to
       </Typography>
@@ -45,10 +73,12 @@ export default function Instruction({ topic, handleClose }) {
         sx={{ pl: 0, pt: 4, pb: 5 }}
         className={classes.instructions}
       >
-        <li>There are total 12 questions</li>
-        <li>You have 60 Sec for each question</li>
-        <li>You have to complete all the questions</li>
-        <li>If you give wrong answer game will be stop there</li>
+        <li>There are 12 questions you will be assigned</li>
+        <li>To answer the questions, you will be getting 45 sec for each </li>
+        <li>To win the quiz, you must complete every question</li>
+        <li>
+          If any answer is wrong the game will be terminated to the exact moment
+        </li>
       </Typography>
       <Box display="flex" justifyContent="center">
         <Image
@@ -69,20 +99,7 @@ export default function Instruction({ topic, handleClose }) {
 
 const useStyles = makeStyles({
   instructionModal: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    backgroundColor: "white",
-    boxShadow: 24,
-    padding: "60px 140px 28px",
-    borderRadius: 16,
-    "&:focus-visible ": {
-      outline: "none",
-    },
+    padding: "60px 100px 40px",
   },
   instructions: { lineHeight: "30px" },
 });
