@@ -97,7 +97,7 @@ function Home() {
               <div
                 className={classes.topic}
                 data-topic="Finance"
-                data-id="2"
+                data-id="3"
                 onClick={handleClick}
               >
                 <Image
@@ -114,13 +114,18 @@ function Home() {
             <Grid item xs={6} component={motion.div} variants={item}>
               <div
                 className={classes.topic}
-                data-topic="DT"
-                data-id="4"
+                data-topic="Income Tax"
+                data-id="1"
                 onClick={handleClick}
               >
-                <Image src={ItIcon} alt="DT Icon" width={40} height={40} />
+                <Image
+                  src={ItIcon}
+                  alt="Income Tax Icon"
+                  width={40}
+                  height={40}
+                />
                 <Typography variant="body1" component="div">
-                  DT
+                  Income Tax
                 </Typography>
               </div>
             </Grid>
@@ -128,7 +133,7 @@ function Home() {
               <div
                 className={classes.topic}
                 data-topic="Audit"
-                data-id="1"
+                data-id="4"
                 onClick={handleClick}
               >
                 <Image
@@ -146,7 +151,7 @@ function Home() {
               <div
                 className={classes.topic}
                 data-topic="GST"
-                data-id="3"
+                data-id="2"
                 onClick={handleClick}
               >
                 <Image src={GstIcon} alt="Gst Icon" width={40} height={40} />
