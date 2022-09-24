@@ -2,13 +2,13 @@ import * as types from "./types";
 import api from "@/api/index";
 import { toast } from "react-toastify";
 
-export const startQuiz = (router) => async (dispatch) => {
+export const startQuiz = (subjectId) => async (dispatch) => {
   try {
     dispatch({
       type: types.START_LOADER,
     });
     const response = await api.post("/quiz/start/", {
-      subject_id: 2,
+      subject_id: subjectId,
     });
     dispatch(fetchQuestion(response));
   } catch (error) {

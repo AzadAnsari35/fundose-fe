@@ -32,7 +32,7 @@ const dropIn = {
   },
 };
 
-export default function Instruction({ topic, handleClose }) {
+export default function Instruction({ topic, handleClose, subjectId }) {
   const dispatch = useDispatch();
   const classes = useStyles();
   const router = useRouter();
@@ -41,7 +41,7 @@ export default function Instruction({ topic, handleClose }) {
   const handleStartQuiz = () => {
     handleClose();
     isLoggedIn
-      ? dispatch(startQuiz(router))
+      ? dispatch(startQuiz(subjectId))
       : dispatch(showModal("LOGIN_FORM"));
   };
 

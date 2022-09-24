@@ -21,12 +21,15 @@ function Home() {
 
   const [showModal, setShowModal] = useState(false);
   const [topic, setTopic] = useState("");
+  const [subjectId, setSubjectId] = useState("");
 
   const handleClick = (e) => {
     const selectedTopic = e.currentTarget.getAttribute("data-topic");
+    const selectedId = e.currentTarget.getAttribute("data-id");
     if (selectedTopic) {
       setShowModal(true);
       setTopic(selectedTopic);
+      setSubjectId(+selectedId);
     }
   };
 
@@ -94,6 +97,7 @@ function Home() {
               <div
                 className={classes.topic}
                 data-topic="Finance"
+                data-id="2"
                 onClick={handleClick}
               >
                 <Image
@@ -110,17 +114,13 @@ function Home() {
             <Grid item xs={6} component={motion.div} variants={item}>
               <div
                 className={classes.topic}
-                data-topic="Income Tax"
+                data-topic="DT"
+                data-id="4"
                 onClick={handleClick}
               >
-                <Image
-                  src={ItIcon}
-                  alt="Income tax Icon"
-                  width={40}
-                  height={40}
-                />
+                <Image src={ItIcon} alt="DT Icon" width={40} height={40} />
                 <Typography variant="body1" component="div">
-                  Income Tax
+                  DT
                 </Typography>
               </div>
             </Grid>
@@ -128,6 +128,7 @@ function Home() {
               <div
                 className={classes.topic}
                 data-topic="Audit"
+                data-id="1"
                 onClick={handleClick}
               >
                 <Image
@@ -145,6 +146,7 @@ function Home() {
               <div
                 className={classes.topic}
                 data-topic="GST"
+                data-id="3"
                 onClick={handleClick}
               >
                 <Image src={GstIcon} alt="Gst Icon" width={40} height={40} />
@@ -157,7 +159,11 @@ function Home() {
         </motion.div>
       </Box>
       <DialogBox open={showModal} handleClose={() => setShowModal(false)}>
-        <Instruction topic={topic} handleClose={() => setShowModal(false)} />
+        <Instruction
+          topic={topic}
+          handleClose={() => setShowModal(false)}
+          subjectId={subjectId}
+        />
       </DialogBox>
     </>
   );
