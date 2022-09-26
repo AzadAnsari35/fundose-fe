@@ -8,6 +8,7 @@ import { makeStyles } from "@mui/styles";
 import { showModal } from "@/actions/common.act";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/actions/auth.act";
+import Link from "next/link";
 
 export default function Header() {
   const router = useRouter();
@@ -40,7 +41,11 @@ export default function Header() {
               align="center"
               color="primary"
             >
-              {currentUser?.first_name} {currentUser?.last_name}
+              <Link href="/profile">
+                <a>
+                  {currentUser?.first_name} {currentUser?.last_name}
+                </a>
+              </Link>
             </Typography>
             <Typography
               variant="body1"

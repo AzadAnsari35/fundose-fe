@@ -64,14 +64,14 @@ function Home() {
           animate="visible"
         >
           <Typography variant="h4" sx={{ pb: 1 }} component={motion.div}>
-            FUN DOSE
+            Welcome to
           </Typography>
           <Typography variant="h2" sx={{ pb: 3 }} component={motion.div}>
-            <b>QUIZ</b>
+            <b>FUNDOSE QUIZ</b>
           </Typography>
           <Typography variant="body1" component={motion.div}>
-            This Accounting Test is designed to help you assess your knowledge
-            of essential accounting principles and basic concepts
+            This test is designed to reveal your hidden academic potential and
+            business talent. This is the front page
           </Typography>
         </motion.div>
 
@@ -89,7 +89,8 @@ function Home() {
             component="div"
             sx={{ lineHeight: "24px" }}
           >
-            Select any topic from below and improve you skill and grab the prize
+            Select a topic from below and experience the thrill of winning
+            prizes
           </Typography>
 
           <Grid container spacing={2} className={classes.topics}>

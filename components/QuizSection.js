@@ -268,7 +268,7 @@ export default function QuizSection() {
             ))}
         </Grid>
 
-        <Box display="flex" justifyContent="center" sx={{ pt: 5 }}>
+        {/* <Box display="flex" justifyContent="center" sx={{ pt: 5 }}>
           <Image
             src={SwapIcon}
             alt="SwapIcon Icon"
@@ -285,7 +285,7 @@ export default function QuizSection() {
             className=""
             onClick={handleFifty}
           />
-        </Box>
+        </Box> */}
       </div>
 
       {isSuccess ? (
@@ -298,7 +298,7 @@ export default function QuizSection() {
         </DialogBox>
       ) : (
         <DialogBox open={showModal} handleClose={handleModalClose}>
-          <FailureModal />
+          <FailureModal currentScore={currentScore} />
         </DialogBox>
       )}
     </>

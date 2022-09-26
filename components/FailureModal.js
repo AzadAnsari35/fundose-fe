@@ -11,7 +11,7 @@ import { makeStyles } from "@mui/styles";
 import { resetGame } from "@/actions/quiz.act";
 import { useDispatch } from "react-redux";
 
-export default function FailureModal({ handleClose }) {
+export default function FailureModal({ currentScore, handleClose }) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -54,7 +54,7 @@ export default function FailureModal({ handleClose }) {
           <Image src={PointIcon} alt="Reward Icon" width={30} height={30} />
           <Box sx={{ pl: 1 }}>
             <Typography variant="body2" component="div">
-              434 Points
+              {currentScore} Points
             </Typography>
             <Typography variant="body2" component="div" color="#666666">
               Points Earned

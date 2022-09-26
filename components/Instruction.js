@@ -73,8 +73,8 @@ export default function Instruction({ topic, handleClose, subjectId }) {
         sx={{ pl: 0, pt: 4, pb: 5 }}
         className={classes.instructions}
       >
-        <li>There are 12 questions you will be assigned</li>
-        <li>To answer the questions, you will be getting 45 sec for each </li>
+        <li>You will be assigned 12 questions</li>
+        <li>You will get 45 seconds to answer each question</li>
         <li>To win the quiz, you must complete every question</li>
         <li>
           If any answer is wrong the game will be terminated to the exact moment

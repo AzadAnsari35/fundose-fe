@@ -12,7 +12,12 @@ export const startQuiz = (subjectId) => async (dispatch) => {
     });
     dispatch(fetchQuestion(response));
   } catch (error) {
-    toast.error("error");
+    console.log(JSON.stringify(error.response));
+    if (error?.response?.data?.detail === "NO_SAME_GAME_TWICE_SAME_DAY") {
+      toast.error("Only one attempt per day. Please try again tomorrow.");
+    } else {
+      toast.error("Something went wrong");
+    }
   } finally {
     dispatch({
       type: types.STOP_LOADER,

@@ -10,42 +10,50 @@ const backgroundimg = "/images/Background.png";
 const levelArray = [
   {
     id: 1,
-    label: "Trainee Level",
+    label: "Trainee Level 1",
   },
   {
     id: 2,
-    label: "Associate Level",
+    label: "Trainee Level 2",
   },
   {
     id: 3,
-    label: "Senior Associate Level",
+    label: "Trainee Level 3",
   },
   {
     id: 4,
-    label: "Assistant Manager Level",
+    label: "Associate Level",
   },
   {
     id: 5,
-    label: "Manager Level",
+    label: "Senior Associate Level",
   },
   {
     id: 6,
-    label: "Associate Director Level",
+    label: "Assistant Manager Level",
   },
   {
     id: 7,
-    label: "Director Level",
+    label: "Manager Level",
   },
   {
     id: 8,
-    label: "Executive Partner Level",
+    label: "Associate Director Level",
   },
   {
     id: 9,
-    label: "Partner Level",
+    label: "Director Level",
   },
   {
     id: 10,
+    label: "Executive Partner Level",
+  },
+  {
+    id: 11,
+    label: "Partner Level",
+  },
+  {
+    id: 12,
     label: "Senior Partner Level",
   },
 ];
