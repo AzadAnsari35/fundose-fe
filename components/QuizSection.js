@@ -61,7 +61,7 @@ const item = {
   },
 };
 
-export default function QuizSection() {
+export default function QuizSection({ handleSound }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const timerRef = useRef();
@@ -78,6 +78,7 @@ export default function QuizSection() {
   const questionObj = useSelector((state) => state.quiz.question);
 
   const handleSelect = async (e) => {
+    handleSound("click");
     const choiceId = e.target.getAttribute("data-option");
     try {
       dispatch({
@@ -90,6 +91,7 @@ export default function QuizSection() {
       const correctAnswer = !has(response, "game_status");
       setShowModal(true);
       setIsSuccess(correctAnswer);
+      handleSound(correctAnswer ? "correct" : "wrong");
       setCurrentScore(response.current_game_score);
       if (correctAnswer) {
         dispatch(fetchQuestion(response));
@@ -298,7 +300,7 @@ export default function QuizSection() {
         </DialogBox>
       ) : (
         <DialogBox open={showModal} handleClose={handleModalClose}>
-          <FailureModal currentScore={currentScore} />
+          <FailureModal currentScore={currentScore} handleSound={handleSound} />
         </DialogBox>
       )}
     </>

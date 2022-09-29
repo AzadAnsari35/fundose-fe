@@ -11,11 +11,12 @@ import { makeStyles } from "@mui/styles";
 import { resetGame } from "@/actions/quiz.act";
 import { useDispatch } from "react-redux";
 
-export default function FailureModal({ currentScore, handleClose }) {
+export default function FailureModal({ currentScore, handleSound }) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const handleNextQuestion = () => {
+    handleSound("button");
     dispatch(resetGame());
   };
 

@@ -2,9 +2,9 @@ import QuizSection from "@/components/QuizSection";
 import Layout from "@/components/Layout";
 import withPrivateRoute from "@/components/withPrivateRoute";
 
-function Quiz() {
+function Quiz({ handleSound }) {
   return (
-    <Layout>
+    <Layout handleSound={handleSound}>
       <QuizSection />
     </Layout>
   );

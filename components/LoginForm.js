@@ -19,13 +19,14 @@ const backgroundimg = "/images/Background.png";
 
 const defaultTheme = createTheme();
 
-const LoginForm = () => {
+const LoginForm = ({ handleSound }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
 
   const handleLogin = () => {
+    handleSound("button");
     dispatch(login({ username, password }));
   };
 

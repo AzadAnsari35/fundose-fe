@@ -16,7 +16,7 @@ import ItIcon from "../public/icons/it.svg";
 
 const defaultTheme = createTheme();
 
-function Home() {
+function Home({ handleSound }) {
   const classes = useStyles();
 
   const [showModal, setShowModal] = useState(false);
@@ -24,6 +24,7 @@ function Home() {
   const [subjectId, setSubjectId] = useState("");
 
   const handleClick = (e) => {
+    handleSound("button");
     const selectedTopic = e.currentTarget.getAttribute("data-topic");
     const selectedId = e.currentTarget.getAttribute("data-id");
     if (selectedTopic) {
@@ -169,6 +170,7 @@ function Home() {
           topic={topic}
           handleClose={() => setShowModal(false)}
           subjectId={subjectId}
+          handleSound={handleSound}
         />
       </DialogBox>
     </>

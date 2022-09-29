@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles } from "@mui/styles";
 import Layout from "@/components/Layout";
 import Typography from "@mui/material/Typography";
@@ -8,6 +8,9 @@ import ProfileImg from "../public/images/profile.png";
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import { createTheme } from "@mui/material/styles";
+import api from "@/api/index";
+import { useDispatch } from "react-redux";
+import * as types from "@/actions/types";
 
 const rankingArray = [
   {
@@ -40,39 +43,65 @@ const rankingArray = [
 
 const defaultTheme = createTheme();
 
-export default function Profile() {
+export default function Profile({ handleSound }) {
   const classes = useStyles();
+  const [data, setData] = useState(null);
+  const dispatch = useDispatch();
+
+  const fetchProfile = async () => {
+    try {
+      // dispatch({
+      //   type: types.START_LOADER,
+      // });
+      const res = await api("/players/profile/");
+      setData(res);
+      // dispatch({
+      //   type: types.STOP_LOADER,
+      // });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      // dispatch({
+      //   type: types.STOP_LOADER,
+      // });
+    }
+  };
+
+  useEffect(() => {
+    fetchProfile();
+  }, []);
 
   return (
-    <Layout>
+    <Layout handleSound={handleSound}>
       <div className={classes.container}>
-        <Box
-          className={classes.card}
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <div className={classes.info}>
-            <Image
-              src={ProfileImg}
-              alt="Profile Image"
-              width={100}
-              height={100}
-              className={classes.avatar}
-            />
+        {data && (
+          <Box
+            className={classes.card}
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <div className={classes.info}>
+              <Image
+                src={ProfileImg}
+                alt="Profile Image"
+                width={100}
+                height={100}
+                className={classes.avatar}
+              />
 
-            <Box sx={{ pl: 3 }}>
-              <Typography variant="h5" component="div" color="#333333">
-                Mosh hamedani
-              </Typography>
+              <Box sx={{ pl: 3 }}>
+                <Typography variant="h5" component="div" color="#333333">
+                  {`${data?.first_name} ${data?.last_name}`}
+                </Typography>
 
-              <Typography variant="body1" component="div" color="#666666">
-                Male 23 Year’s
-              </Typography>
-            </Box>
-          </div>
-          <div className={classes.stats}>
-            <div className={classes.rank}>
+                <Typography variant="body1" component="div" color="#666666">
+                  {data?.email}
+                </Typography>
+              </Box>
+            </div>
+            <div className={classes.stats}>
+              {/* <div className={classes.rank}>
               <Image
                 src={RewardIcon}
                 alt="Reward Icon"
@@ -87,21 +116,27 @@ export default function Profile() {
                   My Ranking
                 </Typography>
               </Box>
+            </div> */}
+              <div className={classes.points}>
+                <Image
+                  src={PointIcon}
+                  alt="Reward Icon"
+                  width={30}
+                  height={30}
+                />
+                <Box sx={{ pl: 1 }}>
+                  <Typography variant="body2" component="div">
+                    {data?.total_score} Points
+                  </Typography>
+                  <Typography variant="body2" component="div" color="#666666">
+                    Points Earned
+                  </Typography>
+                </Box>
+              </div>
             </div>
-            <div className={classes.points}>
-              <Image src={PointIcon} alt="Reward Icon" width={30} height={30} />
-              <Box sx={{ pl: 1 }}>
-                <Typography variant="body2" component="div">
-                  434 Points
-                </Typography>
-                <Typography variant="body2" component="div" color="#666666">
-                  Points Earned
-                </Typography>
-              </Box>
-            </div>
-          </div>
-        </Box>
-        <Box className={classes.card}>
+          </Box>
+        )}
+        {/* <Box className={classes.card}>
           <Typography variant="h5" component="div" color="#2E45D5">
             Global Ranking
           </Typography>
@@ -154,7 +189,7 @@ export default function Profile() {
               </div>
             ))}
           </Box>
-        </Box>
+        </Box> */}
       </div>
     </Layout>
   );

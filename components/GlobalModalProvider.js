@@ -15,7 +15,7 @@ const MODAL_COMPONENTS = {
   [MODAL_TYPES.LOGIN_FORM]: LoginForm,
 };
 
-const GlobalModalProvider = () => {
+const GlobalModalProvider = ({ handleSound }) => {
   const dispatch = useDispatch();
   const { isModalOpen, modalType } = useSelector((state) => state.common);
 
@@ -24,7 +24,7 @@ const GlobalModalProvider = () => {
     if (!modalType || !ModalComponent) {
       return null;
     }
-    return <ModalComponent id={modalType} />;
+    return <ModalComponent id={modalType} handleSound={handleSound} />;
   };
 
   return (

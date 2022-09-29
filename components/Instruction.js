@@ -32,7 +32,12 @@ const dropIn = {
   },
 };
 
-export default function Instruction({ topic, handleClose, subjectId }) {
+export default function Instruction({
+  topic,
+  handleClose,
+  subjectId,
+  handleSound,
+}) {
   const dispatch = useDispatch();
   const classes = useStyles();
   const router = useRouter();
@@ -40,6 +45,7 @@ export default function Instruction({ topic, handleClose, subjectId }) {
 
   const handleStartQuiz = () => {
     handleClose();
+    handleSound("button");
     isLoggedIn
       ? dispatch(startQuiz(subjectId))
       : dispatch(showModal("LOGIN_FORM"));

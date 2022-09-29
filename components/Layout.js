@@ -3,7 +3,13 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Loader from "./Loader";
 
-export default function Layout({ title, keywords, description, children }) {
+export default function Layout({
+  title,
+  keywords,
+  description,
+  children,
+  handleSound,
+}) {
   return (
     <div>
       <Head>
@@ -12,7 +18,7 @@ export default function Layout({ title, keywords, description, children }) {
         <meta name="keywords" content={keywords} />
       </Head>
       <Loader />
-      <Header />
+      <Header handleSound={handleSound} />
       <div className="container">{children}</div>
     </div>
   );

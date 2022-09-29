@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/actions/auth.act";
 import Link from "next/link";
 
-export default function Header() {
+export default function Header({ handleSound }) {
   const router = useRouter();
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -19,8 +19,19 @@ export default function Header() {
   const currentUser = useSelector((state) => state.auth.currentUser);
 
   const handleLogout = () => {
+    handleSound("text");
     dispatch(logout());
     router.push("/");
+  };
+
+  const handleLogin = () => {
+    handleSound("text");
+    dispatch(showModal("LOGIN_FORM"));
+  };
+
+  const handleRegister = () => {
+    handleSound("text");
+    dispatch(showModal("SIGNUP_FORM"));
   };
 
   return (
@@ -64,7 +75,7 @@ export default function Header() {
               component="div"
               align="center"
               color="primary"
-              onClick={() => dispatch(showModal("LOGIN_FORM"))}
+              onClick={handleLogin}
             >
               Login
             </Typography>
@@ -73,7 +84,7 @@ export default function Header() {
               component="div"
               align="center"
               color="primary"
-              onClick={() => dispatch(showModal("SIGNUP_FORM"))}
+              onClick={handleRegister}
             >
               Register
             </Typography>

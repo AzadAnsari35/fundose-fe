@@ -24,7 +24,7 @@ const defaultTheme = createTheme();
 
 const backgroundimg = "/images/Background.png";
 
-const SignUpForm = () => {
+const SignUpForm = ({ handleSound }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const {
@@ -50,10 +50,12 @@ const SignUpForm = () => {
   });
 
   const onSubmit = (data) => {
+    handleSound("button");
     dispatch(signup(data));
   };
 
   const handleClickShowPassword = (key) => {
+    handleSound("shutter");
     setState({
       ...state,
       [key]: !state[key],

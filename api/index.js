@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as types from "@/actions/types";
 import { store } from "../pages/_app";
+import { logout } from "../actions/auth.act";
 
 const LOGGED_IN_API_URL = "/auth/login/";
 const REGISTER_API_URL = "/auth/register/";
@@ -52,8 +53,11 @@ api.interceptors.response.use(
           } else {
           }
         })
-        .catch((err) => {
-          console.log("err", err);
+        .catch((error) => {
+          if (error.response.status === 401) {
+            store.dispatch(logout());
+          }
+          console.log("err", error.response);
         })
         .finally(() => {
           store.dispatch({ type: types.STOP_LOADER });
