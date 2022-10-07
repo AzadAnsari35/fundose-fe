@@ -63,12 +63,12 @@ api.interceptors.response.use(
           store.dispatch({ type: types.STOP_LOADER });
         });
 
-      return new Promise((resolve) => {
-        subscribeTokenRefresh((token) => {
-          originalRequest.headers.Token = `bearer ${token}`;
-          resolve(api(originalRequest));
-        });
-      });
+      // return new Promise((resolve) => {
+      //   subscribeTokenRefresh((token) => {
+      //     originalRequest.headers.Token = `bearer ${token}`;
+      //     resolve(api(originalRequest));
+      //   });
+      // });
     }
     return Promise.reject(err);
   }

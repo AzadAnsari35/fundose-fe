@@ -78,28 +78,30 @@ export default function Levels() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (levelArr.length - 1 === currentLevel) {
+  if (levelArr.length === currentLevel) {
     return <SuccessModal />;
   }
 
   return (
     <div className={classes.container}>
-      {levelArr.map(({ id, label }) => (
-        <Typography
-          variant="body2"
-          component="div"
-          className={`${classes.level} ${
-            currentLevel > id
-              ? classes.visited
-              : currentLevel === id
-              ? classes.current
-              : ""
-          }`}
-          key={id}
-        >
-          {label}
-        </Typography>
-      ))}
+      <div className={classes.levels}>
+        {levelArr.map(({ id, label }) => (
+          <Typography
+            variant="body2"
+            component="div"
+            className={`${classes.level} ${
+              currentLevel > id
+                ? classes.visited
+                : currentLevel === id
+                ? classes.current
+                : ""
+            }`}
+            key={id}
+          >
+            {label}
+          </Typography>
+        ))}
+      </div>
     </div>
   );
 }
@@ -107,8 +109,7 @@ export default function Levels() {
 const useStyles = makeStyles({
   container: {
     width: "100%",
-    height: "100%",
-    padding: "120px 300px 0px",
+    minHeight: "100vh",
     margin: "0 auto",
     backgroundImage: `url(${backgroundimg})`,
     [onMobile]: {
@@ -116,7 +117,9 @@ const useStyles = makeStyles({
       paddingTop: 0,
     },
   },
-
+  levels: {
+    padding: "65px 300px 0px",
+  },
   level: {
     display: "flex",
     justifyContent: "center",

@@ -41,7 +41,7 @@ const LoginForm = ({ handleSound }) => {
               type="name"
               className={classes.text_field}
               value={username}
-              label="Enter your email address"
+              label="Username"
               onChange={(e) => setUsername(e.target.value)}
             />
             <TextField

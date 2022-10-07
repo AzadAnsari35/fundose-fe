@@ -181,6 +181,7 @@ export default Home;
 
 const useStyles = makeStyles(() => {
   const onMobile = defaultTheme.breakpoints.only("xs");
+  const onTab = defaultTheme.breakpoints.down(1025);
 
   return createStyles({
     home: {
@@ -209,6 +210,9 @@ const useStyles = makeStyles(() => {
 
     rightContainer: {
       width: "22%",
+      [onTab]: {
+        width: "32%",
+      },
       [onMobile]: {
         width: "100%",
       },

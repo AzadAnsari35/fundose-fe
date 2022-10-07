@@ -156,9 +156,10 @@ const SignUpForm = ({ handleSound }) => {
                   }}
                   {...register("password", {
                     required: "Required",
-                    minLength: {
-                      value: 6,
-                      message: "Password should be of minimum 6 letters",
+                    pattern: {
+                      value:
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/i,
+                      message: "Please enter valid password",
                     },
                   })}
                   error={errors.password ? true : false}

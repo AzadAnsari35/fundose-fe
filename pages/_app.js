@@ -28,11 +28,11 @@ function MyApp({ Component, pageProps }) {
       : null;
   };
 
-  // const [playMusic, { pause }] = useSound(pleasantPorridge, {
-  //   loop: true,
-  //   autoplay: true,
-  //   volume: 0.5,
-  // });
+  const [playMusic, { pause }] = useSound(pleasantPorridge, {
+    loop: true,
+    autoplay: true,
+    volume: 0.5,
+  });
 
   //// Sounds ////
   const [playClick] = useSound(click, { volume: "0.25" });
@@ -72,6 +72,10 @@ function MyApp({ Component, pageProps }) {
     const currentUser = JSON.parse(getLocalStorageItem("currentUser"));
     if (currentUser)
       store.dispatch({ type: types.LOGIN_SUCCESS, payload: currentUser });
+  }, []);
+
+  useEffect(() => {
+    playMusic();
   }, []);
 
   const initialState = {};

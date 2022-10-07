@@ -10,9 +10,10 @@ export const startQuiz = (subjectId) => async (dispatch) => {
     const response = await api.post("/quiz/start/", {
       subject_id: subjectId,
     });
+    console.log("response", response);
     dispatch(fetchQuestion(response));
   } catch (error) {
-    console.log(JSON.stringify(error.response));
+    console.log("error", error);
     if (error?.response?.data?.detail === "no_same_game_twice_same_day") {
       toast.error("Only one attempt per day. Please try again tomorrow.");
     } else {
