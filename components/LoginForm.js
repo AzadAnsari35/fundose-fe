@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => {
     loginFormModal: {
       width: 580,
       [onMobile]: {
-        width: "80%",
+        width: "100%",
       },
     },
 
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => {
       flexDirection: "column",
       padding: "80px 60px",
       [onMobile]: {
-        padding: 30,
+        padding: 20,
       },
     },
     heading: {

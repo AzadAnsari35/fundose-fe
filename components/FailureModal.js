@@ -10,6 +10,10 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { makeStyles } from "@mui/styles";
 import { resetGame } from "@/actions/quiz.act";
 import { useDispatch } from "react-redux";
+import { createTheme } from "@mui/material/styles";
+
+const defaultTheme = createTheme();
+const onMobile = defaultTheme.breakpoints.only("xs");
 
 export default function FailureModal({ currentScore, handleSound }) {
   const classes = useStyles();
@@ -82,6 +86,9 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     padding: "60px 140px 28px",
+    [onMobile]: {
+      padding: "40px 30px 40px",
+    },
   },
 
   scores: {

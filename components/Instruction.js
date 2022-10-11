@@ -10,6 +10,9 @@ import { makeStyles } from "@mui/styles";
 import { useRouter } from "next/router";
 import { showModal } from "@/actions/common.act";
 import { motion } from "framer-motion";
+import { createTheme } from "@mui/material/styles";
+
+const defaultTheme = createTheme();
 
 const dropIn = {
   hidden: {
@@ -31,6 +34,8 @@ const dropIn = {
     opacity: 0,
   },
 };
+
+const onMobile = defaultTheme.breakpoints.only("xs");
 
 export default function Instruction({
   topic,
@@ -106,6 +111,9 @@ export default function Instruction({
 const useStyles = makeStyles({
   instructionModal: {
     padding: "60px 100px 40px",
+    [onMobile]: {
+      padding: "40px 30px 40px",
+    },
   },
   instructions: { lineHeight: "30px" },
 });

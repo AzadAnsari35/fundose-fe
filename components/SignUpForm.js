@@ -241,7 +241,7 @@ const useStyles = makeStyles((theme) => {
     signupFormModal: {
       width: 580,
       [onMobile]: {
-        width: "80%",
+        width: "100%",
       },
     },
     heading: {
@@ -268,7 +268,7 @@ const useStyles = makeStyles((theme) => {
       flexDirection: "column",
       padding: "60px 60px",
       [onMobile]: {
-        padding: 30,
+        padding: 20,
       },
     },
 

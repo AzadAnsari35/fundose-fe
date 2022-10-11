@@ -9,6 +9,10 @@ import { showModal } from "@/actions/common.act";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/actions/auth.act";
 import Link from "next/link";
+import { createTheme } from "@mui/material/styles";
+
+const defaultTheme = createTheme();
+const onMobile = defaultTheme.breakpoints.only("xs");
 
 export default function Header({ handleSound }) {
   const router = useRouter();
@@ -36,13 +40,14 @@ export default function Header({ handleSound }) {
 
   return (
     <Box component="header" className={classes.header}>
-      <Image
-        src={LogoIcon}
-        alt="Picture of the author"
-        width={160}
-        height={42}
-        onClick={() => router.push("/")}
-      />
+      <div className={classes.imageContainer}>
+        <Image
+          src={LogoIcon}
+          alt="Picture of the author"
+          onClick={() => router.push("/")}
+        />
+      </div>
+
       <Box display="flex" alignItems="center" className={classes.navlink}>
         {isLoggedIn ? (
           <>
@@ -107,12 +112,26 @@ const useStyles = makeStyles({
     left: "50%",
     transform: "translate(-50%, 0)",
     borderRadius: 50,
+    [onMobile]: {
+      width: "100%",
+      padding: "12px 25px",
+    },
   },
 
   navlink: {
     "& div": {
       padding: "0px 20px",
       cursor: "pointer",
+      [onMobile]: {
+        padding: "0px 10px",
+      },
+    },
+  },
+  imageContainer: {
+    height: "100%",
+    [onMobile]: {
+      width: "30%",
+      height: 28,
     },
   },
 });
