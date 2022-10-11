@@ -40,6 +40,7 @@ ul li::before {
   .container {
     padding: 0 20px;
     padding-top: 120px;
+    padding-bottom: 40px;
     background-size: contain;
   }
   html {
