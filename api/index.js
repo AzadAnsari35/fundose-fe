@@ -42,7 +42,7 @@ api.interceptors.response.use(
     const originalRequest = config;
 
     if (status === 401 && localStorage.getItem("refreshToken") !== null) {
-      axios
+      return axios
         .post("https://fundose.in/auth/refresh-token/", {
           refresh: localStorage.getItem("refreshToken"),
         })
@@ -50,7 +50,6 @@ api.interceptors.response.use(
           if (res.status === 200) {
             localStorage.setItem("token", res.data.access);
             return api(originalRequest);
-          } else {
           }
         })
         .catch((error) => {
@@ -58,6 +57,7 @@ api.interceptors.response.use(
             store.dispatch(logout());
           }
           console.log("err", error.response);
+          return Promise.reject(error);
         })
         .finally(() => {
           store.dispatch({ type: types.STOP_LOADER });
