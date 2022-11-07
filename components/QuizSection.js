@@ -137,10 +137,18 @@ export default function QuizSection({ handleSound }) {
 
   useEffect(() => {
     if (countdown === 0) {
-      setShowModal(true);
+      onTimeOver();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [countdown]);
+
+  const onTimeOver = async () => {
+    setShowModal(true);
+    await api.post("/quiz/submit-choice/", {
+      question_choice_id: "",
+      enc_ts: enc_ts,
+    });
+  };
 
   const handleModalClose = (event, reason) => {
     if (reason && reason == "backdropClick") return;
