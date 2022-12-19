@@ -2,7 +2,6 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import Button from "@mui/material/Button";
-import InstructionIcon from "../public/illustration/instruction.svg";
 import Box from "@mui/material/Box";
 import { startQuiz } from "@/actions/quiz.act";
 import { useDispatch, useSelector } from "react-redux";
@@ -93,7 +92,7 @@ export default function Instruction({
       </Typography>
       <Box display="flex" justifyContent="center">
         <Image
-          src={InstructionIcon}
+          src="/illustration/instruction.svg"
           alt="instruction icon"
           width={100}
           height={100}

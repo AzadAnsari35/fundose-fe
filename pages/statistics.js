@@ -1,17 +1,9 @@
-import React from "react";
 import Layout from "@/components/Layout";
-import { makeStyles } from "@mui/styles";
-import Typography from "@mui/material/Typography";
-import RewardIcon from "../public/icons/reward.svg";
-import PointIcon from "../public/icons/point.svg";
-import QuestionIcon from "../public/icons/question.svg";
-import WinnerIcon from "../public/icons/winner.svg";
-import WrongIcon from "../public/icons/wrong.svg";
-import CorrectIcon from "../public/icons/correct.svg";
-import PlayedIcon from "../public/icons/played.svg";
 import Box from "@mui/material/Box";
-import Image from "next/image";
 import { createTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/styles";
+import Image from "next/image";
 
 const defaultTheme = createTheme();
 const onMobile = defaultTheme.breakpoints.only("xs");
@@ -21,27 +13,27 @@ export default function Statistics() {
 
   const statsArray = [
     {
-      icon: QuestionIcon,
+      icon: "/icons/question.svg",
       label: "Question Answered",
       count: 88,
     },
     {
-      icon: CorrectIcon,
+      icon: "/icons/correct.svg",
       label: "Correct Answered",
       count: 3,
     },
     {
-      icon: WrongIcon,
+      icon: "/icons/wrong.svg",
       label: "Wrong Answered",
       count: 22,
     },
     {
-      icon: PlayedIcon,
+      icon: "/icons/played.svg",
       label: "Game Played",
       count: 34,
     },
     {
-      icon: WinnerIcon,
+      icon: "/icons/winner.svg",
       label: "Game Win",
       count: 7,
     },
@@ -67,7 +59,7 @@ export default function Statistics() {
           >
             <div className={classes.rank}>
               <Image
-                src={RewardIcon}
+                src="/icons/reward.svg"
                 alt="Reward Icon"
                 width={30}
                 height={30}
@@ -82,7 +74,12 @@ export default function Statistics() {
               </Box>
             </div>
             <div className={classes.points}>
-              <Image src={PointIcon} alt="Reward Icon" width={30} height={30} />
+              <Image
+                src="/icons/point.svg"
+                alt="Reward Icon"
+                width={30}
+                height={30}
+              />
               <Box sx={{ pl: 1 }}>
                 <Typography variant="body2" component="div">
                   434 Points

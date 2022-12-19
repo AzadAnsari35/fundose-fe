@@ -10,9 +10,6 @@ import Image from "next/image";
 import { useState } from "react";
 import AuditIcon from "../public/icons/audit.svg";
 //Icons
-import FinanceIcon from "../public/icons/finance.svg";
-import GstIcon from "../public/icons/gst.svg";
-import ItIcon from "../public/icons/it.svg";
 
 const defaultTheme = createTheme();
 
@@ -103,7 +100,7 @@ function Home({ handleSound }) {
                 onClick={handleClick}
               >
                 <Image
-                  src={FinanceIcon}
+                  src="/icons/finance.svg"
                   alt="Finance Icon"
                   width={40}
                   height={40}
@@ -121,7 +118,7 @@ function Home({ handleSound }) {
                 onClick={handleClick}
               >
                 <Image
-                  src={ItIcon}
+                  src="/icons/it.svg"
                   alt="Income Tax Icon"
                   width={40}
                   height={40}
@@ -139,7 +136,7 @@ function Home({ handleSound }) {
                 onClick={handleClick}
               >
                 <Image
-                  src={AuditIcon}
+                  src="/icons/audit.svg"
                   alt="Audit Icon"
                   width={40}
                   height={40}
@@ -156,7 +153,12 @@ function Home({ handleSound }) {
                 data-id="2"
                 onClick={handleClick}
               >
-                <Image src={GstIcon} alt="Gst Icon" width={40} height={40} />
+                <Image
+                  src="/icons/gst.svg"
+                  alt="Gst Icon"
+                  width={40}
+                  height={40}
+                />
                 <Typography variant="body1" component="div">
                   GST
                 </Typography>

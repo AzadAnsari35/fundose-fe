@@ -1,12 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Button from "@mui/material/Button";
-import FailureIcon from "../public/illustration/failure.svg";
 import Typography from "@mui/material/Typography";
-import RewardIcon from "../public/icons/reward.svg";
-import PointIcon from "../public/icons/point.svg";
 import Box from "@mui/material/Box";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { makeStyles } from "@mui/styles";
 import { resetGame } from "@/actions/quiz.act";
 import { useDispatch } from "react-redux";
@@ -27,7 +23,7 @@ export default function FailureModal({ currentScore, handleSound }) {
   return (
     <div className={classes.failureModal}>
       <Image
-        src={FailureIcon}
+        src="/illustration/failure.svg"
         alt="Picture of the author"
         width={264}
         height={160}
@@ -45,7 +41,12 @@ export default function FailureModal({ currentScore, handleSound }) {
       </Typography>
       <div className={classes.scores}>
         <div className={classes.rank}>
-          <Image src={RewardIcon} alt="Reward Icon" width={30} height={30} />
+          <Image
+            src="/icons/reward.svg"
+            alt="Reward Icon"
+            width={30}
+            height={30}
+          />
           <Box sx={{ pl: 1 }}>
             <Typography variant="body2" component="div">
               5th Rank
@@ -56,7 +57,12 @@ export default function FailureModal({ currentScore, handleSound }) {
           </Box>
         </div>
         <div className={classes.points}>
-          <Image src={PointIcon} alt="Reward Icon" width={30} height={30} />
+          <Image
+            src="/icons/point.svg"
+            alt="Reward Icon"
+            width={30}
+            height={30}
+          />
           <Box sx={{ pl: 1 }}>
             <Typography variant="body2" component="div">
               {currentScore} Points

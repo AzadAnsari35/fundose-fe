@@ -1,7 +1,6 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import LogoIcon from "../public/icons/logo.svg";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { makeStyles } from "@mui/styles";
@@ -42,9 +41,11 @@ export default function Header({ handleSound }) {
     <Box component="header" className={classes.header}>
       <div className={classes.imageContainer}>
         <Image
-          src={LogoIcon}
+          src="/icons/logo.svg"
           alt="Picture of the author"
           onClick={() => router.push("/")}
+          width={160}
+          height={44}
         />
       </div>
 

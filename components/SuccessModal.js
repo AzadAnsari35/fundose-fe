@@ -2,11 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Button from "@mui/material/Button";
 import { makeStyles } from "@mui/styles";
-import SuccessIcon from "../public/illustration/success.svg";
 import Typography from "@mui/material/Typography";
-import RewardIcon from "../public/icons/reward.svg";
-import PointIcon from "../public/icons/point.svg";
-import ConfettiIcon from "../public/illustration/confetti.svg";
 import Box from "@mui/material/Box";
 import { useDispatch } from "react-redux";
 
@@ -22,14 +18,14 @@ export default function SuccessModal({ handleClose }) {
     <div className={classes.successModal}>
       <span className={classes.confettiIcon}>
         <Image
-          src={ConfettiIcon}
+          src="/illustration/success.svg"
           alt="Confetti Illustration"
           width={588}
           height={80}
         />
       </span>
       <Image
-        src={SuccessIcon}
+        src="/illustration/success.svg"
         alt="Success Illustration"
         width={264}
         height={160}
@@ -47,7 +43,12 @@ export default function SuccessModal({ handleClose }) {
       </Typography>
       <div className={classes.scores}>
         <div className={classes.rank}>
-          <Image src={RewardIcon} alt="Reward Icon" width={30} height={30} />
+          <Image
+            src="/icons/reward.svg"
+            alt="Reward Icon"
+            width={30}
+            height={30}
+          />
           <Box sx={{ pl: 1 }}>
             <Typography variant="body2" component="div">
               5th Rank
@@ -58,7 +59,12 @@ export default function SuccessModal({ handleClose }) {
           </Box>
         </div>
         <div className={classes.points}>
-          <Image src={PointIcon} alt="Reward Icon" width={30} height={30} />
+          <Image
+            src="/icons/point.svg"
+            alt="Reward Icon"
+            width={30}
+            height={30}
+          />
           <Box sx={{ pl: 1 }}>
             <Typography variant="body2" component="div">
               434 Points

@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles } from "@mui/styles";
 import Layout from "@/components/Layout";
 import Typography from "@mui/material/Typography";
-import RewardIcon from "../public/icons/reward.svg";
-import PointIcon from "../public/icons/point.svg";
-import ProfileImg from "../public/images/profile.png";
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import { createTheme } from "@mui/material/styles";
@@ -83,7 +80,7 @@ export default function Profile({ handleSound }) {
           >
             <div className={classes.info}>
               <Image
-                src={ProfileImg}
+                src="/images/profile.png"
                 alt="Profile Image"
                 width={100}
                 height={100}
@@ -119,7 +116,7 @@ export default function Profile({ handleSound }) {
             </div> */}
               <div className={classes.points}>
                 <Image
-                  src={PointIcon}
+                  src="/icons/point.svg"
                   alt="Reward Icon"
                   width={30}
                   height={30}
