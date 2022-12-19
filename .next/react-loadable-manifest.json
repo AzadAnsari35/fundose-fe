@@ -1,0 +1,14 @@
+{
+  "../node_modules/next/dist/client/index.js -> ../pages/_error": {
+    "id": 9651,
+    "files": [
+      "static/chunks/651.cd440d205ca10b23.js"
+    ]
+  },
+  "../node_modules/use-sound/dist/use-sound.esm.js -> howler": {
+    "id": 1766,
+    "files": [
+      "static/chunks/766.59d6938897d2a104.js"
+    ]
+  }
+}
