@@ -10,8 +10,8 @@ module.exports = {
           options: {
             limit: config.inlineImageLimit,
             fallback: require.resolve("file-loader"),
-            publicPath: `${config.assetPrefix}/_next/static/images/`,
-            outputPath: `${isServer ? "../" : ""}static/images/`,
+            // publicPath: `${config.assetPrefix}/_next/static/images/`,
+            // outputPath: `${isServer ? "../" : ""}static/images/`,
             name: "[name]-[hash].[ext]",
             esModule: config.esModule || false,
           },
