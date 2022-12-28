@@ -7,7 +7,7 @@ const LOGGED_IN_API_URL = "/auth/login/";
 const REGISTER_API_URL = "/auth/register/";
 
 const api = axios.create({
-  baseURL: "https://fundose.in",
+  baseURL: "https://api.fundose.in",
 });
 
 api.interceptors.request.use(
@@ -43,7 +43,7 @@ api.interceptors.response.use(
 
     if (status === 401 && localStorage.getItem("refreshToken") !== null) {
       return axios
-        .post("https://fundose.in/auth/refresh-token/", {
+        .post("https://api.fundose.in/auth/refresh-token/", {
           refresh: localStorage.getItem("refreshToken"),
         })
         .then((res) => {
