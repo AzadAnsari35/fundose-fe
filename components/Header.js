@@ -42,7 +42,7 @@ export default function Header({ handleSound }) {
   return (
     <Box component="header" className={classes.header}>
       <div className={classes.imageContainer}>
-        <Image
+        <img
           src={LogoImage}
           alt="Picture of the author"
           onClick={() => router.push("/")}
