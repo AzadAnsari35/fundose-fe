@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "fun-web",
+            "script": "yarn",
+            "args": "start"
+        }
+    ]
+}
