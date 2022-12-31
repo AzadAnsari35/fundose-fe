@@ -22,7 +22,7 @@ export default function FailureModal({ currentScore, handleSound }) {
 
   return (
     <div className={classes.failureModal}>
-      <Image
+      <img
         src="/static/illustration/failure.svg"
         alt="Picture of the author"
         width={264}
@@ -41,7 +41,7 @@ export default function FailureModal({ currentScore, handleSound }) {
       </Typography>
       <div className={classes.scores}>
         <div className={classes.rank}>
-          <Image
+          <img
             src="/static/icons/reward.svg"
             alt="Reward Icon"
             width={30}
@@ -57,7 +57,7 @@ export default function FailureModal({ currentScore, handleSound }) {
           </Box>
         </div>
         <div className={classes.points}>
-          <Image
+          <img
             src="/static/icons/point.svg"
             alt="Reward Icon"
             width={30}

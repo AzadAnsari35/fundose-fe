@@ -99,7 +99,7 @@ function Home({ handleSound }) {
                 data-id="3"
                 onClick={handleClick}
               >
-                <Image
+                <img
                   src="/static/icons/finance.svg"
                   alt="Finance Icon"
                   width={40}
@@ -117,7 +117,7 @@ function Home({ handleSound }) {
                 data-id="1"
                 onClick={handleClick}
               >
-                <Image
+                <img
                   src="/static/icons/it.svg"
                   alt="Income Tax Icon"
                   width={40}
@@ -135,7 +135,7 @@ function Home({ handleSound }) {
                 data-id="4"
                 onClick={handleClick}
               >
-                <Image
+                <img
                   src="/static/icons/audit.svg"
                   alt="Audit Icon"
                   width={40}
@@ -153,7 +153,7 @@ function Home({ handleSound }) {
                 data-id="2"
                 onClick={handleClick}
               >
-                <Image
+                <img
                   src="/static/icons/gst.svg"
                   alt="Gst Icon"
                   width={40}

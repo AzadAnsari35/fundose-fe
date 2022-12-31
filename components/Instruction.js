@@ -91,7 +91,7 @@ export default function Instruction({
         </li>
       </Typography>
       <Box display="flex" justifyContent="center">
-        <Image
+        <img
           src="/static/illustration/instruction.svg"
           alt="instruction icon"
           width={100}

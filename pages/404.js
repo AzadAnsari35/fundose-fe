@@ -14,7 +14,7 @@ export default function NotFound() {
   return (
     <Box className={classes.root}>
       <Box display="flex" flexDirection="column" alignItems="center">
-        <Image src="/static/images/404.svg" alt="404 image" width={500} height={400} />
+        <img src="/static/images/404.svg" alt="404 image" width={500} height={400} />
         <Typography
           variant="h2"
           align="center"

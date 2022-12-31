@@ -279,7 +279,7 @@ export default function QuizSection({ handleSound }) {
         </Grid>
 
         {/* <Box display="flex" justifyContent="center" sx={{ pt: 5 }}>
-          <Image
+          <img
             src={SwapIcon}
             alt="SwapIcon Icon"
             width={70}
@@ -287,7 +287,7 @@ export default function QuizSection({ handleSound }) {
             className=""
             onClick={handleSwap}
           />
-          <Image
+          <img
             src={FiftyIcon}
             alt="SwapIcon Icon"
             width={70}

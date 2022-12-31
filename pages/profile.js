@@ -79,7 +79,7 @@ export default function Profile({ handleSound }) {
             alignItems="center"
           >
             <div className={classes.info}>
-              <Image
+              <img
                 src="/static/images/profile.png"
                 alt="Profile Image"
                 width={100}
@@ -99,7 +99,7 @@ export default function Profile({ handleSound }) {
             </div>
             <div className={classes.stats}>
               {/* <div className={classes.rank}>
-              <Image
+              <img
                 src={RewardIcon}
                 alt="Reward Icon"
                 width={30}
@@ -115,7 +115,7 @@ export default function Profile({ handleSound }) {
               </Box>
             </div> */}
               <div className={classes.points}>
-                <Image
+                <img
                   src="/static/icons/point.svg"
                   alt="Reward Icon"
                   width={30}
@@ -154,7 +154,7 @@ export default function Profile({ handleSound }) {
                   >
                     {rank}
                   </Typography>
-                  <Image
+                  <img
                     src={ProfileImg}
                     alt="Profile Image"
                     width={40}

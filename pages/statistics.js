@@ -58,7 +58,7 @@ export default function Statistics() {
             sx={{ pt: 3, pb: 5 }}
           >
             <div className={classes.rank}>
-              <Image
+              <img
                 src="/static/icons/reward.svg"
                 alt="Reward Icon"
                 width={30}
@@ -74,7 +74,7 @@ export default function Statistics() {
               </Box>
             </div>
             <div className={classes.points}>
-              <Image
+              <img
                 src="/static/icons/point.svg"
                 alt="Reward Icon"
                 width={30}
@@ -94,7 +94,7 @@ export default function Statistics() {
           {statsArray.map(({ icon, label, count }, i) => (
             <div className={classes.statsRow} key={i}>
               <Box display="flex" alignItems="center">
-                <Image
+                <img
                   src={icon}
                   alt="Question Mark Icon"
                   width={30}
