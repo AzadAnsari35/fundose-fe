@@ -10,6 +10,8 @@ import { logout } from "@/actions/auth.act";
 import Link from "next/link";
 import { createTheme } from "@mui/material/styles";
 
+const LogoImage = "/static/icons/logo.svg"
+
 const defaultTheme = createTheme();
 const onMobile = defaultTheme.breakpoints.only("xs");
 
@@ -41,7 +43,7 @@ export default function Header({ handleSound }) {
     <Box component="header" className={classes.header}>
       <div className={classes.imageContainer}>
         <Image
-          src="/static/icons/logo.svg"
+          src={LogoImage}
           alt="Picture of the author"
           onClick={() => router.push("/")}
           width={160}
