@@ -6,7 +6,7 @@ import SuccessModal from "./SuccessModal";
 import { incrementLevel } from "@/actions/quiz.act";
 import { useSelector, useDispatch } from "react-redux";
 
-const backgroundimg = "/images/Background.png";
+const backgroundimg = "/static/images/Background.png";
 
 const levelArray = [
   {

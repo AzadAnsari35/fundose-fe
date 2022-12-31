@@ -15,7 +15,7 @@ import { useState } from "react";
 import { login } from "../actions/auth.act";
 import { createTheme } from "@mui/material/styles";
 
-const backgroundimg = "/images/Background.png";
+const backgroundimg = "/static/images/Background.png";
 
 const defaultTheme = createTheme();
 

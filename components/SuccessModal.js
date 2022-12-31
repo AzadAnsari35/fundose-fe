@@ -18,14 +18,14 @@ export default function SuccessModal({ handleClose }) {
     <div className={classes.successModal}>
       <span className={classes.confettiIcon}>
         <Image
-          src="/illustration/success.svg"
+          src="/static/illustration/success.svg"
           alt="Confetti Illustration"
           width={588}
           height={80}
         />
       </span>
       <Image
-        src="/illustration/success.svg"
+        src="/static/illustration/success.svg"
         alt="Success Illustration"
         width={264}
         height={160}
@@ -44,7 +44,7 @@ export default function SuccessModal({ handleClose }) {
       <div className={classes.scores}>
         <div className={classes.rank}>
           <Image
-            src="/icons/reward.svg"
+            src="/static/icons/reward.svg"
             alt="Reward Icon"
             width={30}
             height={30}
@@ -60,7 +60,7 @@ export default function SuccessModal({ handleClose }) {
         </div>
         <div className={classes.points}>
           <Image
-            src="/icons/point.svg"
+            src="/static/icons/point.svg"
             alt="Reward Icon"
             width={30}
             height={30}

@@ -11,15 +11,16 @@ import * as types from "../actions/types";
 
 //Sound
 import useSound from "use-sound";
-import pleasantPorridge from "../public/sounds/pleasant-porridge.mp3";
-import click from "../public/sounds/click.mp3";
-import button from "../public/sounds/button.mp3";
-import shutter from "../public/sounds/shutter.mp3";
-import wingame from "../public/sounds/wingame.mp3";
-import wrong from "../public/sounds/wrong.mp3";
-import text from "../public/sounds/toggle.mp3";
+const click = "/static/sounds/click.mp3";
+const button = "/static/sounds/button.mp3";
+const shutter = "/static/sounds/shutter.mp3";
+const wingame = "/static/sounds/wingame.mp3";
+const wrong = "/static/sounds/wrong.mp3";
+const text = "/static/sounds/toggle.mp3";
 import ClearIcon from "@mui/icons-material/Clear";
 let store;
+
+const pleasantPorridge = "/static/sounds/pleasant-porridge.mp3";
 
 function MyApp({ Component, pageProps }) {
   const getLocalStorageItem = (key) => {

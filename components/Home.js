@@ -8,7 +8,7 @@ import { createStyles, makeStyles } from "@mui/styles";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import AuditIcon from "../public/icons/audit.svg";
+const AuditIcon = "/static/icons/audit.svg";
 //Icons
 
 const defaultTheme = createTheme();
@@ -100,7 +100,7 @@ function Home({ handleSound }) {
                 onClick={handleClick}
               >
                 <Image
-                  src="/icons/finance.svg"
+                  src="/static/icons/finance.svg"
                   alt="Finance Icon"
                   width={40}
                   height={40}
@@ -118,7 +118,7 @@ function Home({ handleSound }) {
                 onClick={handleClick}
               >
                 <Image
-                  src="/icons/it.svg"
+                  src="/static/icons/it.svg"
                   alt="Income Tax Icon"
                   width={40}
                   height={40}
@@ -136,7 +136,7 @@ function Home({ handleSound }) {
                 onClick={handleClick}
               >
                 <Image
-                  src="/icons/audit.svg"
+                  src="/static/icons/audit.svg"
                   alt="Audit Icon"
                   width={40}
                   height={40}
@@ -154,7 +154,7 @@ function Home({ handleSound }) {
                 onClick={handleClick}
               >
                 <Image
-                  src="/icons/gst.svg"
+                  src="/static/icons/gst.svg"
                   alt="Gst Icon"
                   width={40}
                   height={40}

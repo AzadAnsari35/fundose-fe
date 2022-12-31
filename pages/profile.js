@@ -80,7 +80,7 @@ export default function Profile({ handleSound }) {
           >
             <div className={classes.info}>
               <Image
-                src="/images/profile.png"
+                src="/static/images/profile.png"
                 alt="Profile Image"
                 width={100}
                 height={100}
@@ -116,7 +116,7 @@ export default function Profile({ handleSound }) {
             </div> */}
               <div className={classes.points}>
                 <Image
-                  src="/icons/point.svg"
+                  src="/static/icons/point.svg"
                   alt="Reward Icon"
                   width={30}
                   height={30}

@@ -41,7 +41,7 @@ export default function Header({ handleSound }) {
     <Box component="header" className={classes.header}>
       <div className={classes.imageContainer}>
         <Image
-          src="/icons/logo.svg"
+          src="/static/icons/logo.svg"
           alt="Picture of the author"
           onClick={() => router.push("/")}
           width={160}

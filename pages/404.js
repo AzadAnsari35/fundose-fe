@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
 import Box from "@mui/material/Box";
-import NotFoundImg from "../public/images/404.svg";
+// import NotFoundImg from "../public/images/404.svg";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -14,7 +14,7 @@ export default function NotFound() {
   return (
     <Box className={classes.root}>
       <Box display="flex" flexDirection="column" alignItems="center">
-        <Image src="/images/404.svg" alt="404 image" width={500} height={400} />
+        <Image src="/static/images/404.svg" alt="404 image" width={500} height={400} />
         <Typography
           variant="h2"
           align="center"

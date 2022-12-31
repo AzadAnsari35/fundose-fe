@@ -13,27 +13,27 @@ export default function Statistics() {
 
   const statsArray = [
     {
-      icon: "/icons/question.svg",
+      icon: "/static/icons/question.svg",
       label: "Question Answered",
       count: 88,
     },
     {
-      icon: "/icons/correct.svg",
+      icon: "/static/icons/correct.svg",
       label: "Correct Answered",
       count: 3,
     },
     {
-      icon: "/icons/wrong.svg",
+      icon: "/static/icons/wrong.svg",
       label: "Wrong Answered",
       count: 22,
     },
     {
-      icon: "/icons/played.svg",
+      icon: "/static/icons/played.svg",
       label: "Game Played",
       count: 34,
     },
     {
-      icon: "/icons/winner.svg",
+      icon: "/static/icons/winner.svg",
       label: "Game Win",
       count: 7,
     },
@@ -59,7 +59,7 @@ export default function Statistics() {
           >
             <div className={classes.rank}>
               <Image
-                src="/icons/reward.svg"
+                src="/static/icons/reward.svg"
                 alt="Reward Icon"
                 width={30}
                 height={30}
@@ -75,7 +75,7 @@ export default function Statistics() {
             </div>
             <div className={classes.points}>
               <Image
-                src="/icons/point.svg"
+                src="/static/icons/point.svg"
                 alt="Reward Icon"
                 width={30}
                 height={30}

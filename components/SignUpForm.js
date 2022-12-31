@@ -16,13 +16,13 @@ import { createStyles, makeStyles } from "@mui/styles";
 import Image from "next/image";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import FormSvg from "../public/illustration/form.svg";
+// import FormSvg from "../public/illustration/form.svg";
 import { useForm } from "react-hook-form";
 import { createTheme } from "@mui/material/styles";
 
 const defaultTheme = createTheme();
 
-const backgroundimg = "/images/Background.png";
+const backgroundimg = "/static/images/Background.png";
 
 const SignUpForm = ({ handleSound }) => {
   const classes = useStyles();
