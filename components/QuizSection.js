@@ -20,6 +20,7 @@ import { useRouter } from "next/router";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { useWarnIfUnsavedChanges } from "@/components/LeaveUserConfirmation";
 import { motion } from "framer-motion";
+import SuccessModal from "./SuccessModal";
 
 const optionLabel = ["a", "b", "c", "d"];
 
@@ -88,17 +89,26 @@ export default function QuizSection({ handleSound }) {
         question_choice_id: choiceId,
         enc_ts: enc_ts,
       });
-      const correctAnswer = !has(response, "game_status");
-      setShowModal(true);
-      setIsSuccess(correctAnswer);
-      handleSound(correctAnswer ? "correct" : "wrong");
-      setCurrentScore(response.current_game_score);
-      if (correctAnswer) {
-        dispatch(fetchQuestion(response));
+      if (questionNumber === 12) {
+        const correctAnswer = response?.game_status;
+        setShowModal(true);
+        setIsSuccess(correctAnswer === "win");
+        handleSound(correctAnswer === "win" ? "correct" : "wrong");
+        setCurrentScore(response.current_game_score);
         setQuestionNumber((questionNumber) => questionNumber + 1);
-        setTimerKey((key) => key + 1);
-        // stopTimer();
-        // timerRef.current.resetTimer();
+      } else {
+        const correctAnswer = !has(response, "game_status");
+        setShowModal(true);
+        setIsSuccess(correctAnswer);
+        handleSound(correctAnswer ? "correct" : "wrong");
+        setCurrentScore(response.current_game_score);
+        if (correctAnswer) {
+          dispatch(fetchQuestion(response));
+          setQuestionNumber((questionNumber) => questionNumber + 1);
+          setTimerKey((key) => key + 1);
+          // stopTimer();
+          // timerRef.current.resetTimer();
+        }
       }
     } catch (error) {
       console.log(error);
@@ -110,13 +120,13 @@ export default function QuizSection({ handleSound }) {
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && questionNumber !== 13) {
       const timer = setTimeout(() => {
         handleModalClose();
       }, LEVEL_MODAL_CLOSE_TIME);
       return () => clearTimeout(timer);
     }
-  }, [isSuccess, showModal]);
+  }, [isSuccess, showModal, questionNumber]);
 
   useEffect(() => {
     router.beforePopState(({ as }) => {
@@ -136,7 +146,7 @@ export default function QuizSection({ handleSound }) {
   }, [router]);
 
   useEffect(() => {
-    if (countdown === 0) {
+    if (countdown === 0 && questionNumber !== 13) {
       onTimeOver();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -144,6 +154,7 @@ export default function QuizSection({ handleSound }) {
 
   const onTimeOver = async () => {
     setShowModal(true);
+    setIsSuccess(false);
     await api.post("/quiz/submit-choice/", {
       question_choice_id: "",
       enc_ts: enc_ts,
@@ -302,9 +313,13 @@ export default function QuizSection({ handleSound }) {
         <DialogBox
           open={showModal}
           handleClose={handleModalClose}
-          fullScreen={true}
+          fullScreen={questionNumber === 13 ? false : true}
         >
-          <Level />
+          {questionNumber !== 13 ? (
+            <Level />
+          ) : (
+            <SuccessModal currentScore={currentScore} />
+          )}
         </DialogBox>
       ) : (
         <DialogBox open={showModal} handleClose={handleModalClose}>

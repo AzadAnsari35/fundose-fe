@@ -10,7 +10,7 @@ import { logout } from "@/actions/auth.act";
 import Link from "next/link";
 import { createTheme } from "@mui/material/styles";
 
-const LogoImage = "/static/icons/logo.svg"
+const LogoImage = "/static/icons/logo.svg";
 
 const defaultTheme = createTheme();
 const onMobile = defaultTheme.breakpoints.only("xs");
@@ -59,6 +59,7 @@ export default function Header({ handleSound }) {
               component="div"
               align="center"
               color="primary"
+              sx={{ textTransform: "capitalize" }}
             >
               <Link href="/profile">
                 <a>

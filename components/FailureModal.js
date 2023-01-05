@@ -40,7 +40,7 @@ export default function FailureModal({ currentScore, handleSound }) {
         Try Another Chance
       </Typography>
       <div className={classes.scores}>
-        <div className={classes.rank}>
+        {/* <div className={classes.rank}>
           <img
             src="/static/icons/reward.svg"
             alt="Reward Icon"
@@ -55,7 +55,7 @@ export default function FailureModal({ currentScore, handleSound }) {
               My Ranking
             </Typography>
           </Box>
-        </div>
+        </div> */}
         <div className={classes.points}>
           <img
             src="/static/icons/point.svg"

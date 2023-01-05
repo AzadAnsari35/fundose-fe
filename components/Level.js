@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography";
 import { createTheme } from "@mui/material/styles";
-import SuccessModal from "./SuccessModal";
 import { incrementLevel } from "@/actions/quiz.act";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -78,10 +77,6 @@ export default function Levels() {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
-
-  if (levelArr.length === currentLevel) {
-    return <SuccessModal />;
-  }
 
   return (
     <div className={classes.container}>
