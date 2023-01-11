@@ -41,13 +41,14 @@ export default function Header({ handleSound }) {
 
   return (
     <Box component="header" className={classes.header}>
-      <div className={classes.imageContainer}>
+      <div>
         <img
           src={LogoImage}
           alt="Picture of the author"
           onClick={() => router.push("/")}
           width={160}
           height={44}
+          className={classes.imageContainer}
         />
       </div>
 
@@ -162,8 +163,7 @@ const useStyles = makeStyles({
   imageContainer: {
     height: "100%",
     [onMobile]: {
-      width: "30%",
-      height: 28,
+      width: "100%",
     },
   },
 });
