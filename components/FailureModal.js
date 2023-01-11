@@ -40,22 +40,29 @@ export default function FailureModal({ currentScore, handleSound }) {
         Try Another Chance
       </Typography>
       <div className={classes.scores}>
-        {/* <div className={classes.rank}>
-          <img
+        <div className={classes.rank}>
+          {/* <img
             src="/static/icons/reward.svg"
             alt="Reward Icon"
             width={30}
             height={30}
-          />
+          /> */}
           <Box sx={{ pl: 1 }}>
-            <Typography variant="body2" component="div">
+            <a
+              href="https://www.catusharmakkar.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Our Courses
+            </a>
+            {/* <Typography variant="body2" component="div">
               5th Rank
             </Typography>
             <Typography variant="body2" component="div" color="#666666">
               My Ranking
-            </Typography>
+            </Typography> */}
           </Box>
-        </div> */}
+        </div>
         <div className={classes.points}>
           <img
             src="/static/icons/point.svg"
@@ -106,6 +113,8 @@ const useStyles = makeStyles({
     display: "flex",
     paddingRight: 8,
     borderRight: "1px solid #e4e3e3",
+    alignItems: "center",
+    color: "#2E45D5",
   },
 
   points: {

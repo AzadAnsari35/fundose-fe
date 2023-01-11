@@ -59,6 +59,20 @@ export default function Header({ handleSound }) {
               component="div"
               align="center"
               color="primary"
+            >
+              <a
+                href="https://www.catusharmakkar.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Practical Courses
+              </a>
+            </Typography>
+            <Typography
+              variant="body1"
+              component="div"
+              align="center"
+              color="primary"
               sx={{ textTransform: "capitalize" }}
             >
               <Link href="/profile">
@@ -79,6 +93,20 @@ export default function Header({ handleSound }) {
           </>
         ) : (
           <>
+            <Typography
+              variant="body1"
+              component="div"
+              align="center"
+              color="primary"
+            >
+              <a
+                href="https://www.catusharmakkar.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Practical Courses
+              </a>
+            </Typography>
             <Typography
               variant="body1"
               component="div"
