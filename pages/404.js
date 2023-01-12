@@ -14,7 +14,12 @@ export default function NotFound() {
   return (
     <Box className={classes.root}>
       <Box display="flex" flexDirection="column" alignItems="center">
-        <img src="/static/images/404.svg" alt="404 image" width={500} height={400} />
+        <img
+          src="/static/images/404.svg"
+          alt="404 image"
+          width={500}
+          height={400}
+        />
         <Typography
           variant="h2"
           align="center"
@@ -40,7 +45,7 @@ export default function NotFound() {
 }
 
 const useStyles = makeStyles({
-  root: { backgroundImage: `url(${"images/404_background.svg"})` },
+  root: { backgroundImage: `url(${"static/images/404_background.svg"})` },
   heading: {
     color: "#666666",
     fontWeight: "800 !important",

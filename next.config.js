@@ -21,4 +21,14 @@ module.exports = {
 
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: "/course",
+        destination: "https://www.catusharmakkar.com/",
+        permanent: false,
+        basePath: false,
+      },
+    ];
+  },
 };
