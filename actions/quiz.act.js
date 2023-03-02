@@ -2,7 +2,7 @@ import * as types from "./types";
 import api from "@/api/index";
 import { toast } from "react-toastify";
 
-export const startQuiz = (subjectId) => async (dispatch) => {
+export const startQuiz = (subjectId, router) => async (dispatch) => {
   try {
     dispatch({
       type: types.START_LOADER,
@@ -12,6 +12,7 @@ export const startQuiz = (subjectId) => async (dispatch) => {
     });
     console.log("response", response);
     dispatch(fetchQuestion(response));
+    router.push("/");
   } catch (error) {
     console.log("error", error);
     if (error?.response?.data?.detail === "no_same_game_twice_same_day") {

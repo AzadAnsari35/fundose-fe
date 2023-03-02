@@ -51,7 +51,7 @@ export default function Instruction({
     handleClose();
     handleSound("button");
     isLoggedIn
-      ? dispatch(startQuiz(subjectId))
+      ? dispatch(startQuiz(subjectId, router))
       : dispatch(showModal("LOGIN_FORM"));
   };
 
