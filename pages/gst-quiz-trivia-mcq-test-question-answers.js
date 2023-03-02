@@ -29,13 +29,17 @@ export default function GSTPage({ handleSound }) {
       <Box
         sx={{
           color: "white",
-          padding: "150px 100px",
+          padding: "150px 120px",
         }}
       >
-        <Typography variant="h3" component="h1" sx={{ paddingBottom: 2 }}>
+        <Typography variant="h3" component="h1">
           GST MCQ Quiz 2023
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 3, paddingTop: 6, textAlign: "justify" }}
+        >
           Welcome to the world of GST in India! The Goods and Services Tax (GST)
           is one of the most important indirect taxes in India, affecting
           commerce and trade in the country. With its complex rules and
@@ -43,7 +47,11 @@ export default function GSTPage({ handleSound }) {
           system. That's why we've created this webpage to provide you with all
           the information you need to know about GST in India.
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           But that's not all! We also understand the importance of practical
           application when it comes to studying the GST system. That's why we've
           created a set of GST MCQ quizzes to help commerce stream students
@@ -63,7 +71,11 @@ export default function GSTPage({ handleSound }) {
         >
           Conquer the CA Intermediate Exam with Our GST MCQ Quizzes!
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           Get ready to ace your CA Intermediate exam with our GST MCQ Quizzes!
           Our quizzes are specifically designed to provide you with the best
           revision material for the latest GST syllabus of CA Inter. With a
@@ -81,7 +93,11 @@ export default function GSTPage({ handleSound }) {
           Pass Your 2023 CA Intermediate Exam with Confidence using Our GST MCQ
           Quizzes!
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           Maximize your chances of success in the 2023 CA Intermediate exam with
           our comprehensive set of GST MCQ quizzes! Our GST MCQ quizzes cover
           all the essential sections of the 2023 CA Intermediate exam syllabus,
@@ -102,7 +118,11 @@ export default function GSTPage({ handleSound }) {
           Crack Your CA Foundation Course GST Exam with Ease: Try Our GST MCQ
           Quizzes Today!
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           Our GST MCQ quizzes are specially designed to cover all the major
           chapters of the GST syllabus that will be asked in your CA Foundation
           Course Exam. Our GST MCQs includes question from Administration,

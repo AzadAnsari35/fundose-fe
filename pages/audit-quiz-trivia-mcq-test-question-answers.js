@@ -29,13 +29,17 @@ export default function GSTPage({ handleSound }) {
       <Box
         sx={{
           color: "white",
-          padding: "150px 100px",
+          padding: "150px 120px",
         }}
       >
         <Typography variant="h3" component="h1" sx={{ paddingBottom: 2 }}>
           Audit MCQ Auditing and Management Professionals
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           Auditing is an independent examination of financial information of an
           organization to make sure that the financial statements accurately
           represent the financial performance and position of the organization.
@@ -43,7 +47,11 @@ export default function GSTPage({ handleSound }) {
           Accountants of India (ICAI) and is an important aspect of corporate
           governance.
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           B.Com students and candidates of various professional exams like
           Chartered Accountant and Company Secretary require a sound knowledge
           of Indian auditing as it plays a critical role in the financial
@@ -65,7 +73,11 @@ export default function GSTPage({ handleSound }) {
           Ace Your Auditing Exams with Our Latest IPCC-Aligned Audit MCQ
           Quizzes!
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           Get ahead of the curve and stay ahead in the race with our expertly
           designed Audit MCQ quizzes that covers topics that have been in the
           news in the past year and are raised in every commerce stream
@@ -85,7 +97,11 @@ export default function GSTPage({ handleSound }) {
         >
           Audit IPCC MCQs with Answers
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           Get ready to ace your IPCC exams with our comprehensive Audit IPCC MCQ
           Quizzes! Designed by experts in the field, our Audit IPCC MCQ Quizzes
           are an effective way to test your knowledge and enhance your
@@ -105,7 +121,11 @@ export default function GSTPage({ handleSound }) {
         >
           Improve Your Auditing Knowledge with Our Company Audit MCQ Quizzes
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           Boost your auditing skills and ace your exams with our comprehensive
           Company Audit MCQs! Our platform offers a unique and effective way to
           test your knowledge and prepare for success. With a vast library of
@@ -123,7 +143,11 @@ export default function GSTPage({ handleSound }) {
         >
           Prepare for Success with Our Comprehensive Internal Audit Quizzes
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           Maximize your success and conquer your internal audit exams with ease!
           Our Internal Audit Quizzes offer an extensive library of questions
           covering all major topics, including questions from the last ten years

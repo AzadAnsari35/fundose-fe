@@ -29,32 +29,48 @@ export default function GSTPage({ handleSound }) {
       <Box
         sx={{
           color: "white",
-          padding: "150px 100px",
+          padding: "150px 120px",
         }}
       >
         <Typography variant="h3" component="h1" sx={{ paddingBottom: 2 }}>
           Looking To Strengthen Your Financial Accounting Understanding? Try
           Expertly Designed Finance MCQs{" "}
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           Welcome to the Indian Financial System knowledge hub! Our Finance MCQs
           is designed to help users enhance their understanding of the Indian
           financial sector. Whether you're a student, professional, or simply
           interested in finance, our Finance MCQs provides a comprehensive
           resource for all things related to the Indian financial system.
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           Our Finance MCQs encompasses a wide range of Finance related topics
           are prepared to develop an in-depth understanding of Finance MCQs.
           Whether you’re looking to brush up on basic financial concepts or dive
           deep into complex financial instruments, Our Finance MCQs has you
           covered.
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           From banking to insurance, investment to taxation, Our Finance MCQs
           offers a comprehensive overview of the Indian financial system.
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           So why wait? Start your journey to financial enlightenment today and
           join our community of like-minded individuals on the quest to improve
           their knowledge of the Indian financial system.ion of upcoming Income
@@ -68,12 +84,20 @@ export default function GSTPage({ handleSound }) {
         >
           Banking and Finance MCQ with Answers
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           The banking and finance MCQs with answers on our website are a
           valuable resource for users looking to test and improve their
           knowledge of the Indian financial system.
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           By answering Our Finance MCQs, users can assess their understanding of
           key concepts of Indian Financial system and identify areas of
           understanding about Indian financial system that needs special
@@ -82,7 +106,11 @@ export default function GSTPage({ handleSound }) {
           answered correctly, allowing them to reinforce their understanding of
           the concept raised in the MCQ.
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           Additionally, Our Finance MCQs can be used as a study tool for
           students preparing for exams or professionals preparing for
           certifications. Overall, the banking and finance MCQs with answers on
@@ -97,7 +125,11 @@ export default function GSTPage({ handleSound }) {
         >
           Corporate Business Finance MCQ quizzes
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           Our Corporate Business Finance MCQ quizzes are designed specifically
           to help users deepen their understanding of the finance of the Indian
           corporate world. These Finance MCQs are a valuable resource for anyone
@@ -105,7 +137,11 @@ export default function GSTPage({ handleSound }) {
           sector.
         </Typography>
 
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           The Corporate Business Finance MCQs cover a range of topics related to
           corporate finance, including financial planning and analysis, working
           capital management, capital structure, and mergers and acquisitions.
@@ -113,12 +149,20 @@ export default function GSTPage({ handleSound }) {
           and gain a deeper understanding of the financial landscape of the
           Indian corporate world.
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           These Corporate Finance MCQs are designed to be challenging, yet
           accessible, ensuring that users of all levels can benefit from taking
           these quizzes.
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           In addition to providing a comprehensive overview of corporate finance
           in India, our Corporate Business Finance MCQs comes with detailed
           answers that are provided in layman’s lingo. This allows you to
@@ -126,7 +170,11 @@ export default function GSTPage({ handleSound }) {
           a
         </Typography>
 
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           Start enhancing your understanding of the finance of the Indian
           corporate world today with our Corporate Business Finance MCQ quizzes.
         </Typography>

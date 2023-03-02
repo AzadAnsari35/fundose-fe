@@ -29,13 +29,17 @@ export default function GSTPage({ handleSound }) {
       <Box
         sx={{
           color: "white",
-          padding: "150px 100px",
+          padding: "150px 120px",
         }}
       >
         <Typography variant="h3" component="h1" sx={{ paddingBottom: 2 }}>
           Unleash Your Knowledge on India's Direct Taxes with Our Quizzes!
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           Attention B.Com Students and CA & CMA Candidates: Want to ace your
           Income Tax exams and stand out from the crowd? Look no further! Our
           Income Tax MCQs on India's Direct Taxes are designed to help you gain
@@ -45,7 +49,11 @@ export default function GSTPage({ handleSound }) {
           knowledge, our Income Tax MCQs will provide you with the tools you
           need to succeed.
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           With a wide range of Income Tax MCQs, covering all aspects of direct
           taxes in India, our Income Tax quizzes are the perfect way to boost
           your confidence and enhance your understanding of Income Tax system of
@@ -53,7 +61,11 @@ export default function GSTPage({ handleSound }) {
           track your progress and identify areas of Income Tax syllabus where
           you need to improve.
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           Don't wait any longer – start your journey to mastery of India's
           Direct Taxes today! Try our Income Tax MCQs and take the first step
           towards in doing fool-proof preparation of upcoming Income tax
@@ -68,7 +80,11 @@ export default function GSTPage({ handleSound }) {
           Test Your Knowledge of Tax Laws on Income from House Property with Our
           MCQ Quizzes!
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           Attention Taxation Enthusiasts: Are you ready to put your
           understanding of Tax Laws on Income from House Property to the test?
           Our Income Tax MCQs are here to help you do just that! With Income Tax
@@ -76,7 +92,11 @@ export default function GSTPage({ handleSound }) {
           knowledge of the complex topics of Income Tax and take your
           understanding of Income Tax to the next level.
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           Our Income Tax MCQs are designed to provide you with detailed answers,
           so you can understand the concepts behind every Income Tax MCQ. This
           means that you'll be able to build your knowledge regarding the latest
@@ -84,7 +104,11 @@ export default function GSTPage({ handleSound }) {
           and you'll be able to see the connections between different parts of
           the Income Tax system.
         </Typography>
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           Whether you're preparing for a competitive exam or simply want to
           improve your understanding of Tax Laws on Income from House Property,
           our Income Tax MCQs are the perfect tool for you. So what are you
@@ -99,7 +123,11 @@ export default function GSTPage({ handleSound }) {
         >
           Ace Your CA Foundation Exam with Our Income Tax MCQ Quizzes!
         </Typography>
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           Are you ready to tackle the toughest Income Tax MCQs on the 2023
           Foundation Course Exam syllabus? Our Income Tax MCQs are here to help
           you prepare! With Income Tax MCQs based on the latest exam pattern,
@@ -107,7 +135,11 @@ export default function GSTPage({ handleSound }) {
           you're fully prepared for the big day.
         </Typography>
 
-        <Typography variant="subtitle2" component="p" sx={{ paddingBottom: 2 }}>
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ paddingBottom: 2, textAlign: "justify" }}
+        >
           Our Income Tax MCQs are designed to help you understand the key
           concepts and principles of Income Tax, and to ensure that you're ready
           to tackle any Income Tax MCQ that comes your way. With detailed
@@ -117,7 +149,11 @@ export default function GSTPage({ handleSound }) {
           Tax.
         </Typography>
 
-        <Typography variant="subtitle2" component="p">
+        <Typography
+          variant="subtitle2"
+          component="p"
+          sx={{ textAlign: "justify" }}
+        >
           So why wait? Start your preparation for upcoming Income Tax
           examination with our Income Tax MCQs and ensure your success! Enroll
           now and take the first step towards acing your CA Foundation Exam.
