@@ -51,7 +51,7 @@ export default function FailureModal({ currentScore, handleSound }) {
             <a
               href="https://www.catusharmakkar.com/"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener"
             >
               Our Courses
             </a>

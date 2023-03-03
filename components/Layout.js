@@ -40,6 +40,7 @@ export default function Layout({
       <Loader />
       <Header handleSound={handleSound} />
       <div className="container">{children}</div>
+      <Footer />
     </div>
   );
 }

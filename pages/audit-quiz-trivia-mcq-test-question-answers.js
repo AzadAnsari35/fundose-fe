@@ -29,9 +29,35 @@ export default function GSTPage({ handleSound }) {
       <Box
         sx={{
           color: "white",
-          padding: "150px 120px",
+          padding: "120px 120px",
         }}
       >
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            paddingBottom: 8,
+          }}
+        >
+          <Button
+            variant="primary"
+            sx={{ marginTop: 8, border: "1px solid white" }}
+            data-topic="Audit"
+            data-id="4"
+            onClick={handleClick}
+          >
+            <img
+              src="/static/icons/audit.svg"
+              alt="Audit Icon"
+              width={40}
+              height={40}
+            />
+            <Typography variant="body1" component="div" sx={{ paddingLeft: 1 }}>
+              Start quiz
+            </Typography>
+          </Button>
+        </Box>
         <Typography variant="h3" component="h1" sx={{ paddingBottom: 2 }}>
           Audit MCQ Auditing and Management Professionals
         </Typography>
@@ -90,6 +116,32 @@ export default function GSTPage({ handleSound }) {
           start practicing now with our IPCC-aligned Audit MCQ quizzes and stay
           ahead of the competition!
         </Typography>
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            paddingTop: 4,
+          }}
+        >
+          <Button
+            variant="primary"
+            sx={{ border: "1px solid white" }}
+            data-topic="Audit"
+            data-id="4"
+            onClick={handleClick}
+          >
+            <img
+              src="/static/icons/audit.svg"
+              alt="Audit Icon"
+              width={40}
+              height={40}
+            />
+            <Typography variant="body1" component="div" sx={{ paddingLeft: 1 }}>
+              Start quiz
+            </Typography>
+          </Button>
+        </Box>
         <Typography
           variant="h4"
           component="h2"
@@ -97,6 +149,7 @@ export default function GSTPage({ handleSound }) {
         >
           Audit IPCC MCQs with Answers
         </Typography>
+
         <Typography
           variant="subtitle2"
           component="p"
@@ -181,7 +234,7 @@ export default function GSTPage({ handleSound }) {
               height={40}
             />
             <Typography variant="body1" component="div" sx={{ paddingLeft: 1 }}>
-              Start Game
+              Start quiz
             </Typography>
           </Button>
         </Box>

@@ -29,9 +29,35 @@ export default function GSTPage({ handleSound }) {
       <Box
         sx={{
           color: "white",
-          padding: "150px 120px",
+          padding: "120px 120px",
         }}
       >
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            paddingBottom: 8,
+          }}
+        >
+          <Button
+            variant="primary"
+            sx={{ marginTop: 8, border: "1px solid white" }}
+            data-topic="GST"
+            data-id="2"
+            onClick={handleClick}
+          >
+            <img
+              src="/static/icons/gst.svg"
+              alt="Gst Icon"
+              width={40}
+              height={40}
+            />
+            <Typography variant="body1" component="div" sx={{ paddingLeft: 1 }}>
+              Start Quiz
+            </Typography>
+          </Button>
+        </Box>
         <Typography variant="h3" component="h1">
           GST MCQ Quiz 2023
         </Typography>
@@ -85,6 +111,31 @@ export default function GSTPage({ handleSound }) {
           tool for you. So, don't wait, start revising today and ace your CA
           Intermediate exam!{" "}
         </Typography>
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Button
+            variant="primary"
+            sx={{ marginTop: 8, border: "1px solid white" }}
+            data-topic="GST"
+            data-id="2"
+            onClick={handleClick}
+          >
+            <img
+              src="/static/icons/gst.svg"
+              alt="Gst Icon"
+              width={40}
+              height={40}
+            />
+            <Typography variant="body1" component="div" sx={{ paddingLeft: 1 }}>
+              Start Quiz
+            </Typography>
+          </Button>
+        </Box>
         <Typography
           variant="h4"
           component="h2"
@@ -159,7 +210,7 @@ export default function GSTPage({ handleSound }) {
               height={40}
             />
             <Typography variant="body1" component="div" sx={{ paddingLeft: 1 }}>
-              Start Game
+              Start Quiz
             </Typography>
           </Button>
         </Box>

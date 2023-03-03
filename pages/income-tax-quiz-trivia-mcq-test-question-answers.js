@@ -29,9 +29,35 @@ export default function GSTPage({ handleSound }) {
       <Box
         sx={{
           color: "white",
-          padding: "150px 120px",
+          padding: "120px 120px",
         }}
       >
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            paddingBottom: 8,
+          }}
+        >
+          <Button
+            variant="primary"
+            sx={{ marginTop: 8, border: "1px solid white" }}
+            data-topic="Income Tax"
+            data-id="1"
+            onClick={handleClick}
+          >
+            <img
+              src="/static/icons/it.svg"
+              alt="Income Tax Icon"
+              width={40}
+              height={40}
+            />
+            <Typography variant="body1" component="div" sx={{ paddingLeft: 1 }}>
+              Start Quiz
+            </Typography>
+          </Button>
+        </Box>
         <Typography variant="h3" component="h1" sx={{ paddingBottom: 2 }}>
           Unleash Your Knowledge on India's Direct Taxes with Our Quizzes!
         </Typography>
@@ -92,6 +118,32 @@ export default function GSTPage({ handleSound }) {
           knowledge of the complex topics of Income Tax and take your
           understanding of Income Tax to the next level.
         </Typography>
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            paddingBottom: 8,
+          }}
+        >
+          <Button
+            variant="primary"
+            sx={{ marginTop: 8, border: "1px solid white" }}
+            data-topic="Income Tax"
+            data-id="1"
+            onClick={handleClick}
+          >
+            <img
+              src="/static/icons/it.svg"
+              alt="Income Tax Icon"
+              width={40}
+              height={40}
+            />
+            <Typography variant="body1" component="div" sx={{ paddingLeft: 1 }}>
+              Start Quiz
+            </Typography>
+          </Button>
+        </Box>
         <Typography
           variant="subtitle2"
           component="p"
@@ -180,7 +232,7 @@ export default function GSTPage({ handleSound }) {
               height={40}
             />
             <Typography variant="body1" component="div" sx={{ paddingLeft: 1 }}>
-              Start Game
+              Start Quiz
             </Typography>
           </Button>
         </Box>

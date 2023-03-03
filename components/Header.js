@@ -64,7 +64,7 @@ export default function Header({ handleSound }) {
               <a
                 href="https://www.catusharmakkar.com/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
               >
                 Practical Courses
               </a>
@@ -103,7 +103,7 @@ export default function Header({ handleSound }) {
               <a
                 href="https://www.catusharmakkar.com/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
               >
                 Practical Courses
               </a>
