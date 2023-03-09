@@ -6,8 +6,13 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import DialogBox from "@/components/Modal";
 import Instruction from "@/components/Instruction";
+import { createTheme } from "@mui/material/styles";
+import { makeStyles, createStyles } from "@mui/styles";
+
+const defaultTheme = createTheme();
 
 export default function GSTPage({ handleSound }) {
+  const classes = useStyles();
   const [showModal, setShowModal] = useState(false);
 
   const handleClick = (e) => {
@@ -26,12 +31,7 @@ export default function GSTPage({ handleSound }) {
       author="Audit Quiz 2023, Audit MCQ Online Test, Audit Online Quiz, Audit MCQ Questions"
       handleSound={handleSound}
     >
-      <Box
-        sx={{
-          color: "white",
-          padding: "120px 120px",
-        }}
-      >
+      <div className={classes.container}>
         <Box
           sx={{
             width: "100%",
@@ -238,7 +238,7 @@ export default function GSTPage({ handleSound }) {
             </Typography>
           </Button>
         </Box>
-      </Box>
+      </div>
       <DialogBox open={showModal} handleClose={() => setShowModal(false)}>
         <Instruction
           topic="Audit"
@@ -250,3 +250,17 @@ export default function GSTPage({ handleSound }) {
     </Layout>
   );
 }
+
+const useStyles = makeStyles(() => {
+  const onMobile = defaultTheme.breakpoints.only("xs");
+
+  return createStyles({
+    container: {
+      color: "white",
+      padding: "120px 120px",
+      [onMobile]: {
+        padding: "0px 10px",
+      },
+    },
+  });
+});

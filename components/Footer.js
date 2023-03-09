@@ -1,10 +1,12 @@
-import Box from "@mui/material/Box";
-import { makeStyles } from "@mui/styles";
+import { makeStyles, createStyles } from "@mui/styles";
 import Link from "next/link";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import Typography from "@mui/material/Typography";
+import { createTheme } from "@mui/material/styles";
+
+const defaultTheme = createTheme();
 
 export default function Footer() {
   const classes = useStyles();
@@ -12,7 +14,7 @@ export default function Footer() {
 
   return (
     <footer className={classes.root}>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <div className={classes.container}>
         <div className={classes.links}>
           <Link href="audit-quiz-trivia-mcq-test-question-answers">
             <a>Audit</a>
@@ -46,7 +48,7 @@ export default function Footer() {
             <YouTubeIcon />
           </a>
         </div>
-      </Box>
+      </div>
       <Typography
         variant="body2"
         component="div"
@@ -63,24 +65,50 @@ export default function Footer() {
   );
 }
 
-const useStyles = makeStyles({
-  root: {
-    background: "#7386FF",
-    borderRadius: "20px 20px 0px 0px",
-    color: "white",
-    padding: "24px 300px 12px",
-    marginTop: "-20px",
-  },
-  links: {
-    display: "flex",
-    "& > a": {
-      padding: "0px 20px",
+const useStyles = makeStyles(() => {
+  const onMobile = defaultTheme.breakpoints.only("xs");
+
+  return createStyles({
+    root: {
+      background: "#7386FF",
+      borderRadius: "20px 20px 0px 0px",
+      color: "white",
+      padding: "24px 300px 12px",
+      marginTop: "-20px",
+      [onMobile]: {
+        padding: "35px 30px 20px",
+      },
     },
-  },
-  icons: {
-    display: "flex",
-    "& > a": {
-      padding: "0px 8px",
+    container: {
+      display: "flex",
+      justifyContent: "space-between",
+      [onMobile]: {
+        flexDirection: "column",
+      },
     },
-  },
+    links: {
+      display: "flex",
+      "& > a": {
+        padding: "0px 20px",
+      },
+      [onMobile]: {
+        flexDirection: "column",
+        "& > a": {
+          padding: "8px 0px",
+        },
+      },
+    },
+    icons: {
+      display: "flex",
+      "& > a": {
+        padding: "0px 8px",
+      },
+      [onMobile]: {
+        paddingTop: 20,
+        "& > a": {
+          padding: "0px 10px 0px 0px",
+        },
+      },
+    },
+  });
 });
