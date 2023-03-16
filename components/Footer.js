@@ -28,6 +28,9 @@ export default function Footer() {
           <Link href="income-tax-quiz-trivia-mcq-test-question-answers">
             <a>Income Tax</a>
           </Link>
+          <Link href="sitemap.xml">
+            <a>Sitemap</a>
+          </Link>
         </div>
         <div className={classes.icons}>
           <a

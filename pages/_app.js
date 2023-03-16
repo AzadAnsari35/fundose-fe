@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import GlobalModalProvider from "../components/GlobalModalProvider";
 import { useEffect, useState } from "react";
 import * as types from "../actions/types";
+import Script from "next/script";
 
 //Sound
 import useSound from "use-sound";
@@ -84,13 +85,28 @@ function MyApp({ Component, pageProps }) {
   const modifiedPageProps = { ...pageProps, handleSound };
 
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <Component {...modifiedPageProps} />
-        <ToastContainer theme="colored" />
-        <GlobalModalProvider handleSound={handleSound} />
-      </ThemeProvider>
-    </Provider>
+    <>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-2C0B19RJK3"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-2C0B19RJK3');
+       `}
+      </Script>
+
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Component {...modifiedPageProps} />
+          <ToastContainer theme="colored" />
+          <GlobalModalProvider handleSound={handleSound} />
+        </ThemeProvider>
+      </Provider>
+    </>
   );
 }
 
