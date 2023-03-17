@@ -1,7 +1,7 @@
 import { makeStyles, createStyles } from "@mui/styles";
 import Link from "next/link";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import Typography from "@mui/material/Typography";
 import { createTheme } from "@mui/material/styles";
@@ -34,17 +34,21 @@ export default function Footer() {
         </div>
         <div className={classes.icons}>
           <a
-            href="https://www.linkedin.com/company/fundose/"
+            href="https://www.linkedin.com/in/ca-tushar-makkar-190b76b7/"
             target="_blank"
             rel="noreferrer noopener"
           >
             <LinkedInIcon />
           </a>
-          <a href="" target="_blank" rel="noreferrer noopener">
-            <FacebookIcon />
+          <a
+            href="https://www.instagram.com/tushar_makkar29/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <InstagramIcon />
           </a>
           <a
-            href="https://www.youtube.com/"
+            href="https://www.youtube.com/@catusharmakkar"
             target="_blank"
             rel="noreferrer noopener"
           >
